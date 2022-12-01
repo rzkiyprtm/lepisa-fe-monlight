@@ -388,7 +388,7 @@ section .right-bar .input .btn-sign:active {
         display: none;
     }
     .navbar {
-        position: fixed;
+        position: absolute;
         align-items: center;
         justify-content: space-between;
         padding: 2rem 3rem;
