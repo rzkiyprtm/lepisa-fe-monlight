@@ -121,7 +121,7 @@ function Profile() {
             </div>
 
             {/* new password */}
-            <div className={css.background_input_acc}>
+            <div className={css.background_input_acc_1}>
               <p className={css.title_information}>Account and Privacy</p>
               <hr />
               <div className={css.edit_acc}>
@@ -140,6 +140,12 @@ function Profile() {
                   </div>
                 </div>              
               </div>
+            </div>
+
+
+            <div className={css.submit_button}>
+              <button className={css.update}>Update changes</button>
+              <button className={css.logout}>Logout</button>
             </div>
 
           </div>
