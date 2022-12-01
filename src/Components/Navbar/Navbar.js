@@ -44,7 +44,7 @@ function Header() {
     <option value="2">Jakarta</option>
     <option value="3">Bandung</option>
     <option value="4">Surabaya</option>
-    <option value="5">Batam</option>
+    <option value="5">Malang</option>
   </select>
 </div>
           <form>
