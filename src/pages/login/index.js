@@ -8,7 +8,7 @@ import title from "../../assets/auth_image/title.png";
 import google from "../../assets/auth_image/google.png"
 import facebook from "../../assets/auth_image/facebook.png"
 import title_purple from "../../assets/auth_image/title_phone.png"
-import Navbar from "../../Components/Navbar"
+import Navbar from "../../Components/Navbar/Navbar"
 
 function Login() {
   const [type, setType] = useState("password");
