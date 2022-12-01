@@ -5,12 +5,12 @@
     height: 350px;
     width: 381px;
     border-radius: 8px;
-    padding: 24px;
+    padding: 20px;
 }
 
 .titles__bar {
     border-bottom: 0.5px solid #DEDEDE;
-    padding-bottom: ;
+    /* padding-bottom: ; */
 }
 
 .title_bar {
