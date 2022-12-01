@@ -28,8 +28,7 @@ function Login() {
     }
   };
   return (
-    <>
-    <Navbar/>
+
     <>
       <div className={css.container_inti}>
         {/* content left */}
@@ -96,8 +95,6 @@ function Login() {
       </div>
 
       </div>
-      <Footer/>
-    </>
     </>
   )
 }
