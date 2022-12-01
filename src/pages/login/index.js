@@ -8,6 +8,7 @@ import title from "../../assets/auth_image/title.png";
 import google from "../../assets/auth_image/google.png"
 import facebook from "../../assets/auth_image/facebook.png"
 import title_purple from "../../assets/auth_image/title_phone.png"
+import Navbar from "../../Components/Navbar"
 
 function Login() {
   const [type, setType] = useState("password");
@@ -27,6 +28,7 @@ function Login() {
   };
   return (
     <>
+    <Navbar/>
     <>
       <div className={css.container_inti}>
         {/* content left */}

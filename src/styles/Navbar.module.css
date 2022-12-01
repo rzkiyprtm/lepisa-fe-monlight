@@ -1,12 +1,12 @@
 /* navbar */
 .navbar {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     background-color: white;
     z-index: 1111;
-    padding: 15px 0px 15px 0px;
+    padding: 15px 50px 15px 50px;
 }
 
 .navbar .left-bar {
@@ -18,7 +18,7 @@
 .navbar .logo {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 2.5rem;
 }
 
 .navbar .logo .logo-img img {
@@ -126,8 +126,8 @@
     top: -.5rem;
 }
 
-.navbar .right-bar .profile img {
-    border-radius: 50%;
+.navbar .right-bar .profile {
+    /* border-radius: 50%; */
     cursor: pointer;
 }
 
@@ -141,6 +141,13 @@
 
 .btn-logout:hover {
     background-color: #FFBA33;
+}
+
+/* custom select styling */
+.custom-select select {
+    background: none;
+    border: none;
+    outline: 0;
 }
 
 /* hamburger */
@@ -198,7 +205,7 @@ transform-origin: 0 0;
 .navbar section {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2.5rem;
 }
 
 .navbar section .searching {
@@ -401,7 +408,7 @@ section .right-bar .input .btn-sign:active {
         height: 90vh;
         justify-content: space-evenly;
         align-items: center;
-        /* background-color: white; */
+        background-color: white;
         flex-direction: column;
         z-index: -900;
         transform: translateX(-100%);
