@@ -48,13 +48,13 @@ function Header() {
   </select>
 </div>
           <form>
-          <div class={styles.searchBox} >
+          <div className={styles.searchBox} >
             <input
-              class={styles.searchTxt}
+              className={styles.searchTxt}
               type='text'
               placeholder='let search something'/>
             <a className={styles.searchBtn} href=''>
-              <i class='fas fa-search'></i>
+              <i className='fas fa-search'></i>
             </a>
           </div>
           </form>
