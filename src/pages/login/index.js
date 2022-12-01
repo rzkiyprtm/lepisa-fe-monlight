@@ -9,6 +9,7 @@ import google from "../../assets/auth_image/google.png"
 import facebook from "../../assets/auth_image/facebook.png"
 import title_purple from "../../assets/auth_image/title_phone.png"
 import Navbar from "../../Components/Navbar/Navbar"
+import Footer from "../../Components/Footer/Footer"
 
 function Login() {
   const [type, setType] = useState("password");
@@ -95,6 +96,7 @@ function Login() {
       </div>
 
       </div>
+      <Footer/>
     </>
     </>
   )

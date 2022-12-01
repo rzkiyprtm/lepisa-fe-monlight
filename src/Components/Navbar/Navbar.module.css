@@ -418,7 +418,7 @@ section .right-bar .input .btn-sign:active {
         background-color: white;
         flex-direction: column;
         z-index: -900;
-        transform: translateX(-100%);
+        transform: translateY(-100%);
         transition: 0.2s;
         opacity: 0;
     }
