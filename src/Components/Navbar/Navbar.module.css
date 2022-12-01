@@ -384,11 +384,14 @@ section .right-bar .input .btn-sign:active {
 
 /* responsive */
 @media screen and (max-width: 768px) {
+    .custom-select select {
+        display: none;
+    }
     .navbar {
         position: fixed;
         align-items: center;
         justify-content: space-between;
-        padding: 2rem 4rem;
+        padding: 2rem 3rem;
         gap: 1rem;
         z-index: 100;
     }
@@ -434,7 +437,7 @@ section .right-bar .input .btn-sign:active {
         display: flex;
         position: absolute;
         top: 6rem;
-        right: 4rem;
+        right: 2rem;
         background-color: white;
         height: 4vh;
         align-items: center;
@@ -469,6 +472,15 @@ section .right-bar .input .btn-sign:active {
         height: 40px;
         border-radius: 10px;
     }
+    .searchBox > .searchTxt
+{
+  width: 200px;
+  padding: 0 6px;
+}
+.searchBox > .searchBtn
+{
+ position: relative;
+}
 }
 
 @media screen and (max-width: 568px) {

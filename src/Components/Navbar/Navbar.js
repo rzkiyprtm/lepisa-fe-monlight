@@ -2,7 +2,7 @@ import React from "react";
 import { useState} from "react";
 import styles from "./Navbar.module.css";
 import logo from "../../assets/navbar_image/tickit.png";
-import avatar from "../../assets/navbar_image/profile.svg";
+import avatar from "../../assets/navbar_image/gue.jpg";
 import Image from "next/image";
 import Router from "next/router";
 
@@ -64,7 +64,8 @@ function Header() {
                 alt='profile'
                 width={45}
                 height={45}
-                // style={{ borderRadius: "50%" }}
+                objectFit="cover"
+                style={{ borderRadius: "10px" }}
               />
             </div>
         </section>
