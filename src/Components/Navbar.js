@@ -38,7 +38,7 @@ function Header() {
       {/* {isLogin ? ( */}
         <section className={text}>
           <div className={styles["custom-select"]}>
-  <select>
+  <select className={styles.option}>
     <option value="0">Location</option>
     <option value="1">Banjarbaru</option>
     <option value="2">Jakarta</option>
