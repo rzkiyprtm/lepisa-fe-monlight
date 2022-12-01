@@ -1,6 +1,7 @@
 .background_color {
   background-color: #f5f6f8;
   padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .bungkus {
@@ -337,7 +338,7 @@
   background-color: #ffffff;
   border-radius: 20px;
   margin-top: 30px;
-  padding: 60px 20px 40px 20px;
+  padding: 50px 20px 40px 20px;
 }
 
 .location > select {
@@ -349,8 +350,124 @@
   border-radius: 20px;
 }
 
+.backgorund_date {
+  background-color: #dedede;
+  padding: 10px ;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.date > i {
+  padding-right: 20px;
+}
+
+.set_date {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0.25px;
+  color: #4E4B66;
+}
+
+.time {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.time > .button_time {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.button_time > button {
+  border: none;
+  background-color: white;
+}
 
 
+.title_chart > p{
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0.25px;
+  color: #000000;
+  margin-top: 50px;
+}
+
+.bar_chart {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-top: 30px;
+}
+
+.bar_chart > p {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 34px;
+  letter-spacing: 0.75px;
+  color: #14142B;
+  text-align: center;
+  padding-right: 25px;
+  padding-left: 25px;
+  cursor: pointer;
+}
+
+.bar_chart > p:hover {
+  border-bottom: 2px solid #5F2EEA;
+  font-weight: 700;
+}
+
+.view_more {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 0.75px;
+  color: #5F2EEA;
+  cursor: pointer;
+  text-align: center;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.view {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.rules1 {
+  border: 1px solid #DEDEDE;
+  width: 45%;
+}
+
+.rules2 {
+  border: 1px solid #DEDEDE;
+  width: 45%;
+}
 
 /* media query tablet */
 @media screen and (max-width: 768px) {

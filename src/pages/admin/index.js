@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import css from "../../styles/Admin.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
@@ -9,6 +9,10 @@ import Cardlocation from "../../Components/Card_location/Card_location"
 import Image from "next/image";
 
 function Admin() {
+// button show time ongoing to implementasi style
+
+
+
   return (
     <>
     <Navbar/>
@@ -126,27 +130,54 @@ function Admin() {
                 <p className={css.title_content}>Premiere Location</p>
                   <div className={css.content_right}>
                     {/* location */}
-                    <div className={css.location}>
-                        <select name="" id="">
-                          <option value="" selected>Location</option>
-                          <option value="">Purwokerto</option>
-                          <option value="">Jakarta</option>
-                          <option value="">Bandung</option>
-                          <option value="">Semarang</option>
-                        </select>
+                    <div className={` ${css.backgorund_date}`}>
+                      <div className={`d-flex flex-row align-items-center ${css.date}`}>
+                        <i className="fa-solid fa-calendar-days"></i>
+                        <p className={css.set_date}>Set a date</p>
+                      </div>
+                      <i className="fa-solid fa-sort-down"></i>
                     </div>
-                    {/* card bioskop */}
-                    <div className="">
-                      
+                    <div className={`${css.time}`}>
+                     <div className={css.button_time}>
+                      <button>08:00</button>
+                      <button>09:00</button>
+                      <button>10:00</button>
+                      <button>11:00</button>
+                     </div>
+                     <div className={css.button_time}>
+                      <button>12:00</button>
+                      <button>13:00</button>
+                      <button>14:00</button>
+                      <button>15:00</button>
+                     </div>
                     </div>
                   </div>
-                  <div className="">
-
-                  </div>
+                  
                 </div>
               </div>
             </div>
           </div>
+
+
+        <div className="">
+          <div className={css.title_chart}>
+            <p>Sales Charts</p>
+          </div>
+          <div className={css.bar_chart}>
+            <p>Based on Movie</p>
+            <p>Based on Location</p>
+          </div>
+        </div>
+
+        {/* CHART */}
+
+        <div className={css.view}>
+          <div className={css.rules1}></div>
+          <p className={css.view_more}>View More</p>
+          <div className={css.rules2}></div>
+        </div>
+
+
         </div>
       </div>
 
