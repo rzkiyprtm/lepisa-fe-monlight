@@ -1,0 +1,356 @@
+.background {
+  background: #F5F6F8;
+  padding: 50px 50px 50px 50px ;
+}
+
+.background_left {
+  background-color: white;
+  padding: 20px 30px 20px 30px;
+  border-radius: 20px;
+}
+
+
+
+
+/* content left */
+.info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.info > p {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 0.75px;
+  color: #4E4B66;
+}
+
+.info > i {
+  text-align: center;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.image_user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.image_user > label {
+  background: #5F2EEA;
+  width: 50%;
+  height: 40px;
+  text-align: center;
+  padding-top: 4px;
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 0.75px;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.image_user > label:hover {
+  background: #6d42e6;
+}
+
+
+.name {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 34px; 
+  text-align: center;
+  letter-spacing: 0.75px;
+  color: #14142B;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.username_1 {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.75px;
+  color: #4E4B66;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.rule {
+  margin-top: 50px;
+  border: 1px solid #DEDEDE;
+  width: 100%;
+}
+
+.title_loyal {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0.75px;
+  color: #4E4B66;
+  margin-top: 30px;
+}
+
+.loyal {
+  background-image: url("../assets/profile/card.png");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 30px;
+  padding-bottom: 30px;
+  margin-top: 30px;
+}
+
+.card_loyal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-left: 50px;
+  padding-right: 40px;
+}
+
+.card_loyal > p {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 34px;
+  letter-spacing: 0.75px;
+  color: #FFFFFF;
+}
+
+.loyal > p {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 38px;
+  letter-spacing: 0.75px;
+  color: #FFFFFF;
+  padding-left: 50px;
+}
+
+.loyal > p > span {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 24px;
+  letter-spacing: 0.75px;
+  color: #FFFFFF;
+}
+
+.point > p {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 0.25px;
+  color: #4E4B66;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.border_box {
+  background-color: #DEDEDE;
+  height: 20px;
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.border_content {
+  height: 20px;
+  width: 40%;
+  background-color: #5F2EEA;
+  border-radius: 20px;
+  margin-bottom: 50px;
+}
+
+
+
+
+/* content right */
+.bar_profile_right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: 16px;
+  height: 60px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.acc {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 34px;
+  letter-spacing: 0.75px;
+  color: #AAAAAA;
+  cursor: pointer;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.history {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 34px;
+  letter-spacing: 0.75px;
+  color: #AAAAAA;
+  cursor: pointer;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+.acc:hover {
+  font-weight: 700;
+  color: #14142B;
+}
+.history:hover {
+  font-weight: 700;
+  color: #14142B;
+}
+
+
+
+
+/* Content input acc */
+.background_input_acc {
+  background: #FFFFFF;
+  border-radius: 24px;
+  margin-top: 40px;
+  padding: 60px 40px 80px 40px;
+}
+
+.title_information {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 0.75px;
+  color: #14142B;
+}
+
+.edit_acc {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 70px;
+}
+
+.username {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 50%;
+  margin-top: 20px;
+}
+
+.username > lable {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #4E4B66;
+}
+
+.username > input {
+  /* background: #FCFDFE; */
+  border: 1px solid #DEDEDE;
+  border-radius: 16px;
+  outline: none;
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+  padding-left: 10px;
+}
+
+.phone_number {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* background: #FCFDFE; */
+  border: 1px solid #DEDEDE;
+  border-radius: 16px;
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+}
+
+.phone_number > p {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.75px;
+  color: #4E4B66;
+  border-right: 1px solid #DEDEDE;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.phone_number > input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding-left: 10px;
+}
+
+.password {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #AAAAAA;
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+.password > i {
+  padding-right: 20px;
+}
+
+.password > input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding-left: 10px ;
+  padding-right: 20px ;
+  height: 40px;
+  border-radius: 20px;
+}
