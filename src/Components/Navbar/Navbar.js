@@ -1,8 +1,8 @@
 import React from "react";
 import { useState} from "react";
-import styles from "/home/pratama/lepisa-fe-monlight/src/styles/Navbar.module.css";
-import logo from "/home/pratama/lepisa-fe-monlight/src/assets/navbar_image/tickit.png";
-import avatar from "/home/pratama/lepisa-fe-monlight/src/assets/navbar_image/profile.svg";
+import styles from "./Navbar.module.css";
+import logo from "../../assets/navbar_image/tickit.png";
+import avatar from "../../assets/navbar_image/profile.svg";
 import Image from "next/image";
 import Router from "next/router";
 
