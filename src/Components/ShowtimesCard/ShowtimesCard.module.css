@@ -1,0 +1,179 @@
+.showtimes__bar {
+    background: #FFFFFF;
+    border: 0.5px solid #DEDEDE;
+    border-radius: 8px;
+    height: 350px;
+    width: 381px;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.titles__bar {
+    border-bottom: 0.5px solid #DEDEDE;
+    padding-bottom: ;
+}
+
+.title_bar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.title {
+    padding-bottom: 5px;
+}
+
+.location {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.75px;
+    color: #6E7191;
+    padding-bottom: 24px;
+}
+
+.image_show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.times {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 16px 0;
+}
+
+.time {
+    padding-bottom: 16px;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.75px;
+    color: #4E4B66;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.price_title {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.75px;
+    color: #6B6B6B;
+}
+
+.price_seat {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    letter-spacing: 0.75px;
+    color: #000000;
+}
+
+.btn_bar {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn_booknow {
+    background: #5F2EEA;
+    box-shadow: 0px 8px 24px rgba(95, 46, 234, 0.24);
+    border-radius: 4px;
+    height: 40px;
+    width: 134px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.75px;
+    color: #F7F7FC;
+    cursor: pointer;
+}
+
+.btn_add {
+    border-radius: 4px;
+    height: 40px;
+    width: 134px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.75px;
+    color: #5F2EEA;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+    .showtimes__bar {
+        height: auto;
+    }
+
+    .time {
+        margin: 0 9px;
+    }
+
+    .card_show {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 10px;
+    }
+
+    .title {
+        display: none;
+    }
+
+    .title_bar {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .location {
+        text-align: center;
+    }
+}
