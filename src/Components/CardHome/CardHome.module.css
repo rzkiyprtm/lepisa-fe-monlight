@@ -1,0 +1,114 @@
+.card__bar {
+    background: #FFFFFF;
+    width: 223px;
+    border: 0.5px solid #DEDEDE;
+    box-shadow: 0px 8px 30px rgba(186, 186, 186, 0.25);
+    border-radius: 8px;
+    padding: 32px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.card_container {
+    width: 160px;
+    height: 245px;
+    position: relative;
+    margin-bottom: 24px;
+    transition: all 0.3s;
+}
+
+.title {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    letter-spacing: 0.15px;
+    color: #14142B;
+}
+
+.category {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    color: #A0A3BD;
+    padding-top: 10px;
+}
+
+.detail {
+    margin-top: 45px;
+    border: 1px solid #5F2EEA;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    color: #5F2EEA;
+    padding: 8px 0;
+    margin-bottom: 16px;
+}
+
+.books {
+    color: #5F2EEA;
+    border-radius: 4px;
+    background: #5F2EEA;
+    padding: 8px 0;
+    cursor: pointer;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.hide {
+    display: none;
+    transition: all 0.5s;
+}
+
+.card__bar:hover>.hide {
+    display: block;
+    height: 500px;
+    transition: all 0.5s;
+}
+
+.card__bar:hover {
+    height: 530px;
+    transition: all 0.5s;
+}
+
+.card_container:hover {
+    transform: scale(1.050);
+}
+
+.card_image {
+    width: 160px;
+    height: 244px;
+}
+
+@media only screen and (max-width: 576px) {
+
+    .card__bar {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .card_container {
+        width: 90%;
+        margin: 0 10px;
+    }
+
+    .card_image {
+        width: 100%;
+        padding: 20px;
+    }
+}

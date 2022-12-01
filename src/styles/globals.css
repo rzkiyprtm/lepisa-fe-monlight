@@ -9,6 +9,7 @@ body {
     Fira Sans, Droid Sans, Helvetica Neue,
     sans-serif;
 }
+
 h6,
 .h6,
 h5,
@@ -26,7 +27,7 @@ p {
 }
 
 html {
-  max-width: 1440px;
+  max-width: 1366px;
   margin: 0 auto;
 }
 
@@ -39,7 +40,7 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
@@ -47,4 +48,4 @@ a {
     color: white;
     background: black;
   }
-}
+} */
