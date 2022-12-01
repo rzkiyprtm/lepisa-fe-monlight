@@ -223,3 +223,63 @@
 .payment-choose-title {
   padding-top: 2rem;
 }
+
+@media screen and (max-width: 428px) {
+  .main-content {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 130px 10px 50px 10px !important;
+  }
+
+  .left-content-container {
+    width: 100%;
+  }
+  
+  .right-content-container {
+    width: 100%;
+  }
+
+  .container-payment input {
+    float:right;
+    width: 100%;
+    text-align: left;
+  }
+  .payment-list-one, .payment-list-two {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center !important;
+  }
+  .payment-list-two {
+    padding-top: 2rem !important;
+  }
+
+  .payment-list-one .button-box, .payment-list-two .button-box {
+    height: 60px;
+    width: 100%;
+  }
+
+  .left-content-container .btn-box {
+    display: flex;
+    flex-direction: column-reverse;
+    padding-top: 1.5rem;
+    gap: 1rem;
+  }
+
+  .btn-prev button, .btn-pay button {
+    height: 3.5rem;
+    width: 100%;
+  }
+
+  .personal-info-box input {
+    height: 3.4rem;
+    width: 300px;
+  }
+
+  .warn-notification .warn-box {
+    width: 300px;
+  }
+  .payment-title, .payment-choose-title, .personal-info-title {
+    text-align: center;
+  }
+}
