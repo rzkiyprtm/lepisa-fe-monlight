@@ -4,8 +4,20 @@ import css from "../../styles/History.module.css"
 import CardProfile from '../../Components/CardProfile/CardProfile'
 import Header from '../../Components/Navbar/Navbar'
 import Footer from '../../Components/Footer/Footer'
+import image_cinema from "../../assets/admin/cineone21.png"
+import { useRouter } from 'next/router'
+import Image from 'next/image'
+import CardHistory from '../../Components/CardHistory/CardHistory'
 
 function History() {
+
+  const router = useRouter()
+
+
+  // Link
+  const toProfile = () => (router.push("/profile"))
+
+
   return (
     <>
 
@@ -19,9 +31,13 @@ function History() {
 
           {/* content right */}
           <div className="col-lg-8 col-md-12 col-sm-12 ">
-          <div className={css.background_right_white}>
-              {/* css atas belom di kasih style nanti lanjut disini codingan nya */}
-          </div>
+            <div className={css.bar_profile_right}>
+              <p className={css.acc} onClick={toProfile}>Account Settings</p>
+              <p className={css.history}>Order History</p>
+            </div>
+
+            <CardHistory />
+            <CardHistory />
 
           </div>
         </div>
