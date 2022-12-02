@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import Image from "next/image";
 import card_image from "../../assets/homepage/img_cardhome.png";
 import styles from "./CardHome.module.css";
+import { useRouter } from "next/router";
 function Index(props) {
    // const [variant, setVariant] = useState("coming");
+   const router = useRouter()
+
+   const toMoviedetail = () => (router.push(`/movie/${props.id}`))
+   
    return (
       <>
          <section className={styles.card__bar}>
@@ -15,9 +20,9 @@ function Index(props) {
                />
             </section>
             <section className={`${styles.detail_bar} ${styles.hide}`}>
-               <h4 className={styles.title}>Spider-Man: Homecoming</h4>
-               <p className={styles.category}>Acion, Adventure, Sci-FI</p>
-               <div className={styles.detail}>Details</div>
+               <h4 className={styles.title}>{props.tittle}</h4>
+               <p className={styles.category}>{props.category}</p>
+               <div className={styles.detail} onClick={toMoviedetail}>Details</div>
                <div className={`${styles.books} ${props.variant}`}>
                   Book now
                </div>
