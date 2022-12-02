@@ -19,6 +19,12 @@ function Register() {
   const [icon, setIcon] = useState("fa-solid fa-eye-slash");
   const [email, setEmail] = useState ("")
   const [password, setPassword] = useState ("")
+  const [boxcolor, setBoxcolor] = useState(true)
+  const [boxpending, setBoxpending] = useState(true)
+  const [boxcolor_, setBoxcolor_] = useState(true)
+  const [boxpending_, setBoxpending_] = useState(true)
+  const [btncolor, setBtncolor] = useState(true)
+
 
   // handleToggle => Show Password
   const handleToggle = () => {
@@ -33,20 +39,46 @@ function Register() {
 
 
   // valueEmail, valuePassword => get value
-  const valueEmail = (e) => {setEmail(e.target.value), console.log(email)}
-  const valuePassword = (e) => (setPassword(e.target.value), console.log(password))
+  const valueEmail = (e) => {
+    setEmail(e.target.value), 
+    console.log(email), 
+    setBoxcolor(false), 
+    setBoxpending(true)
+  }
+  const valuePassword = (e) => {
+    setPassword(e.target.value), 
+    console.log(password), 
+
+    setBoxcolor_(false), 
+    setBoxpending_(true)
+  }
+
 
 
   // handleRegister => register
   const handleRegister = () => {
+    if (!email || !password) return (
+      toast.error("Input Data must be fields"),
+      setBoxcolor(false), 
+      setBoxpending(false),
+      setBoxcolor_(false), 
+      setBoxpending_(false)
+    )
     axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/register/`, {
       email,
       password,
     })
-    .then((res) => {
-        console.log(res)
+    .then(() => {
+      toast.success("Register Success"),
+        setBtncolor(false)
     })
-    .catch((err) => console.log(err))
+    .catch((err) => {
+      toast.error(err.response.data.status),
+      setBoxcolor(false), 
+      setBoxpending(false)
+      setBoxcolor_(false), 
+      setBoxpending_(false)
+    })
   }
 
 
@@ -64,20 +96,20 @@ function Register() {
           <div className={css.step}>
             <div className={css.options}>
               <p className={`${css.circle} rounded-circle`}>1</p>
-              <p className={css.desc_circle}>Fill your additional details</p>
+              <p className={css.desc_circle}>Please input data to registration</p>
             </div>
             <div className={css.rules_grid}>
               <div className={css.rules}></div>
             </div>
             <div className={css.options_}>
-              <p className={`${css.circle_} rounded-circle`}>2</p>
-              <p className={css.desc_circle_}>Activate your account</p>
+              <p className={(btncolor) ? `${css.circle_} rounded-circle` : `${css.circle} rounded-circle`}>2</p>
+              <p className={css.desc_circle_}>Please check your email</p>
             </div>
             <div className={css.rules_grid}>
               <div className={css.rules}></div>
             </div>
             <div className={css.options_}>
-              <p className={`${css.circle_} rounded-circle`}>3</p>
+              <p className={(btncolor) ? `${css.circle_} rounded-circle` : `${css.circle} rounded-circle`}>3</p>
               <p className={css.desc_circle_}>Done</p>
             </div>
           </div>
@@ -91,7 +123,7 @@ function Register() {
             <p>Fill your additional details</p>
           </div>
           {/* Input */}
-          <div className={css.input_email}>
+          <div className={(boxcolor) ? css.input_email : (boxpending) ? css.input_email_blue : css.input_email_red}>
             <label htmlFor=''>Email</label>
             <input
               type='text'
@@ -104,7 +136,7 @@ function Register() {
           </div>
           <div className={css.input_password}>
             <label htmlFor=''>Password</label>
-            <div className={css.password_box}>
+            <div className={(boxcolor_) ? css.password_box : (boxpending_) ? css.password_box_blue : css.password_box_red}>
               <input
                 type={type}
                 name=''
@@ -121,7 +153,7 @@ function Register() {
           <p>I agree to terms & conditions</p>
         </div>
         <div className={css.button_register}>
-          <button className={css.register} onClick={handleRegister}>Join for free now</button>
+          <button className={email === "" || password === "" ? css.register : css.register_blue} onClick={handleRegister}>Join for free now</button>
         </div>
         <div className={css.already}>
           <p>Do you already have an account? <Link href={"/login"}>Log in</Link></p>
