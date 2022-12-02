@@ -1,31 +1,8 @@
 import { ActionType } from "redux-promise-middleware";
 import { ACTION_STRING } from "./actionStrings"
+import { getUserId } from "../../utils/axios"
 
 const { Pending, Rejected, Fulfilled } = ActionType;
-
-const registerPending = () => () => ({
-  type: ACTION_STRING.authRegister.concat("_", Pending),
-});
-const registerRejected = (error) => ({
-  type: ACTION_STRING.authRegister.concat("_", Rejected),
-  payload: { error },
-});
-const registerFulfilled = (data) => ({
-  type: ACTION_STRING.authRegister.concat("_", Fulfilled),
-  payload: { data },
-});
-
-const loginPending = () => () => ({
-  type: ACTION_STRING.authLogin.concat("_", Pending),
-});
-const loginRejected = (error) => ({
-  type: ACTION_STRING.authLogin.concat("_", Rejected),
-  payload: { error },
-});
-const loginFulfilled = (data) => ({
-  type: ACTION_STRING.authLogin.concat("_", Fulfilled),
-  payload: { data },
-});
 
 const logoutPending = () => () => ({
   type: ACTION_STRING.authLogout.concat("_", Pending),
@@ -51,32 +28,36 @@ const resetFulfilled = (data) => ({
   payload: { data },
 });
 
-const registerThunk = (body) => {
-  return async (dispatch) => {
-    try {
-      dispatch(registerPending());
-      const result = await register(body);
-      dispatch(registerFulfilled(result.data))
-    } catch (error) {
-      dispatch(registerRejected(error))
-    }
-  }
-}
 
-const loginThunk = (body, navigate) => {
-  return async (dispatch) => {
+// Get id user
+const profilePending = () => ({
+  type: ACTION_STRING.profile.concat("_", Pending),
+});
+const profileRejected = (error) => ({
+  type: ACTION_STRING.profile.concat("_", Rejected),
+  payload: { error },
+});
+const profileFulfilled = (data) => ({
+  type: ACTION_STRING.profile.concat("_", Fulfilled),
+  payload: { data },
+});
+
+
+const userThunk = (token, router) => {
+  return async (dispacth) => {
     try {
-      dispatch(loginPending());
-      const result = await login(body);
-      dispatch(loginFulfilled(result.data));
-      console.log(result);
-      localStorage.setItem("userInfo", JSON.stringify());
-      if (typeof navigate === "function") navigate();
+      dispacth(profilePending());
+      const result = await getUserId(token);
+      console.log(result.data.data.email)
+      dispacth(profileFulfilled(result.data));
+      if (typeof router === "function") router();
     } catch (error) {
-      dispatch(loginRejected(error))
+      console.log(error);
+      dispacth(profileRejected(error));
     }
-  }
-}
+  };
+};
+
 
 const logoutThunk = (token, navigate) => {
   return async (dispatch) => {
@@ -108,8 +89,7 @@ const resetThunk = (body, navigate) => {
 }
 
 const authActions = {
-  registerThunk,
-  loginThunk,
+  userThunk,
   logoutThunk,
   resetThunk,
 };

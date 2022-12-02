@@ -8,14 +8,25 @@ import title from "../../assets/auth_image/title.png";
 import google from "../../assets/auth_image/google.png"
 import facebook from "../../assets/auth_image/facebook.png"
 import title_purple from "../../assets/auth_image/title_phone.png"
-import Navbar from "../../Components/Navbar/Navbar"
-import Footer from "../../Components/Footer/Footer"
+
+// import toastify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import authActions from '../../redux/actions/auth';
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from 'next/router';
 
 function Login() {
+
+  const dispatch = useDispatch();
+  const router = useRouter();
+
   const [type, setType] = useState("password");
-  const [icon, setIcon] = useState(
-    "fa-solid fa-eye-slash",
-  );
+  const [icon, setIcon] = useState("fa-solid fa-eye-slash");
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState ("")
 
   // handleToggle => Show Password
   const handleToggle = () => {
@@ -27,6 +38,45 @@ function Login() {
       setType("password");
     }
   };
+
+
+
+  const valueEmail = (e) => {
+    setEmail(e.target.value)
+  }
+
+  const valuePassword = (e) => {
+    setPassword(e.target.value)
+  }
+
+
+
+
+  const handleLogin = () => {
+    if(!email || !password) return (
+      toast.error("Data must be fullfield")
+    )
+    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`, { email : email, password : password})
+    .then((res) => {
+      console.log(res.data.data),
+      Cookies.set("id", res.data.data.id)
+      Cookies.set("role", res.data.data.role)
+      Cookies.set("token", res.data.data.token)
+      toast.success("Success Login")
+      return dispatch(authActions.userThunk(res.data.data.token, () => {
+        setTimeout(() => {
+          if (res.data.data.role === "admin") {
+            return router.replace("/admin");
+          } else {
+            return router.replace("/");
+          }
+        }, 2000);
+      }))
+    })
+
+    .catch((err) => toast.error(err.response.data.status))
+  }
+
   return (
 
     <>
@@ -54,6 +104,7 @@ function Login() {
               type='text'
               name=''
               id=''
+              onChange={valueEmail}
               placeholder='Write your email'
             />
           </div>
@@ -64,13 +115,14 @@ function Login() {
                 type={type}
                 name=''
                 id=''
+                onChange={valuePassword}
                 placeholder='Write your email'
               />
               <i className={icon} onClick={handleToggle}></i>
             </div>
           </div>
         <div className={css.button_register}>
-          <button className={css.register}>Sign In</button>
+          <button className={css.register} onClick={handleLogin}>Sign In</button>
         </div>
         <div className={css.already}>
           <p>Forgot your password? <Link href={"/resetpassword"}> Reset now</Link></p>
@@ -95,6 +147,15 @@ function Login() {
       </div>
 
       </div>
+      <ToastContainer
+                position="top-center"
+                autoClose={3000}
+                hideProgressBar={false}
+                closeOnClick={true}
+                pauseOnHover={true}
+                draggable={true}
+                theme="light"
+            />
     </>
   )
 }

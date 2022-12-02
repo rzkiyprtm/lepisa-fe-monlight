@@ -9,115 +9,32 @@
   background-size: cover;
   /* background-position: center; */
   padding-top: 100px;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 150px;
+  padding-right: 150px;
   padding-bottom: 100px;
 }
 
 .title_1 {
-  font-family: "Mulish";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 60px;
-  letter-spacing: 0.003em;
-  color: #ffffff;
-  padding-top: 100px;
-}
-
-.title_2 {
-  font-family: "Mulish";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
-  line-height: 35px;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 20px;
+  font-size: 40px;
+  line-height: 58px;
+  letter-spacing: 0.003em;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.step {
-  margin-top: 70px;
-}
 
-.options {
+.box_tix {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-self: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
-.circle {
-  font-family: "Mulish";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 30px;
-  letter-spacing: 0.005em;
-  color: rgba(41, 3, 65, 0.5);
-  background-color: #ffffff;
-  width: 8%;
-  height: 50px;
-  padding-top: 10px;
-  text-align: center;
-  border: none;
-}
 
-.desc_circle {
-  font-family: "Mulish";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 30px;
-  letter-spacing: 0.005em;
-  color: #ffffff;
-  padding-left: 30px;
-}
-
-.options_ {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-self: flex-start;
-}
-
-.circle_ {
-  font-family: "Mulish";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 30px;
-  letter-spacing: 0.005em;
-  color: white;
-  /* background-color: #ffffff; */
-  width: 8%;
-  height: 50px;
-  padding-top: 8px;
-  text-align: center;
-  border: 2px solid white;
-}
-
-.desc_circle_ {
-  font-family: "Mulish";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 30px;
-  letter-spacing: 0.005em;
-  color: #ffffff;
-  padding-left: 30px;
-}
-
-.rules_grid {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin-left: 23px;
-}
-
-.rules {
-  border: 2px solid white;
-  height: 70px;
-}
 
 /* content right */
 .content_right {
@@ -125,14 +42,25 @@
   padding: 200px 50px 200px 50px;
 }
 
-.title_right > p {
-  font-family: "Mulish";
+.sign_in {
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
-  font-size: 26px;
-  line-height: 33px;
-  letter-spacing: 0.005em;
+  font-size: 48px;
+  line-height: 58px;
+  letter-spacing: 0.003em;
   color: #121212;
+}
+
+.sign_in_desc {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.007em;
+  color: #AAAAAA;
+  margin-top: 30px;
 }
 
 .input_email {
@@ -219,7 +147,7 @@
 }
 
 .button_register {
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
 .register {
@@ -332,41 +260,6 @@
   display: none;
 }
 
-.title_right {
-  font-family: 'Mulish';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 26px;
-  line-height: 33px;
-  letter-spacing: 0.005em;
-  color: #121212;
-}
-.desc_title_right {
-  font-family: 'Mulish';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 23px;
-  letter-spacing: 0.005em;
-  color: #8692A6;
-  margin-top: 20px;
-}
-
-.desc_title_right_phone {
-  display: none;
-}
-
-
-.reset_Passwod {
-  font-family: 'Mulish';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 23px;
-  letter-spacing: 0.005em;
-  color: black;
-  padding-bottom: 30px;
-}
 
 @media only screen and (max-width: 768px) {
   .content_left {
@@ -381,18 +274,6 @@
   .title_in_phone {
     display:block;
   }
-
-  .desc_title_right_phone {
-    display: block;
-    font-family: 'Mulish';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 19px;
-    letter-spacing: 0.1px;
-    color: #8692A6;
-    margin-top: 20px;
-  }
   
   .title_sign_up {
     display:block;
@@ -406,10 +287,11 @@
   margin-top: 40px;
   }
 
-  .title_right {
+  .sign_in_desc {
     display: none;
   }
-  .desc_title_right {
+
+  .sign_in {
     display: none;
   }
   .with {

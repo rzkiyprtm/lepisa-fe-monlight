@@ -1,12 +1,97 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 
+// import toastify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import title_purple from "../../assets/auth_image/title_phone.png"
 import title from "../../assets/auth_image/title.png"
 import css from "../../styles/Resetpassword.module.css"
+import axios from 'axios';
+import { useRouter } from 'next/router';
 
 function Resetpassword() {
+
+  const router = useRouter();
+
+  const [email, setEmail] = useState("")
+  const [change, setChange] = useState(false)
+
+  const valueEmail = (e) => {
+    setEmail(e.target.value)
+  }
+
+  const handleSendEmail = () => {
+    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/forgot-password`, {
+      email
+    })
+    .then((res) => {
+      toast.success(res.data.status),
+      setChange(true)
+    })
+    .catch((err) => toast.error(err.response.data.status))
+  }
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState("fa-solid fa-eye-slash");
+  const [type_, setType_] = useState("password");
+  const [icon_, setIcon_] = useState("fa-solid fa-eye-slash");
+  const [password, setPassword] = useState ("")
+  const [confirm, setConfirm] = useState ("")
+  const [otp, setOTP] = useState ("")
+
+  const valueOTP = (e) => {
+    if (e.target.value.length === 0) setOTP("");
+    if (/[0-9]{1,12}/g.test(e.target.value[e.target.value.length - 1])) setOTP(e.target.value);
+    // console.log(e.target.value)
+  };
+
+
+    // handleToggle => Show Password
+    const handleToggle1 = () => {
+      if (type === "password") {
+        setIcon("fa-regular fa-eye");
+        setType("text");
+      } else {
+        setIcon("fa-solid fa-eye-slash");
+        setType("password");
+      }
+    };
+
+    const handleToggle2 = () => {
+      if (type_ === "password") {
+        setIcon_("fa-regular fa-eye");
+        setType_("text");
+      } else {
+        setIcon_("fa-solid fa-eye-slash");
+        setType_("password");
+      }
+    };
+
+  
+    const valuePassword = (e) => {
+      setPassword(e.target.value)
+    }
+    const valueConfirm = (e) => {
+      setConfirm(e.target.value)
+    }
+
+    const handleReset = () => {
+      axios.patch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/reset-password`, {
+        verify_changepwd: otp,
+        new_password : password,
+        confirm_password : confirm
+      })
+      .then(() => {
+        toast.success("Reset password success")
+        setTimeout(() => {
+          router.push("/login")
+        }, 2000);
+      })
+      .catch((err) => toast.error(err.response.data.status))
+    }
+
+  if(!change)
   return (
     <>
     <div className={css.container_inti}>
@@ -61,11 +146,12 @@ function Resetpassword() {
               type='text'
               name=''
               id=''
+              onChange={valueEmail}
               placeholder='Write your email'
             />
           </div>
         <div className={css.button_register}>
-          <button className={css.register}>Active Now</button>
+          <button className={css.register} onClick={handleSendEmail}>Active Now</button>
         </div>
         
     
@@ -74,8 +160,94 @@ function Resetpassword() {
       </div>
 
       </div>
+      <ToastContainer
+                position="top-center"
+                autoClose={3000}
+                hideProgressBar={false}
+                closeOnClick={true}
+                pauseOnHover={true}
+                draggable={true}
+                theme="light"
+            />
     </>
   )
+
+if(change)
+return (
+  <>
+  <div className={css.container_inti}>
+      {/* content left */}
+      <div className={css.content_left}>
+        <div className={css.box_tix}>
+          <Image src={title} alt='title' width={550} height={200} />
+          <p className={css.title_1}>wait, watch, wow!</p>
+        </div>
+      </div>
+
+      {/* content right */}
+      <div className={css.content_right}>
+        <Image src={title_purple} alt='title' width={170} height={70} className={css.title_in_phone}/>
+        <p className={css.title_sign_up}>Reset Password</p>
+        <div className="">
+          <p className={` text-center ${css.reset_Passwod}`}>Reset Password</p>
+        </div>
+        {/* Input */}
+        <div className={css.input_email}>
+          <label htmlFor="">Code OTP</label>
+          <input 
+            type="text"
+            name="" 
+            id=""
+            value={otp}
+            onChange={valueOTP}
+            />
+        </div>
+        <div className={css.input_password}>
+          <label htmlFor=''>New Password</label>
+          <div className={css.password_box}>
+            <input
+              type={type}
+              name=''
+              id=''
+              onChange={valuePassword}
+              placeholder='Write your email'
+            />
+            <i className={icon} onClick={handleToggle1}></i>
+          </div>
+        </div>
+        <div className={css.input_password}>
+          <label htmlFor=''>Confirm Password</label>
+          <div className={css.password_box}>
+            <input
+              type={type_}
+              name=''
+              id=''
+              onChange={valueConfirm}
+              placeholder='Write your email'
+            />
+            <i className={icon_} onClick={handleToggle2}></i>
+          </div>
+        </div>
+      <div className={css.button_register}>
+        <button className={css.register} onClick={handleReset}>Reset now</button>
+      </div>
+
+
+    </div>
+
+    </div>
+    <ToastContainer
+              position="top-center"
+              autoClose={3000}
+              hideProgressBar={false}
+              closeOnClick={true}
+              pauseOnHover={true}
+              draggable={true}
+              theme="light"
+          />
+  </>
+)
+
 }
 
 export default Resetpassword

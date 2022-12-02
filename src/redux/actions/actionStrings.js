@@ -4,6 +4,7 @@ export const ACTION_STRING = {
   authReset: "AUTH_RESET",
   authRegister: "REGISTER",
   pending: "_PENDING",
+  profile: "PROFILE",
   rejected: "_REJECTED",
   fulfilled: "_FULFILLED",
   dataProfile: "GET_PROFILE",
