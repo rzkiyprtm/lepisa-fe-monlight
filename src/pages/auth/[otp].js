@@ -8,7 +8,7 @@ function Otp() {
   const router = useRouter();
 
   useEffect(() => {
-    axios.get(`${NEXT_PUBLIC_BACKEND_URL}/auth/verify/${router.query.otp}`)
+    axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/verify/${router.query.otp}`)
     .then(console.log("Activasi berhasil"))
     .catch((err) => console.log(err))
   }, [])
