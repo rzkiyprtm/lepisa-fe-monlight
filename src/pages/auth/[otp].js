@@ -1,8 +1,8 @@
 import React from 'react'
 
-import css from "../../../styles/Auth.module.css"
+import css from "../../styles/Auth.module.css"
 
-function Verify() {
+function Otp() {
   return (
     <>
       <div className={`container-fluid ${css.container}`}>
@@ -15,4 +15,4 @@ function Verify() {
   )
 }
 
-export default Verify
+export default Otp
