@@ -1,0 +1,120 @@
+/* card */
+.content_background {
+  background: #FFFFFF;
+  border-radius: 24px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.title_name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px 20px 40px;
+}
+
+.title_bioskop {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.time_bioskop {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.75px;
+  color: #AAAAAA;
+}
+
+.name_film {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 38px;
+  letter-spacing: 0.75px;
+  color: #000000; 
+  padding-top: 10px;
+}
+
+.card_status {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px 20px 40px;
+}
+
+.show_detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.show_detail > i {
+  font-size: 16px;
+}
+
+.show_detail > p {
+  padding-right: 20px;
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 34px;
+  text-align: right;
+  letter-spacing: 0.75px;
+  color: #AAAAAA;
+}
+
+.ticket_active_green {
+  background: #00BA88;
+  border-radius: 8px;
+  border: none;
+  width: 30%;
+  height: 50px;
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.75px;
+  color: #F7F7FC;
+}
+
+
+@media only screen and (max-width: 428px) {
+  .title_name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .image {
+    padding-top: 30px;
+  }
+  .name_film {
+    padding-top: 10px;
+  }
+
+  .ticket_active_green {
+    background: #00BA88;
+    border-radius: 8px;
+    border: none;
+    width: 45%;
+    height: 50px;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.75px;
+    color: #F7F7FC;
+  }
+}
