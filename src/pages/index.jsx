@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import Image from "next/image";
 // assets
-import styles from "../../styles/Homepage.module.css";
-import img_spider from "../../assets/homepage/img_spiderman.png";
-import img_full from "../../assets/homepage/image_full.png";
+import styles from "../styles/Homepage.module.css";
+import img_full from "../assets/homepage/image_full.png";
 
 // component
-import CardHome from "../../Components/CardHome/index";
-import Navbar from "../../Components/Navbar/Navbar";
-import Footer from "../../Components/Footer/Footer";
+import CardHome from "../Components/CardHome/index";
+import Navbar from "../Components/Navbar/Navbar";
+import Footer from "../Components/Footer/Footer";
 import Slider from "react-slick";
 function index() {
    const settings = {
@@ -145,7 +144,7 @@ function index() {
                      <h2 className={styles.show__title}>Now Showing</h2>
                      <div className={styles.line}></div>
                   </div>
-                  <p>view all</p>
+                  <p className={styles.view_all}>view all</p>
                </section>
                <section className={styles.card__bar}>
                   <Slider {...settings}>
@@ -170,7 +169,7 @@ function index() {
                   <div>
                      <h2 className={styles.up__title}>Upcoming Movies</h2>
                   </div>
-                  <p>view all</p>
+                  <p className={styles.view_all}>view all</p>
                </section>
                <section className={styles.month__bar}>
                   <Slider {...Month}>

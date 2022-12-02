@@ -1,12 +1,12 @@
 import React from "react";
 import Image from "next/image";
 // assets
-import img_movie from "../../../assets/homepage/img_moviedetail.png";
-import styles from "../../../styles/MovieDetail.module.css";
+import img_movie from "../../assets/homepage/img_moviedetail.png";
+import styles from "../../styles/MovieDetail.module.css";
 // components
-import Footer from "../../../Components/Footer/Footer";
-import Navbar from "../../../Components/Navbar/Navbar";
-import Showtimes from "../../../Components/ShowtimesCard/ShowtimesCard";
+import Footer from "../../Components/Footer/Footer";
+import Navbar from "../../Components/Navbar/Navbar";
+import Showtimes from "../../Components/ShowtimesCard/ShowtimesCard";
 function Movie() {
    return (
       <>
