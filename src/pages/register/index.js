@@ -8,12 +8,17 @@ import facebook from "../../assets/auth_image/facebook.png"
 import title_purple from "../../assets/auth_image/title_phone.png"
 
 import css from "../../styles/Register.module.css";
+import axios from "axios";
+
+// import toastify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Register() {
   const [type, setType] = useState("password");
-  const [icon, setIcon] = useState(
-    "fa-solid fa-eye-slash",
-  );
+  const [icon, setIcon] = useState("fa-solid fa-eye-slash");
+  const [email, setEmail] = useState ("")
+  const [password, setPassword] = useState ("")
 
   // handleToggle => Show Password
   const handleToggle = () => {
@@ -25,6 +30,27 @@ function Register() {
       setType("password");
     }
   };
+
+
+  // valueEmail, valuePassword => get value
+  const valueEmail = (e) => {setEmail(e.target.value), console.log(email)}
+  const valuePassword = (e) => (setPassword(e.target.value), console.log(password))
+
+
+  // handleRegister => register
+  const handleRegister = () => {
+    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/register/`, {
+      email,
+      password,
+    })
+    .then((res) => {
+        console.log(res)
+    })
+    .catch((err) => console.log(err))
+  }
+
+
+
 
   return (
     <>
@@ -70,7 +96,9 @@ function Register() {
             <input
               type='text'
               name=''
+              value={email}
               id=''
+              onChange={valueEmail}
               placeholder='Write your email'
             />
           </div>
@@ -80,7 +108,9 @@ function Register() {
               <input
                 type={type}
                 name=''
+                value={password}
                 id=''
+                onChange={valuePassword}
                 placeholder='Write your email'
               />
               <i className={icon} onClick={handleToggle}></i>
@@ -91,7 +121,7 @@ function Register() {
           <p>I agree to terms & conditions</p>
         </div>
         <div className={css.button_register}>
-          <button className={css.register}>Join for free now</button>
+          <button className={css.register} onClick={handleRegister}>Join for free now</button>
         </div>
         <div className={css.already}>
           <p>Do you already have an account? <Link href={"/login"}>Log in</Link></p>
@@ -116,6 +146,15 @@ function Register() {
       </div>
 
       </div>
+      <ToastContainer
+                position="top-center"
+                autoClose={3000}
+                hideProgressBar={false}
+                closeOnClick={true}
+                pauseOnHover={true}
+                draggable={true}
+                theme="light"
+            />
     </>
   );
 }
