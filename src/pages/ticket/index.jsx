@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // components
 import Image from "next/image";
 import Navbar from "../../Components/Navbar/Navbar";
