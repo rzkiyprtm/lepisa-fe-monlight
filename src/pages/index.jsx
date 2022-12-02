@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 // assets
 import styles from "../styles/Homepage.module.css";
@@ -9,15 +9,66 @@ import CardHome from "../Components/CardHome/index";
 import Navbar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer/Footer";
 import Slider from "react-slick";
+import Spinner from "react-bootstrap/Spinner";
+
+import axios from "axios";
 function index() {
-   const settings = {
+   const [showing, setShowing] = useState([]);
+   const [upcoming, setUpcoming] = useState([]);
+   const [month, setMonth] = useState(3);
+   const [image1, setImage1] = useState("");
+   const [image2, setImage2] = useState("");
+   const [image3, setImage3] = useState("");
+   const showmovie = {
       // dots: true,
       infinite: true,
-      // autoplay: true,
-      // autoplaySpeed: 2000,
-      speed: 500,
-      slidesToShow: 5,
-      slidesToScroll: 5,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      speed: 1000,
+      slidesToShow: showing.length > 5 ? 5 : showing.length,
+      slidesToScroll: 1,
+      responsive: [
+         {
+            breakpoint: 1200,
+            settings: {
+               slidesToShow: showing.length,
+               slidesToScroll: showing.length,
+               infinite: true,
+            },
+         },
+         {
+            breakpoint: 1024,
+            settings: {
+               slidesToShow: 3,
+               slidesToScroll: 3,
+               infinite: true,
+            },
+         },
+         {
+            breakpoint: 600,
+            settings: {
+               slidesToShow: 2,
+               slidesToScroll: 2,
+               initialSlide: 2,
+            },
+         },
+         {
+            breakpoint: 568,
+            settings: {
+               slidesToShow: 2,
+               slidesToScroll: 2,
+            },
+         },
+      ],
+   };
+   const upmovie = {
+      // dots: true,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      speed: 1000,
+      slidesToShow: upcoming.length > 5 ? 5 : upcoming.length,
+      slidesToScroll: 1,
       responsive: [
          {
             breakpoint: 1200,
@@ -56,8 +107,8 @@ function index() {
       // dots: true,
       infinite: true,
       // autoplay: true,
-      // autoplaySpeed: 2000,
-      speed: 500,
+      // autoplaySpeed: 4000,
+      speed: 1000,
       slidesToShow: 7,
       slidesToScroll: 7,
       responsive: [
@@ -94,6 +145,35 @@ function index() {
          },
       ],
    };
+
+   // get movie showing
+   useEffect(() => {
+      axios
+         .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/movie`, {})
+         .then((res) => {
+            // console.log(res.data.data);
+            setShowing(res.data.data);
+            setImage1(res.data.data[0].image);
+            setImage2(res.data.data[1].image);
+            setImage3(res.data.data[2].image);
+         })
+         .catch((err) => {
+            console.log(err);
+         });
+   }, []);
+
+   useEffect(() => {
+      axios
+         .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/movie/film/${month}`, {})
+         .then((res) => {
+            console.log(res.data.data);
+            setUpcoming(res.data.data);
+         })
+         .catch((err) => {
+            console.log(err);
+         });
+   }, []);
+
    return (
       <>
          <Navbar />
@@ -114,25 +194,43 @@ function index() {
                >
                   <section className={`${styles.content__bar}`}>
                      <section className={styles.left_img}>
-                        <Image
-                           className={styles.img__bar}
-                           src={img_full}
-                           alt={"img_jumbotron"}
-                        />
+                        {image1 ? (
+                           <Image
+                              className={styles.img__bar}
+                              src={image1}
+                              width={107}
+                              height={352}
+                              alt={"img_jumbotron"}
+                           />
+                        ) : (
+                           <Spinner animation="grow" />
+                        )}
                      </section>
                      <section className={styles.center_img}>
-                        <Image
-                           className={styles.img__bar}
-                           src={img_full}
-                           alt={"img_jumbotron"}
-                        />
+                        {image2 ? (
+                           <Image
+                              className={styles.img__bar}
+                              src={image2}
+                              width={107}
+                              height={352}
+                              alt={"img_jumbotron"}
+                           />
+                        ) : (
+                           <Spinner animation="grow" />
+                        )}
                      </section>
                      <section className={styles.right_img}>
-                        <Image
-                           className={styles.img__bar}
-                           src={img_full}
-                           alt={"img_jumbotron"}
-                        />
+                        {image3 ? (
+                           <Image
+                              className={styles.img__bar}
+                              src={image3}
+                              width={107}
+                              height={352}
+                              alt={"img_jumbotron"}
+                           />
+                        ) : (
+                           <Spinner animation="grow" />
+                        )}
                      </section>
                   </section>
                </section>
@@ -147,18 +245,20 @@ function index() {
                   <p className={styles.view_all}>view all</p>
                </section>
                <section className={styles.card__bar}>
-                  <Slider {...settings}>
-                     <CardHome />
-                     <CardHome />
-                     <CardHome />
-                     <CardHome />
-                     <CardHome />
-                     <CardHome />
-                     <CardHome />
-                     <CardHome />
-                     <CardHome />
-                     <CardHome />
-                     <CardHome />
+                  <Slider {...showmovie}>
+                     {showing.length > 0 && showing ? (
+                        showing.map((movie) => (
+                           <CardHome
+                              key={movie.id}
+                              tittle={movie.tittle}
+                              category={movie.name}
+                              image={movie.image}
+                              id={movie.id}
+                           />
+                        ))
+                     ) : (
+                        <Spinner animation="grow" />
+                     )}
                   </Slider>
                </section>
             </section>
@@ -214,18 +314,21 @@ function index() {
 
                {/* card Upcoming */}
                <section className={styles.card__bar}>
-                  <Slider {...settings}>
-                     <CardHome variant="d-none" />
-                     <CardHome variant="d-none" />
-                     <CardHome variant="d-none" />
-                     <CardHome variant="d-none" />
-                     <CardHome variant="d-none" />
-                     <CardHome variant="d-none" />
-                     <CardHome variant="d-none" />
-                     <CardHome variant="d-none" />
-                     <CardHome variant="d-none" />
-                     <CardHome variant="d-none" />
-                     <CardHome variant="d-none" />
+                  <Slider {...upmovie}>
+                     {upcoming.length > 0 && upcoming ? (
+                        upcoming.map((movie) => (
+                           <CardHome
+                              variant="d-none"
+                              key={movie.id}
+                              image={movie.image}
+                              tittle={movie.tittle}
+                              category={movie.name}
+                              id={movie.id}
+                           />
+                        ))
+                     ) : (
+                        <Spinner animation="grow" />
+                     )}
                   </Slider>
                </section>
             </section>
