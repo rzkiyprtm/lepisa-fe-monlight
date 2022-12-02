@@ -12,6 +12,7 @@ function Otp() {
     .then(console.log("Activasi berhasil"))
     .catch((err) => console.log(err))
   }, [])
+  console.log(router.query.otp)
 
   const toLogin = () => router.push("/login")
   
