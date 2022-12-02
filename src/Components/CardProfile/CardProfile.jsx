@@ -1,10 +1,10 @@
 import Image from "next/image";
 import React from "react";
 
-import css from "./CardProfile.module.css"
+import css from "./CardProfile.module.css";
 
-import imageuser from "../../assets/profile/user.png"
-import star from "../../assets/profile/star.png"
+import imageuser from "../../assets/profile/user.png";
+import star from "../../assets/profile/star.png";
 
 function CardProfile() {
   return (
@@ -18,10 +18,11 @@ function CardProfile() {
           <div className={css.image_user}>
             <Image
               src={imageuser}
+              alt='Image_Profile'
               width={150}
               height={150}
               className='rounded-circle'
-              />
+            />
             <label htmlFor='image'>
               Edit image
             </label>
@@ -60,9 +61,7 @@ function CardProfile() {
             <p>180 points become a master</p>
           </div>
           <div className={css.border_box}>
-            <div
-              className={css.border_content}
-            ></div>
+            <div className={css.border_content} style={{width: "40%"}}></div>
           </div>
         </div>
       </div>

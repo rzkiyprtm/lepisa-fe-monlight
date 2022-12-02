@@ -174,7 +174,7 @@
 
 .border_content {
   height: 20px;
-  width: 40%;
+  /* width: 80%; */
   background-color: #5F2EEA;
   border-radius: 20px;
   margin-bottom: 50px;
