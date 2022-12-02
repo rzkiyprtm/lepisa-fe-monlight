@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 // assets
 import img_movie from "../../assets/homepage/img_moviedetail.png";
@@ -7,7 +7,20 @@ import styles from "../../styles/MovieDetail.module.css";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import Showtimes from "../../Components/ShowtimesCard/ShowtimesCard";
+import axios from "axios";
+import { useRouter } from "next/router";
+
 function Movie() {
+   const router = useRouter()
+
+   const [body, setBody] = useState({})
+
+   useEffect (() => {
+      axios.get (`${process.env.NEXT_PUBLIC_BACKEND_URL}/movie/${router.query.movieid}`)
+         .then((res) => setBody(res.data.data))
+         .catch((err) => console.log(err) )
+   },[router.query.movieid])
+
    return (
       <>
          <Navbar />
@@ -17,8 +30,10 @@ function Movie() {
                   <section className={styles.content__left}>
                      <Image
                         className={styles.movie_image}
-                        src={img_movie}
+                        src={body.image}
                         alt="movie image"
+                        width={100}
+                        height={100}
                      />
                   </section>
                </section>
@@ -26,27 +41,35 @@ function Movie() {
                   className={`${styles.content__right} col-md-12 col-lg-8`}
                >
                   <section>
-                     <h1 className={styles.title}>Spider-Man: Homecoming</h1>
+                     <h1 className={styles.title}>{body.tittle}</h1>
                      <p className={styles.category}>
-                        Adventure, Action, Sci-Fi
+                        {body.cast_name}
                      </p>
                   </section>
                   <section>
                      <p className={styles.release}>Release date</p>
-                     <p className={styles.title_down}>June 28, 2017</p>
+                     <p className={styles.title_down}>
+                        {/* {(body.release_date).slice(0,10)} */}
+                     </p>
                   </section>
                   <section>
                      <p className={styles.release}>Duration</p>
-                     <p className={styles.title_down}>2 hours 13 minutes </p>
+                     <p className={styles.title_down}>{body.duration_hour} hours {body.duration_minute} minutes </p>
                   </section>
                   <section>
                      <p className={styles.release}>Directed by</p>
-                     <p className={styles.title_down}>Jon Watss</p>
+                     <p className={styles.title_down}>{body.director}</p>
                   </section>
                   <section>
                      <p className={styles.release}>Casts</p>
                      <p className={styles.title_down}>
-                        Tom Holland, Michael Keaton, Robert Downey Jr., ...
+                        {body.cast_name}
+                     </p>
+                  </section>
+                  <section>
+                     <p className={styles.release}>Category Age</p>
+                     <p className={styles.title_down}>
+                        {body.name}
                      </p>
                   </section>
                </section>
@@ -54,13 +77,7 @@ function Movie() {
             <section>
                <h2 className={styles.sipnosis}>Synopsis</h2>
                <p className={styles.desc}>
-                  Thrilled by his experience with the Avengers, Peter returns
-                  home, where he lives with his Aunt May, under the watchful eye
-                  of his new mentor Tony Stark, Peter tries to fall back into
-                  his normal daily routine - distracted by thoughts of proving
-                  himself to be more than just your friendly neighborhood
-                  Spider-Man - but when the Vulture emerges as a new villain,
-                  everything that Peter holds most important will be threatened.
+                  {body.synopsis}
                </p>
             </section>
 
