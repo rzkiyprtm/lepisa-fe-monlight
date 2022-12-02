@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Provider } from "react-redux";
-import store, { persistedStore } from "src/redux/store";
+import store, { persistedStore } from "../redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 
 function MyApp({ Component, pageProps }) {
