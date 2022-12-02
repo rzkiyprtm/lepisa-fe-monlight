@@ -130,9 +130,7 @@
     color: #14142B;
 }
 
-.month_content {
-    margin: 0 16px;
-}
+
 
 .btn_month {
     padding: 12px 20px;
@@ -140,11 +138,11 @@
     border-radius: 4px;
     text-align: center;
     margin: 0 10px;
+    cursor: pointer;
 }
 
 .month__bar {
     padding: 64px 50px;
-
 }
 
 .month_content {
@@ -221,6 +219,7 @@
     letter-spacing: 0.5px;
     padding: 17px 30px;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .desc {
@@ -236,7 +235,8 @@
     margin-top: 40px;
 }
 
-.slogan, .findnow {
+.slogan,
+.findnow {
     padding-left: 50px;
 }
 

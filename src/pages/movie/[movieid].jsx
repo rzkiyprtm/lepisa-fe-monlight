@@ -11,15 +11,18 @@ import axios from "axios";
 import { useRouter } from "next/router";
 
 function Movie() {
-   const router = useRouter()
+   const router = useRouter();
 
-   const [body, setBody] = useState({})
+   const [body, setBody] = useState({});
 
-   useEffect (() => {
-      axios.get (`${process.env.NEXT_PUBLIC_BACKEND_URL}/movie/${router.query.movieid}`)
+   useEffect(() => {
+      axios
+         .get(
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/movie/${router.query.movieid}`
+         )
          .then((res) => setBody(res.data.data))
-         .catch((err) => console.log(err) )
-   },[router.query.movieid])
+         .catch((err) => console.log(err));
+   }, [router.query.movieid]);
 
    return (
       <>
@@ -42,9 +45,7 @@ function Movie() {
                >
                   <section>
                      <h1 className={styles.title}>{body.tittle}</h1>
-                     <p className={styles.category}>
-                        {body.cast_name}
-                     </p>
+                     <p className={styles.category}>{body.cast_name}</p>
                   </section>
                   <section>
                      <p className={styles.release}>Release date</p>
@@ -54,7 +55,10 @@ function Movie() {
                   </section>
                   <section>
                      <p className={styles.release}>Duration</p>
-                     <p className={styles.title_down}>{body.duration_hour} hours {body.duration_minute} minutes </p>
+                     <p className={styles.title_down}>
+                        {body.duration_hour} hours {body.duration_minute}{" "}
+                        minutes{" "}
+                     </p>
                   </section>
                   <section>
                      <p className={styles.release}>Directed by</p>
@@ -62,23 +66,17 @@ function Movie() {
                   </section>
                   <section>
                      <p className={styles.release}>Casts</p>
-                     <p className={styles.title_down}>
-                        {body.cast_name}
-                     </p>
+                     <p className={styles.title_down}>{body.cast_name}</p>
                   </section>
                   <section>
                      <p className={styles.release}>Category Age</p>
-                     <p className={styles.title_down}>
-                        {body.name}
-                     </p>
+                     <p className={styles.title_down}>{body.name}</p>
                   </section>
                </section>
             </section>
             <section>
                <h2 className={styles.sipnosis}>Synopsis</h2>
-               <p className={styles.desc}>
-                  {body.synopsis}
-               </p>
+               <p className={styles.desc}>{body.synopsis}</p>
             </section>
 
             <section>
