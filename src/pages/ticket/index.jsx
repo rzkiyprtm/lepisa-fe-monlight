@@ -6,19 +6,38 @@ import Footer from "../../Components/Footer/Footer";
 // styles
 import styles from "../../styles/Ticket.module.css";
 import icon_ticket from "../../assets/movie/icon_ticket.png";
-import QRCode from "react-qr-code";
+// import QRCode from "react-qr-code";
+import QRCode from "qrcode.react";
+
 function Index() {
-   const [valueCode, setValueCode] = useState("www.ticket.com");
+   const [qrCodeText, setQRCodeText] = useState("www.google.com");
+   // download QR code
+   const downloadQRCode = () => {
+      let data = document.getElementById("qrCodeEl");
+      console.log(data);
+      const qrCodeURL = data
+         .toDataURL("image/png")
+         .replace("image/png", "image/octet-stream");
+      console.log(qrCodeURL);
+      let aEl = document.createElement("a");
+      aEl.href = qrCodeURL;
+      aEl.download = "QR_Code.png";
+      document.body.appendChild(aEl);
+      aEl.click();
+      document.body.removeChild(aEl);
+   };
+
    return (
       <>
          <Navbar />
-         <main>
+         <main className={styles.background}>
             <section className={styles.ticket__content}>
                <h1 className={styles.title}>Proof of Payment</h1>
+
                <section className={styles.ticket}>
-                  <section className={`${styles.ticket__bar} row `}>
+                  <section className={`${styles.ticket__bar} row`}>
                      <section
-                        className={`${styles.ticket__left} col-12 col-sm-12 col-md-6 col-lg-8`}
+                        className={`${styles.ticket__left} col-12 col-sm-12 col-md-7 col-lg-8`}
                      >
                         <section className={styles.head_left}>
                            <section className={styles.image_container}>
@@ -73,7 +92,7 @@ function Index() {
                         </section>
                      </section>
                      <section
-                        className={`${styles.ticket__right} col-12 col-sm-12 col-md-6 col-lg-4`}
+                        className={`${styles.ticket__right} col-12 col-sm-12 col-md-5 col-lg-4`}
                      >
                         <section className={styles.head_right}>
                            <div className={styles.circletop}></div>
@@ -92,11 +111,13 @@ function Index() {
                         <section className={styles.content_right}>
                            <QRCode
                               size={250}
+                              height="auto"
+                              id="qrCodeEl"
                               style={{
                                  maxWidth: "100%",
                                  width: "100%",
                               }}
-                              value={valueCode}
+                              value={qrCodeText}
                               viewBox={`0 0 256 256`}
                            />
                            <div className={styles.circleleft}></div>
@@ -105,6 +126,17 @@ function Index() {
                      </section>
                   </section>
                </section>
+
+               <div className={styles.btn_downprint}>
+                  <div className={styles.download} onClick={downloadQRCode}>
+                     <i className="fa-solid fa-download"></i>
+                     <p className="ps-5">Download</p>
+                  </div>
+                  <div className={styles.print}>
+                     <i className="fa-solid fa-print"></i>
+                     <p className="ps-5">Print</p>
+                  </div>
+               </div>
             </section>
          </main>
          <Footer />
