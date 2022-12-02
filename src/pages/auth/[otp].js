@@ -9,11 +9,11 @@ function Otp() {
   const otp = router.query.otp
   
   useEffect(() => {
-    axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/verify/${otp}`)
+    axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/${router.query.otp}`)
     .then(console.log("Activasi berhasil"))
     .catch((err) => console.log(err))
   }, [])
-  console.log(router.query.otp)
+
 
   const toLogin = () => router.push("/login")
   
