@@ -12,7 +12,7 @@ import Slider from "react-slick";
 import Spinner from "react-bootstrap/Spinner";
 
 import axios from "axios";
-function index() {
+function Index() {
    const [showing, setShowing] = useState([]);
    const [upcoming, setUpcoming] = useState([]);
    const [month, setMonth] = useState(3);
@@ -359,4 +359,4 @@ function index() {
    );
 }
 
-export default index;
+export default Index;
