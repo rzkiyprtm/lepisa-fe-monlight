@@ -21,7 +21,7 @@
 
 /* content right */
 .content__right {
-    padding-left: 56px;
+    padding-left: 56px !important;
 }
 
 .title {
@@ -171,11 +171,12 @@
 
 @media only screen and (max-width: 768px) {
     .dates {
-        margin-right: 0px;
+        margin-right: 10px;
+        margin-left: 10px;
     }
 
     .content__right {
-        padding-left: 0;
+        padding-left: 0 !important;
     }
 
     .movie__bar {
@@ -196,6 +197,9 @@
         padding-left: 10px;
     }
 
+}
+
+@media only screen and (max-width: 578px) {
     .dates {
         margin-bottom: 12px;
     }

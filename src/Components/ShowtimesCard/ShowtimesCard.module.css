@@ -5,7 +5,7 @@
     height: 350px;
     width: 381px;
     border-radius: 8px;
-    padding: 20px;
+    padding: 20px !important;
 }
 
 .titles__bar {

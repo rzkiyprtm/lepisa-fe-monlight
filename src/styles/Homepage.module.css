@@ -7,6 +7,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 100px;
+    width: 100%;
 }
 
 .content__left {
@@ -233,6 +234,14 @@
     color: #6E7191;
     width: 386px;
     margin-top: 40px;
+}
+
+.slogan, .findnow {
+    padding-left: 50px;
+}
+
+.view_all {
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 992px) {
