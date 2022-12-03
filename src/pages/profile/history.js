@@ -8,6 +8,7 @@ import image_cinema from "../../assets/admin/cineone21.png"
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import CardHistory from '../../Components/CardHistory/CardHistory'
+import withAuth from '../../Components/privateElement/withAuth'
 
 function History() {
 
@@ -49,4 +50,4 @@ function History() {
   )
 }
 
-export default History
+export default withAuth(History)
