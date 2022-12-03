@@ -139,6 +139,14 @@
     text-align: center;
     margin: 0 10px;
     cursor: pointer;
+
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: #5F2EEA;
 }
 
 .month__bar {
