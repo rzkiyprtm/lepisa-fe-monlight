@@ -19,6 +19,7 @@ function Index() {
    const [image1, setImage1] = useState("");
    const [image2, setImage2] = useState("");
    const [image3, setImage3] = useState("");
+   const [linkActive, setLinkActive] = useState("januari")
    const showmovie = {
       // dots: true,
       infinite: true,
@@ -274,40 +275,74 @@ function Index() {
                <section className={styles.month__bar}>
                   <Slider {...Month}>
                      <div className={styles.month_content}>
-                        <div className={styles.btn_month}>January</div>
+                        <div className={styles.btn_month}
+                        onClick={() => {setLinkActive("januari")}}
+                        style={{ "background-color": linkActive === "januari" ? "#A0A3BD" : "" }}>January</div>
                      </div>
                      <div className={styles.month_content}>
-                        <div className={styles.btn_month}>Februari</div>
+                        <div className={styles.btn_month}
+                        onClick={() => {setLinkActive("februari")}}
+                        style={{ "background-color": linkActive === "februari" ? "#A0A3BD" : "" }}>Februari</div>
                      </div>
                      <div className={styles.month_content}>
-                        <div className={styles.btn_month}>Maret</div>
+                        <div className={styles.btn_month}
+                        onClick={() => {setLinkActive("maret")}}
+                        style={{ "background-color": linkActive === "maret" ? "#A0A3BD" : "" }}
+                        >Maret</div>
                      </div>
                      <div className={styles.month_content}>
-                        <div className={styles.btn_month}>April</div>
+                        <div className={styles.btn_month}
+                        onClick={() => {setLinkActive("april")}}
+                        style={{ "background-color": linkActive === "april" ? "#A0A3BD" : "" }}
+                        >April</div>
                      </div>
                      <div className={styles.month_content}>
-                        <div className={styles.btn_month}>Mei</div>
+                        <div className={styles.btn_month}
+                        onClick={() => {setLinkActive("mei")}}
+                        style={{ "background-color": linkActive === "mei" ? "#A0A3BD" : "" }}
+                        >Mei</div>
                      </div>
                      <div className={styles.month_content}>
-                        <div className={styles.btn_month}>Juni</div>
+                        <div className={styles.btn_month}
+                        onClick={() => {setLinkActive("juni")}}
+                        style={{ "background-color": linkActive === "juni" ? "#A0A3BD" : "" }}
+                        >Juni</div>
                      </div>
                      <div className={styles.month_content}>
-                        <div className={styles.btn_month}>Juli</div>
+                        <div className={styles.btn_month}
+                        onClick={() => {setLinkActive("juli")}}
+                        style={{ "background-color": linkActive === "juli" ? "#A0A3BD" : "" }}
+                        >Juli</div>
                      </div>
                      <div className={styles.month_content}>
-                        <div className={styles.btn_month}>Agustus</div>
+                        <div className={styles.btn_month}
+                        onClick={() => {setLinkActive("agustus")}}
+                        style={{ "background-color": linkActive === "agustus" ? "#A0A3BD" : "" }}
+                        >Agustus</div>
                      </div>
                      <div className={styles.month_content}>
-                        <div className={styles.btn_month}>September</div>
+                        <div className={styles.btn_month}
+                        onClick={() => {setLinkActive("september")}}
+                        style={{ "background-color": linkActive === "september" ? "#A0A3BD" : "" }}
+                        >September</div>
                      </div>
                      <div className={styles.month_content}>
-                        <div className={styles.btn_month}>Oktober</div>
+                        <div className={styles.btn_month}
+                        onClick={() => {setLinkActive("oktober")}}
+                        style={{ "background-color": linkActive === "oktober" ? "#A0A3BD" : "" }}
+                        >Oktober</div>
                      </div>
                      <div className={styles.month_content}>
-                        <div className={styles.btn_month}>November</div>
+                        <div className={styles.btn_month}
+                        onClick={() => {setLinkActive("november")}}
+                        style={{ "background-color": linkActive === "november" ? "#A0A3BD" : "" }}
+                        >November</div>
                      </div>
                      <div className={styles.month_content}>
-                        <div className={styles.btn_month}>Desember</div>
+                        <div className={styles.btn_month}
+                        onClick={() => {setLinkActive("desember")}}
+                        style={{ "background-color": linkActive === "desember" ? "#A0A3BD" : "" }}
+                        >Desember</div>
                      </div>
                   </Slider>
                </section>
