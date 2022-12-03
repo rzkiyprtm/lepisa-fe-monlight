@@ -63,6 +63,7 @@
   margin-top: 30px;
 }
 
+/* Email */
 .input_email {
   display: flex;
   flex-direction: column;
@@ -83,7 +84,7 @@
 
 .input_email > input {
   background: #fcfdfe;
-  border: 1px solid #dedede;
+  border: 2px solid #dedede;
   border-radius: 4px;
   height: 50px;
   padding-left: 20px;
@@ -94,6 +95,71 @@
   outline: none;
 }
 
+.input_email_blue {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 45px;
+}
+
+.input_email_blue > label {
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #4e4b66;
+}
+
+.input_email_blue > input {
+  background: #fcfdfe;
+  border: 2px solid #5F2EEA;
+  border-radius: 4px;
+  height: 50px;
+  padding-left: 20px;
+  margin-top: 15px;
+}
+
+.input_email_blue > input:focus {
+  outline: none;
+}
+
+.input_email_red {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 45px;
+}
+
+.input_email_red > label {
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #4e4b66;
+}
+
+.input_email_red > input {
+  background: #fcfdfe;
+  border: 2px solid red;
+  border-radius: 4px;
+  height: 50px;
+  padding-left: 20px;
+  margin-top: 15px;
+}
+
+.input_email_red > input:focus {
+  outline: none;
+}
+
+
+
+/* password */
 .input_password {
   display: flex;
   flex-direction: column;
@@ -102,7 +168,17 @@
 }
 .password_box {
   border: 2px solid #dedede;
+  border-radius: 4px;
 }
+.password_box_red {
+  border: 2px solid red;
+  border-radius: 4px;
+}
+.password_box_blue {
+  border: 2px solid #5F2EEA;
+  border-radius: 4px;
+}
+
 
 .input_password > label {
   font-family: "Mulish";
@@ -118,6 +194,7 @@
 
 .password_box > input {
   background: #fcfdfe;
+  border-radius: 10px;
   width: 90%;
   border: none;
   border-radius: 4px;
@@ -126,6 +203,34 @@
 }
 
 .password_box > input:focus {
+  outline: none;
+}
+
+.password_box_red > input {
+  background: #fcfdfe;
+  border-radius: 10px;
+  width: 90%;
+  border: none;
+  border-radius: 4px;
+  height: 50px;
+  padding-left: 20px;
+}
+
+.password_box_red > input:focus {
+  outline: none;
+}
+
+.password_box_blue > input {
+  background: #fcfdfe;
+  border-radius: 10px;
+  width: 90%;
+  border: none;
+  border-radius: 4px;
+  height: 50px;
+  padding-left: 20px;
+}
+
+.password_box_blue > input:focus {
   outline: none;
 }
 
@@ -150,8 +255,21 @@
   margin-top: 50px;
 }
 
-.register {
+.register_blue {
   background: #5F2EEA;
+  width: 100%;
+  height: 50px;
+  border: none;font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.005em;
+  color: white;
+}
+
+.register {
+  background: #dedede;
   width: 100%;
   height: 50px;
   border: none;font-family: 'Inter';

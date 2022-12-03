@@ -27,6 +27,11 @@ function Login() {
   const [icon, setIcon] = useState("fa-solid fa-eye-slash");
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState ("")
+  const [boxcolor, setBoxcolor] = useState(true)
+  const [boxpending, setBoxpending] = useState(true)
+  const [boxcolor_, setBoxcolor_] = useState(true)
+  const [boxpending_, setBoxpending_] = useState(true)
+  
 
   // handleToggle => Show Password
   const handleToggle = () => {
@@ -43,18 +48,40 @@ function Login() {
 
   const valueEmail = (e) => {
     setEmail(e.target.value)
+    setBoxcolor(false), 
+    setBoxpending(true)
   }
 
   const valuePassword = (e) => {
     setPassword(e.target.value)
+    setBoxcolor_(false), 
+    setBoxpending_(true)
   }
 
 
 
 
   const handleLogin = () => {
-    if(!email || !password) return (
-      toast.error("Data must be fullfield")
+    if(!email && !password) return (
+      toast.error("input data must be fulfilled"),
+      setBoxcolor(false), 
+      setBoxpending(false),
+      setBoxcolor_(false), 
+      setBoxpending_(false)
+    )
+    if(!password) return (
+      toast.error("input your password"),
+      setBoxcolor(false), 
+      setBoxpending(true),
+      setBoxcolor_(false), 
+      setBoxpending_(false)
+    )
+    if(!email) return (
+      toast.error("input your Email"),
+      setBoxcolor(false), 
+      setBoxpending(false),
+      setBoxcolor_(false), 
+      setBoxpending_(true)
     )
     axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`, { email : email, password : password})
     .then((res) => {
@@ -74,7 +101,13 @@ function Login() {
       }))
     })
 
-    .catch((err) => toast.error(err.response.data.status))
+    .catch((err) => {
+      toast.error(err.response.data.status),
+      setBoxcolor(false), 
+      setBoxpending(false)
+      setBoxcolor_(false), 
+      setBoxpending_(false)
+    })
   }
 
   return (
@@ -98,7 +131,7 @@ function Login() {
             <p className={css.sign_in_desc}>Sign in with your data that you entered during your registration</p>
           </div>
           {/* Input */}
-          <div className={css.input_email}>
+          <div className={(boxcolor) ? css.input_email : (boxpending) ? css.input_email_blue : css.input_email_red}>
             <label htmlFor=''>Email</label>
             <input
               type='text'
@@ -110,7 +143,7 @@ function Login() {
           </div>
           <div className={css.input_password}>
             <label htmlFor=''>Password</label>
-            <div className={css.password_box}>
+            <div className={(boxcolor_) ? css.password_box : (boxpending_) ? css.password_box_blue : css.password_box_red}>
               <input
                 type={type}
                 name=''
@@ -122,7 +155,7 @@ function Login() {
             </div>
           </div>
         <div className={css.button_register}>
-          <button className={css.register} onClick={handleLogin}>Sign In</button>
+          <button className={email === "" || password === "" ? css.register : css.register_blue} onClick={handleLogin}>Sign In</button>
         </div>
         <div className={css.already}>
           <p>Forgot your password? <Link href={"/resetpassword"}> Reset now</Link></p>

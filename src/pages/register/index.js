@@ -24,7 +24,12 @@ function Register() {
   const [boxcolor_, setBoxcolor_] = useState(true)
   const [boxpending_, setBoxpending_] = useState(true)
   const [btncolor, setBtncolor] = useState(true)
-
+  const [cek, setCek] = useState(false)
+  
+  const handleCek = () => {
+    if(cek) return setCek(false)
+    return setCek(true)
+  }
 
   // handleToggle => Show Password
   const handleToggle = () => {
@@ -41,14 +46,11 @@ function Register() {
   // valueEmail, valuePassword => get value
   const valueEmail = (e) => {
     setEmail(e.target.value), 
-    console.log(email), 
     setBoxcolor(false), 
     setBoxpending(true)
   }
   const valuePassword = (e) => {
     setPassword(e.target.value), 
-    console.log(password), 
-
     setBoxcolor_(false), 
     setBoxpending_(true)
   }
@@ -57,12 +59,34 @@ function Register() {
 
   // handleRegister => register
   const handleRegister = () => {
-    if (!email || !password) return (
-      toast.error("Input Data must be fields"),
+    if (!email && !password) return (
+      toast.error("input data must be fulfilled"),
       setBoxcolor(false), 
       setBoxpending(false),
       setBoxcolor_(false), 
       setBoxpending_(false)
+    )
+    if(!password) return (
+      toast.error("input your password"),
+      setBoxcolor(false), 
+      setBoxpending(true),
+      setBoxcolor_(false), 
+      setBoxpending_(false)
+    )
+    if(!email) return (
+      toast.error("input your Email"),
+      setBoxcolor(false), 
+      setBoxpending(false),
+      setBoxcolor_(false), 
+      setBoxpending_(true)
+    )
+
+    if(!cek) return (
+      toast.error("Please checklist i agree to terms & conditions"),
+      setBoxcolor(false), 
+      setBoxpending(true),
+      setBoxcolor_(false), 
+      setBoxpending_(true)
     )
     axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/register/`, {
       email,
@@ -149,7 +173,7 @@ function Register() {
             </div>
           </div>
         <div className={css.check}>
-          <input type="checkbox" name="" id="" />
+          <input type="checkbox" name="" id="" onClick={handleCek} />
           <p>I agree to terms & conditions</p>
         </div>
         <div className={css.button_register}>

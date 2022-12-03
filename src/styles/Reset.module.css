@@ -102,7 +102,17 @@
 }
 .password_box {
   border: 2px solid #dedede;
+  border-radius: 4px;
 }
+.password_box_red {
+  border: 2px solid red;
+  border-radius: 4px;
+}
+.password_box_blue {
+  border: 2px solid #5F2EEA;
+  border-radius: 4px;
+}
+
 
 .input_password > label {
   font-family: "Mulish";
@@ -118,6 +128,7 @@
 
 .password_box > input {
   background: #fcfdfe;
+  border-radius: 10px;
   width: 90%;
   border: none;
   border-radius: 4px;
@@ -126,6 +137,34 @@
 }
 
 .password_box > input:focus {
+  outline: none;
+}
+
+.password_box_red > input {
+  background: #fcfdfe;
+  border-radius: 10px;
+  width: 90%;
+  border: none;
+  border-radius: 4px;
+  height: 50px;
+  padding-left: 20px;
+}
+
+.password_box_red > input:focus {
+  outline: none;
+}
+
+.password_box_blue > input {
+  background: #fcfdfe;
+  border-radius: 10px;
+  width: 90%;
+  border: none;
+  border-radius: 4px;
+  height: 50px;
+  padding-left: 20px;
+}
+
+.password_box_blue > input:focus {
   outline: none;
 }
 
