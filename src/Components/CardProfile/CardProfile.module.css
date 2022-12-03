@@ -41,7 +41,7 @@
   width: 50%;
   height: 40px;
   text-align: center;
-  padding-top: 4px;
+  margin-top: 30px;
   font-family: 'Mulish';
   font-style: normal;
   font-weight: 700;
@@ -182,6 +182,52 @@
   background-color: #5F2EEA;
   border-radius: 20px;
   margin-bottom: 50px;
+}
+
+
+.profile_edit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+.profile_button {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.btn_save_profile {
+  background-color: #5F2EEA;
+  border: none;
+  padding: 5px 20px 5px 20px;
+  border-radius: 20px;
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 0.75px;
+  color: white;
+}
+
+.btn_cancel_profile {
+  background-color: rgb(253, 53, 53);
+  border: none;
+  padding: 5px 40px 5px 40px;
+  border-radius: 20px;
+  color: #FFFFFF;
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 0.75px;
+  color: white;
 }
 
 @media only screen and (max-width: 768px) {

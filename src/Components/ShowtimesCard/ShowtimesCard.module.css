@@ -39,6 +39,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 59px;
+    width: 147px;
+    padding-left: 10px;
 }
 
 .times {

@@ -6,12 +6,17 @@ import avatar from "../../assets/navbar_image/gue.jpg";
 import Image from "next/image";
 import Router, { useRouter } from "next/router";
 import { getCookies } from "cookies-next";
+import { useSelector } from "react-redux";
 
 
 function Header() {
   const [state, setState] = useState("");
   const router = useRouter()
   const text = state.text;
+
+
+  // selector untuk ngubah foto profile
+  const image = useSelector((state) => state.auth.profile.image)
  
   function slide() {
     setState((state) => ({
@@ -77,7 +82,7 @@ function Header() {
           {isLogin ? (
             <div className={styles.profile} onClick={profile}>
               <Image
-                src={avatar}
+                src={image}
                 alt='profile'
                 width={40}
                 height={40}

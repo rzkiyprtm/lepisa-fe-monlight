@@ -1,6 +1,6 @@
 import { ActionType } from "redux-promise-middleware";
 import { ACTION_STRING } from "./actionStrings"
-import { getUserId } from "../../utils/axios"
+import { getUserId, logout } from "../../utils/axios"
 
 const { Pending, Rejected, Fulfilled } = ActionType;
 
@@ -48,7 +48,6 @@ const userThunk = (token, router) => {
     try {
       dispacth(profilePending());
       const result = await getUserId(token);
-      console.log(result.data.data.email)
       dispacth(profileFulfilled(result.data));
       if (typeof router === "function") router();
     } catch (error) {
@@ -59,16 +58,13 @@ const userThunk = (token, router) => {
 };
 
 
-const logoutThunk = (token, navigate) => {
+const logoutThunk = (token, router) => {
   return async (dispatch) => {
     try {
       dispatch(logoutPending());
       const result = await logout(token);
-      // console.log(result);
       dispatch(logoutFulfilled(result.data));
-      console.log(result);
-      localStorage.setItem("userInfo", JSON.stringify());
-      if (typeof navigate === "function") navigate();
+      if (typeof router === "function") router();
     } catch (error) {
       dispatch(logoutRejected(error))
     }
