@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { useDispatch } from "react-redux";
+import { deleteCookie } from "cookies-next";
+
 
 import css from "../../styles/Profile.module.css"
 
@@ -8,10 +11,19 @@ import CardProfile from '../../Components/CardProfile/CardProfile.jsx'
 
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { toast } from 'react-toastify'
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+
+import authActions from '../../redux/actions/auth'
 
 
 function Profile() {
-  const router = useRouter()
+  const router = useRouter();
+  const [show, setShow] = useState(false);
+  const dispatch = useDispatch()
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(
@@ -46,6 +58,22 @@ function Profile() {
       setType_("password");
     }
   };
+
+  // logout handler
+  const userInfo = JSON.parse(localStorage["userInfo"] || "{}");
+  // const toLogout = () => ;
+  const logoutHandler = (e) => {
+    e.preventDefault();
+    toast.success("Logout Success !", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    deleteCookie("token");
+    deleteCookie("id");
+    deleteCookie("role");
+    dispatch(authActions.logoutThunk(userInfo.token));
+    router.push("/login")
+  }
+
 
 
   return (
@@ -118,13 +146,28 @@ function Profile() {
 
             <div className={css.submit_button}>
               <button className={css.update}>Update changes</button>
-              <button className={css.logout}>Logout</button>
+              <button className={css.logout} onClick={handleShow} >Logout</button>
             </div>
 
           </div>
         </div>
       </div>
 
+      {/* modal logout */}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>LEPISA MOVIES</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure to logout?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="success" onClick={logoutHandler}>
+            Yes
+          </Button>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <Footer />
     </>
   )
