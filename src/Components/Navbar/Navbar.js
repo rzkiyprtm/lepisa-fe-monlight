@@ -4,10 +4,13 @@ import styles from "./Navbar.module.css";
 import logo from "../../assets/navbar_image/tickit.png";
 import avatar from "../../assets/navbar_image/gue.jpg";
 import Image from "next/image";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
+import { getCookies } from "cookies-next";
+
 
 function Header() {
   const [state, setState] = useState("");
+  const router = useRouter()
   const text = state.text;
  
   function slide() {
@@ -18,6 +21,20 @@ function Header() {
           : `${styles["slide-bar"]}`,
     }));
   }
+  
+  const userInfo = getCookies("token");
+  const isLogin = userInfo.token;
+  
+  const login = () => {
+    router.push("/login")
+  }
+  const signup = () => {
+    router.push("/register")
+  }
+  const profile = () => {
+    router.push("/profile")
+  }
+  
 
   return (
     <main>
@@ -35,7 +52,6 @@ function Header() {
         </div>
       </div>
 
-      {/* {isLogin ? ( */}
         <section className={text}>
           <div className={styles["custom-select"]}>
   <select className={styles.option}>
@@ -58,28 +74,32 @@ function Header() {
             </a>
           </div>
           </form>
-            <div className={styles.profile}>
+          {isLogin ? (
+            <div className={styles.profile} onClick={profile}>
               <Image
                 src={avatar}
                 alt='profile'
-                width={45}
-                height={45}
+                width={40}
+                height={40}
                 objectFit="cover"
-                style={{ borderRadius: "10px" }}
+                style={{ borderRadius: "50%", cursor: "pointer" }}
               />
             </div>
-        </section>
-      {/* ) : (
-        <section className={text}>
+          ) : (
           <div className={styles["right-bar"]}>
             <div className={styles.input}>
-              <button className={styles["btn-sign"]} type='submit'>
+            <button className={styles["btn-sign"]} type='submit' onClick={login} >
+                Login
+              </button>
+              <button className={styles["btn-sign"]} type='submit' onClick={signup} >
                 Sign up
               </button>
             </div>
           </div>
+          )}
         </section>
-      )} */}
+     
+  
       <div
         className={styles["menu-toggle"]}
         onClick={slide}
