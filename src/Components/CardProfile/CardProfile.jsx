@@ -43,6 +43,7 @@ function CardProfile() {
           <div className={css.title_loyal}>
             <p>Loyalty Points</p>
           </div>
+          <div className={css.card_content}>
           <div className={css.loyal}>
             <div className={css.card_loyal}>
               <p>Moviegoers</p>
@@ -56,6 +57,7 @@ function CardProfile() {
             <p>
               320 <span>point</span>
             </p>
+          </div>
           </div>
           <div className={css.point}>
             <p>180 points become a master</p>

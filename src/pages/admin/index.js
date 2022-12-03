@@ -18,9 +18,9 @@ function Admin() {
     <Navbar/>
       <div className={`container-fluid ${css.background_color}`}>
         <div className={css.bungkus}>
-          <div className='row'>
+          <div className={`row ${css.main_container}`}>
             {/* content left */}
-            <div className='col-lg-8 col-md-12 col-sm-12'>
+            <div className='col-lg-7 col-md-12 col-sm-12'>
               <p className={css.title_content}>Movie Descriptions</p>
               <div className={css.container_left}>
                 {/* image movie */}

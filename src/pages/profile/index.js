@@ -82,12 +82,12 @@ function Profile() {
 
       <div className={`container-fluid ${css.background}`}>
 
-        <div className="row">
+        <div className={`row ${css.main_container}`}>
           {/* Content left */}
           <CardProfile />
 
           {/* content right */}
-          <div className="col-lg-8 col-md-12 col-sm-12 ">
+          <div className="col-lg-7 col-md-12 col-sm-12 ">
             <div className={css.bar_profile_right}>
               <p className={css.acc}>Account Settings</p>
               <p className={css.history} onClick={toHistory}>Order History</p>

@@ -3,6 +3,12 @@
   padding: 50px 50px 50px 50px ;
 }
 
+.main_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+}
 
 
 /* content right */
@@ -207,6 +213,11 @@
 }
 
 
+@media only screen and (max-width: 768px) {
+  .background {
+    padding: 150px 10px 50px 10px ;
+  }
+}
 
 @media only screen and (max-width: 428px) {
   .background {
