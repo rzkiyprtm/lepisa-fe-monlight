@@ -28,6 +28,20 @@
   width: 25%;
 }
 
+@media screen and (max-width: 768px) {
+  .main-footer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  .footer-content {
+    /* flex-direction: column-reverse; */
+    margin: auto;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+}
+
 @media screen and (max-width: 428px)  {
 
   .main-footer {
