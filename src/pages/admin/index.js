@@ -7,10 +7,15 @@ import Footer from "../../Components/Footer/Footer";
 import movie from "../../assets/admin/movie_image.png";
 import Cardlocation from "../../Components/Card_location/Card_location";
 import Image from "next/image";
-
+import Spline from "../../Components/Chart/Spline";
 function Admin() {
    // button show time ongoing to implementasi style
+   const [showInput, setShowInput] = useState(false);
 
+   const handleShowInput = () => {
+      setShowInput(!false);
+      // console.log("click");
+   };
    return (
       <>
          <Navbar />
@@ -139,19 +144,28 @@ function Admin() {
                            </div>
                         </div>
                         <div className="mt-4">
-                           <p className={css.title_content}>
-                              Premiere Location
-                           </p>
+                           <p className={css.title_content}>Showtimes</p>
                            <div className={css.content_right}>
                               {/* location */}
-                              <div className={` ${css.backgorund_date}`}>
-                                 <div
-                                    className={`d-flex flex-row align-items-center ${css.date}`}
-                                 >
-                                    <i className="fa-solid fa-calendar-days"></i>
-                                    <p className={css.set_date}>Set a date</p>
-                                 </div>
-                                 <i className="fa-solid fa-sort-down"></i>
+                              <div onClick={handleShowInput}>
+                                 {showInput ? (
+                                    <input
+                                       className={css.input_date}
+                                       type="date"
+                                    />
+                                 ) : (
+                                    <section
+                                       className={` ${css.backgorund_date}`}
+                                    >
+                                       <div
+                                          className={`d-flex flex-row align-items-center ${css.date}`}
+                                       >
+                                          <i className="fa-solid fa-calendar-days"></i>
+                                          {/* <p className={css.set_date}>Set a date</p> */}
+                                       </div>
+                                       <i className="fa-solid fa-sort-down"></i>
+                                    </section>
+                                 )}
                               </div>
                               <div className={`${css.time}`}>
                                  <div className={css.button_time}>
@@ -182,7 +196,17 @@ function Admin() {
                      <p>Based on Location</p>
                   </div>
                </div>
-
+               <section>
+                  <section className={css.chart_bar}>
+                     <Spline />
+                     <Spline />
+                     <Spline />
+                     <Spline />
+                     <Spline />
+                     <Spline />
+                     <Spline />
+                  </section>
+               </section>
                {/* CHART */}
 
                <div className={css.view}>

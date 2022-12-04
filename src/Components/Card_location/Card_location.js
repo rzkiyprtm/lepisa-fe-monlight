@@ -1,18 +1,20 @@
-import Image from 'next/image'
-import React from 'react'
-import css from "./Card_location.module.css"
-import ebu from "../../assets/admin/ebu.png"
-import hiflix from "../../assets/admin/hiflix.png"
-import cinemaone from "../../assets/admin/cineone21.png"
+import Image from "next/image";
+import React from "react";
+import css from "./Card_location.module.css";
+import ebu from "../../assets/admin/ebu.png";
+import hiflix from "../../assets/admin/hiflix.png";
+import cinemaone from "../../assets/admin/cineone21.png";
 
 function Card_location() {
-  return (
-    <>
-      <div className={css.partner}>
-        <Image src={ebu} alt="partner" width={90} height={30} />
-      </div>
-    </>
-  )
+   return (
+      <>
+         <div className={css.partner}>
+            <button className={css.btn_location}>
+               <Image src={ebu} alt="partner" width={90} height={30} />
+            </button>
+         </div>
+      </>
+   );
 }
 
-export default Card_location
+export default Card_location;

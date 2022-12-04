@@ -1,0 +1,46 @@
+.chart_bar {
+    background: #FFFFFF;
+    border-radius: 4px;
+    padding: 20px;
+    height: 351px;
+    width: 365px;
+}
+
+.chart_line {
+    width: 400px;
+    height: 100%;
+    background: #FFFFFF;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+@media screen and (max-width: 428px) {
+    .chart_bar {
+        height: 500px;
+    }
+
+
+}
+
+@media screen and (max-width: 768px) {
+    .chart_bar {
+        height: 500px;
+    }
+
+    .chart_line {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .chart_bar {
+        height: 500px;
+    }
+
+    .chart_line {
+        width: 100%;
+    }
+}
