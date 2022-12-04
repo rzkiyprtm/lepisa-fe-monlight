@@ -8,6 +8,7 @@ import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import Showtimes from "../../Components/ShowtimesCard/ShowtimesCard";
 import Loader from "../../Components/Loader/Loader";
+import movie_image from "../../assets/admin/cineone21.png";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
@@ -71,6 +72,8 @@ function Movie() {
       );
    };
 
+
+   // tampilan movie detail dengan role admin ada inputan nya
    if(role === "admin") return (
       <>
          <Navbar />
@@ -135,8 +138,72 @@ function Movie() {
                <p className={styles.desc}>{body.synopsis}</p>
             </section>
 
+               {/* inputan admin */}
+            <div className="">
+               <div className={`row ${styles.content_container_admin}`}>
+                  <div className={`col-lg-6 col-md-12 col-md-12 ${styles.container_input_admin}`}>
+                     <p className={styles.add_schedule}>Schedule</p>
+                     <div className={styles.input_box}>
+                     <hr />
+                        <div className={styles.location_flex}>
+                           <p>Location <span>:</span> </p>
+                           <select name="" id="">
+                              <option value="">Jakarta</option>
+                              <option value="">Semarang</option>
+                              <option value="">Bandung</option>
+                              <option value="">Solo</option>
+                              <option value="">Yogyakarta</option>
+                           </select>
+                        </div>
 
-                  <div className="">ADMIN</div>
+                        <div className={styles.date_flex}>
+                           <p>Set a date <span>:</span> </p>
+                           <input type="date" name="" id="" />
+                        </div>
+
+                        <div className={styles.cinema_flex}>
+                           <p>Cinema <span>:</span> </p>
+                           <div className={styles.image_cinema}>
+                              <button> <Image src={"https://res.cloudinary.com/dmfg85qqo/image/upload/v1669876345/lepisa/Cinema-xxi-2012_t4taui.png"} alt="cinema" width={120} height={40} /> </button>
+                              <button> <Image src={"https://res.cloudinary.com/dmfg85qqo/image/upload/v1669875640/lepisa/CGV_Cinemas_inuavo.png"} alt="cinema" width={120} height={40} /> </button>
+                              <button> <Image src={"https://res.cloudinary.com/dmfg85qqo/image/upload/v1670147266/lepisa/c-logo-cinepolis-b_rc9qaj.jpg"} alt="cinema" width={120} height={40} /> </button>
+                           </div>
+                        </div>
+
+                        <div className={styles.time_flex}>
+                           <p>Time <span>:</span> </p>
+                           <div className={styles.time}>
+                              <div className={styles.time_button}>
+                                 <button>10:00</button>
+                                 <button>11:00</button>
+                                 <button>12:00</button>
+                                 <button>13:00</button>
+                              </div>
+                              <div className={styles.time_button}>
+                                 <button>14:00</button>
+                                 <button>15:00</button>
+                                 <button>16:00</button>
+                                 <button>17:00</button>
+                              </div>
+                           </div>
+                        </div>
+                        <hr />
+                        <div className={styles.save_change}>
+                           <button className={styles.save}>Save Change</button>
+                           <button className={styles.cancel}>cancel</button>
+                        </div>
+                     </div>
+                  </div>
+                  <div className={`col-lg-5 col-md-12 col-md-12`}>
+                     <div className="d-flex flex-row align-items-center justify-content-center">
+                        <div className={`d-flex flex-column align-items-center justify-content-center ${styles.title_admin_input}`}>
+                           <p className={styles.title_1}>Add Schedule</p>
+                           <p className={styles.title_2}>please fill in if you want to add a movie showing schedule for each city and set the showtimes</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
 
             <section>
                <h2 className={styles.showtime}>Showtimes and Tickets</h2>
@@ -192,6 +259,8 @@ function Movie() {
    );
 
 
+
+   // Tampilan user gk ada inputan
    return (
       <>
          <Navbar />

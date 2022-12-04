@@ -169,6 +169,257 @@
     margin-bottom: 64px;
 }
 
+
+/* admin input */
+.content_container_admin {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+.title_admin_input {
+    padding-top: 200px;
+}
+
+.title_1 {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 0.25px;
+    color: #14142B;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #DEDEDE;
+}
+
+.title_2 {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 0.25px; 
+    color: #14142B;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.add_schedule {
+    text-align: center;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 34px;
+    letter-spacing: 0.75px;
+    color: #000000;
+    margin-top: 30px;
+    padding-bottom: 10px;
+}
+.container_input_admin {
+    background-color: #e7e7e7;
+    border-radius: 20px;
+    margin-bottom: 50px;
+}
+
+.input_box {
+    padding: 0px 30px 30px 30px;
+}
+
+
+/* location */
+.location_flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.location_flex > p {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 34px;
+    letter-spacing: 0.5px;
+    color: #000000;
+}
+
+.location_flex > p > span {
+    padding-left: 30px;
+    padding-right: 15px;
+}
+
+.location_flex > select {
+    border-bottom: 1px solid black;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background-color: transparent;
+    width: 25%;
+    height: 30px;
+    outline: none;
+}
+
+.date_flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.date_flex > p {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 34px;
+    letter-spacing: 0.5px;
+    color: #000000;
+}
+
+.date_flex > p > span {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.date_flex > input {
+    border-bottom: 1px solid black;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background-color: transparent;
+    width: 25%;
+    height: 30px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    outline: none;
+}
+
+
+
+/* cinema */
+.cinema_flex {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.cinema_flex > p {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 34px;
+    letter-spacing: 0.5px;
+    color: #000000;
+}
+
+.cinema_flex > p > span {
+    padding-left: 36px;
+    padding-right: 15px;
+}
+
+.image_cinema {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.image_cinema > button {
+    border: none;
+    background-color: transparent;
+}
+
+
+.time_flex {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.time_flex > p {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 34px;
+    letter-spacing: 0.5px;
+    color: #000000;
+}
+
+.time_flex > p > span {
+    padding-left: 55px;
+    padding-right: 15px;
+}
+
+.time {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.time_button {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.time_button > button {
+    border: none;
+    background-color: transparent;
+    padding-bottom: 10px;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 34px;
+    letter-spacing: 0.5px;
+    color: #000000;
+}
+
+
+.save_change {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.save {
+    background-color: #5F2EEA;
+    border: none;
+    outline: none;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 34px;
+    letter-spacing: 0.5px;
+    color: white;
+    padding: 5px 40px 5px 40px;
+    border-radius: 20px;
+}
+
+.cancel {
+    background-color: #f03636;
+    border: none;
+    outline: none;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 34px;
+    letter-spacing: 0.5px;
+    color: white;
+    padding: 5px 60px 5px 60px;
+    border-radius: 20px;
+}
+
+
+
 @media only screen and (max-width: 768px) {
     .dates {
         margin-right: 10px;
@@ -202,5 +453,66 @@
 @media only screen and (max-width: 578px) {
     .dates {
         margin-bottom: 12px;
+    }
+
+    .content_container_admin {
+        flex-direction: column-reverse;
+    }
+
+    .title_admin_input {
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+
+    .location_flex > select {
+        width: 60%;
+    }
+
+    .date_flex > input {
+        width: 60%;
+    }
+
+    .cinema_flex > p {
+        width: 100%;
+    }
+
+    .image_cinema {
+        gap: 20px;
+    }
+    .time_button {
+        gap: 0px;
+    }
+    .time_flex > p > span {
+        padding-left: 20px;
+        padding-right: 0px;
+    }
+    .save {
+        background-color: #5F2EEA;
+        border: none;
+        outline: none;
+        font-family: 'Mulish';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 34px;
+        letter-spacing: 0.5px;
+        color: white;
+        padding: 5px 20px 5px 20px;
+        border-radius: 20px;
+    }
+    
+    .cancel {
+        background-color: #f03636;
+        border: none;
+        outline: none;
+        font-family: 'Mulish';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 34px;
+        letter-spacing: 0.5px;
+        color: white;
+        padding: 5px 10px 5px 10px;
+        border-radius: 20px;
     }
 }
