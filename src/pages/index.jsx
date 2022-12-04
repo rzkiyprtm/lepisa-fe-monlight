@@ -173,9 +173,9 @@ function Index() {
          .then((res) => {
             // console.log(res.data.data);
             setShowing(res.data.data);
-            setImage1(res.data.data[0].image);
-            setImage2(res.data.data[1].image);
-            setImage3(res.data.data[2].image);
+            setImage1(res.data.data[Math.floor(Math.random() * 8)].image);
+            setImage2(res.data.data[Math.floor(Math.random() * 8)].image);
+            setImage3(res.data.data[Math.floor(Math.random() * 8)].image);
          })
          .catch((err) => {
             console.log(err);

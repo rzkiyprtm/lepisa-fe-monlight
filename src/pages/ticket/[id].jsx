@@ -14,7 +14,6 @@ import axios from "axios";
 import { useRouter } from "next/router";
 function Index() {
    const [qrCodeText, setQRCodeText] = useState("");
-
    const [showPrint, setShowPrint] = useState("d-block");
    const router = useRouter();
    const { id } = router.query;
