@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 
 function Movie() {
    const router = useRouter();
-   const id = router.query.movieid;
+   const { movieid } = router.query;
    // console.log(id);
    const [body, setBody] = useState([]);
    const [schedule, setSchedule] = useState([]);
@@ -35,10 +35,10 @@ function Movie() {
    ];
 
    useEffect(() => {
-      const id = router.query.movieid;
-      console.log(id);
+      const { movieid } = router.query;
+      // console.log(id);
       axios
-         .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/movie/${id}`)
+         .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/movie/${movieid}`)
          .then((res) => {
             setBody(res.data.data);
             // console.log(res.data.data);
@@ -47,16 +47,19 @@ function Movie() {
    }, []);
 
    useEffect(() => {
+      if (!router.isReady) return;
       const id = router.query.movieid;
       axios
-         .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/movie/schedule/${id}`)
+         .get(
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/movie/schedule/${movieid}`
+         )
          .then((res) => {
             setSchedule(res.data.data);
             // console.log(res.data.data);
             // setTimes(res.data.data[0].time);
          })
          .catch((err) => console.log(err));
-   }, []);
+   }, [router.isReady]);
 
    const costing = (price) => {
       return (
@@ -99,16 +102,16 @@ function Movie() {
                      </section>
                      <section>
                         <p className={styles.release}>Release Date</p>
-                        <p className={styles.title_down}>{`${body.day}, ${
+                        <p className={styles.title_down}>{`${body.day} ${
                            month[body.month - 1]
-                        }, ${body.year}
+                        } ${body.year}
                         `}</p>
                      </section>
                      <section>
                         <p className={styles.release}>Duration</p>
                         <p className={styles.title_down}>
-                           {body.duration_hour} hours {body.duration_minute}{" "}
-                           minutes{" "}
+                           {body.duration_hour} hours {body.duration_minute}
+                           minutes
                         </p>
                      </section>
                      <section>
