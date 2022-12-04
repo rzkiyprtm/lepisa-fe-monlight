@@ -62,14 +62,14 @@ function Header() {
           <ol className={text}>
             <li onClick={() => {
                               setLinkActive("");
-                              nowshowing();
+                              upcoming();
                            }}
                            style={{
                               color: linkActive === "comingsoon" ? "#5F2EEA" : "",
                            }}> Coming Soon </li>
             <li onClick={() => {
                               setLinkActive("");
-                              upcoming();
+                              nowshowing();
                            }}
                            style={{
                               color: linkActive === "upcoming" ? "#5F2EEA" : "",
