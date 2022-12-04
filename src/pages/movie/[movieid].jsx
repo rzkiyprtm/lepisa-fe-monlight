@@ -12,6 +12,7 @@ import movie_image from "../../assets/admin/cineone21.png";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 function Movie() {
    const router = useRouter();
@@ -62,6 +63,45 @@ function Movie() {
          })
          .catch((err) => console.log(err));
    }, []);
+
+
+
+
+   // state add schedule
+   const [date, setDate] = useState("");
+   const [price, setPrice] = useState("")
+   const [time, setTime] = useState([])
+   const [cinemax, setCinemax] = useState("")
+   
+   // get value add schedule
+   const valueDate = (e) => {setDate(e.target.value),console.log(e.target.value)}
+   const valueCinema = (e) => {setCinemax(e.target.value),console.log(e.target.value)}
+   const valuePrice = (e) => {setPrice(e.target.value),console.log(e.target.value)}
+   const valueTime = (e) => {setTime([...time,[e.target.value]]),console.log(time)}
+   
+
+
+   const addSchedule = () => {
+      const id = router.query.movieid;
+      axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/movie/add/schedule`, {
+         movie: id,
+         location: cinemax,
+         date: date,
+         price: price,
+         time: time
+      })
+      .then(() => {
+         toast.success("Success add schedule")
+      })
+      .catch((err) => {
+         console.log(err)
+      })
+   }
+
+
+ 
+
+
 
    const costing = (price) => {
       return (
@@ -145,28 +185,17 @@ function Movie() {
                      <p className={styles.add_schedule}>Schedule</p>
                      <div className={styles.input_box}>
                      <hr />
-                        <div className={styles.location_flex}>
-                           <p>Location <span>:</span> </p>
-                           <select name="" id="">
-                              <option value="">Jakarta</option>
-                              <option value="">Semarang</option>
-                              <option value="">Bandung</option>
-                              <option value="">Solo</option>
-                              <option value="">Yogyakarta</option>
-                           </select>
-                        </div>
-
                         <div className={styles.date_flex}>
                            <p>Set a date <span>:</span> </p>
-                           <input type="date" name="" id="" />
+                           <input type="date" name="" id="" onChange={valueDate} />
                         </div>
 
                         <div className={styles.cinema_flex}>
                            <p>Cinema <span>:</span> </p>
                            <div className={styles.image_cinema}>
-                              <button> <Image src={"https://res.cloudinary.com/dmfg85qqo/image/upload/v1669876345/lepisa/Cinema-xxi-2012_t4taui.png"} alt="cinema" width={120} height={40} /> </button>
-                              <button> <Image src={"https://res.cloudinary.com/dmfg85qqo/image/upload/v1669875640/lepisa/CGV_Cinemas_inuavo.png"} alt="cinema" width={120} height={40} /> </button>
-                              <button> <Image src={"https://res.cloudinary.com/dmfg85qqo/image/upload/v1670147266/lepisa/c-logo-cinepolis-b_rc9qaj.jpg"} alt="cinema" width={120} height={40} /> </button>
+                              <button value="1" onClick={valueCinema}>CGV Cinemas</button>
+                              <button value="2" onClick={valueCinema}>Cinema XXI</button>
+                              <button value="3" onClick={valueCinema}>Cinepolis</button>
                            </div>
                         </div>
 
@@ -174,22 +203,29 @@ function Movie() {
                            <p>Time <span>:</span> </p>
                            <div className={styles.time}>
                               <div className={styles.time_button}>
-                                 <button>10:00</button>
-                                 <button>11:00</button>
-                                 <button>12:00</button>
-                                 <button>13:00</button>
+                                 <button value="10.00" onClick={valueTime}>10:00</button>
+                                 <button value="11.00" onClick={valueTime}>11:00</button>
+                                 <button value="12.00" onClick={valueTime}>12:00</button>
+                                 <button value="13.00" onClick={valueTime}>13:00</button>
                               </div>
                               <div className={styles.time_button}>
-                                 <button>14:00</button>
-                                 <button>15:00</button>
-                                 <button>16:00</button>
-                                 <button>17:00</button>
+                                 <button value="14.00" onClick={valueTime}>14:00</button>
+                                 <button value="15.00" onClick={valueTime}>15:00</button>
+                                 <button value="16.00" onClick={valueTime}>16:00</button>
+                                 <button value="17.00" onClick={valueTime}>17:00</button>
                               </div>
                            </div>
                         </div>
+
+                        <div className={styles.price_flex}>
+                           <p>Price <span>:</span> </p>
+                           <input type="text" name="" id="" onChange={valuePrice} />
+                        </div>
+
+
                         <hr />
                         <div className={styles.save_change}>
-                           <button className={styles.save}>Save Change</button>
+                           <button className={styles.save} onClick={addSchedule}>Save Change</button>
                            <button className={styles.cancel}>cancel</button>
                         </div>
                      </div>

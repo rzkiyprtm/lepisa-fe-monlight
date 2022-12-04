@@ -256,7 +256,7 @@
     border-right: none;
     border-left: none;
     background-color: transparent;
-    width: 25%;
+    width: 30%;
     height: 30px;
     outline: none;
 }
@@ -289,12 +289,50 @@
     border-right: none;
     border-left: none;
     background-color: transparent;
-    width: 25%;
+    width: 30%;
     height: 30px;
     padding-left: 10px;
     padding-bottom: 10px;
     outline: none;
 }
+
+
+.price_flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.price_flex > p {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 34px;
+    letter-spacing: 0.5px;
+    color: #000000;
+}
+
+.price_flex > p > span {
+    padding-left: 50px;
+    padding-right: 15px;
+}
+
+.price_flex > input {
+    border-bottom: 1px solid black;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background-color: transparent;
+    width: 30%;
+    height: 30px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    outline: none;
+}
+
+
 
 
 
@@ -330,7 +368,9 @@
 
 .image_cinema > button {
     border: none;
-    background-color: transparent;
+    background-color: #DEDEDE;
+    border-radius: 10px;
+    color: black;
 }
 
 
@@ -472,6 +512,11 @@
         width: 60%;
     }
 
+    .price_flex > input {
+        width: 60%;
+        
+    }
+
     .cinema_flex > p {
         width: 100%;
     }
@@ -512,7 +557,7 @@
         line-height: 34px;
         letter-spacing: 0.5px;
         color: white;
-        padding: 5px 10px 5px 10px;
+        padding: 5px 20px 5px 20px;
         border-radius: 20px;
     }
 }
