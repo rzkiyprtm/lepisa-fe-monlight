@@ -126,43 +126,30 @@
     padding: 10px 24px;
 }
 
-.pagination {
+.showmore {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.lines {
+    border-bottom: 1px solid #DEDEDE;
+    width: 50%;
+}
 
-.btn_pagination {
-    box-shadow: 0px 8px 16px rgba(95, 46, 234, 0.24);
-    border-radius: 8px;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.viewmore {
     font-family: 'Mulish';
     font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 34px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 32px;
     letter-spacing: 0.75px;
-    color: #4E4B66;
-    margin: 0 4px;
+    color: #5F2EEA;
     cursor: pointer;
-}
-
-.selected {
-    font-family: 'Mulish';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 34px;
-    letter-spacing: 0.75px;
-    color: #FFFFFF;
-    background: #5F2EEA;
-    box-shadow: 0px 8px 16px rgba(95, 46, 234, 0.24);
-    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
 }
 
 .card_showtimes {
@@ -177,6 +164,7 @@
     justify-content: space-between;
     gap: 20px;
 }
+
 .title_admin_input {
     padding-top: 200px;
 }
@@ -199,7 +187,7 @@
     font-weight: 400;
     font-size: 24px;
     line-height: 30px;
-    letter-spacing: 0.25px; 
+    letter-spacing: 0.25px;
     color: #14142B;
     text-align: center;
     padding-top: 20px;
@@ -217,6 +205,7 @@
     margin-top: 30px;
     padding-bottom: 10px;
 }
+
 .container_input_admin {
     background-color: #e7e7e7;
     border-radius: 20px;
@@ -235,7 +224,7 @@
     align-items: center;
 }
 
-.location_flex > p {
+.location_flex>p {
     font-family: 'Mulish';
     font-style: normal;
     font-weight: 600;
@@ -245,12 +234,12 @@
     color: #000000;
 }
 
-.location_flex > p > span {
+.location_flex>p>span {
     padding-left: 30px;
     padding-right: 15px;
 }
 
-.location_flex > select {
+.location_flex>select {
     border-bottom: 1px solid black;
     border-top: none;
     border-right: none;
@@ -268,7 +257,7 @@
     margin-top: 20px;
 }
 
-.date_flex > p {
+.date_flex>p {
     font-family: 'Mulish';
     font-style: normal;
     font-weight: 600;
@@ -278,12 +267,12 @@
     color: #000000;
 }
 
-.date_flex > p > span {
+.date_flex>p>span {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-.date_flex > input {
+.date_flex>input {
     border-bottom: 1px solid black;
     border-top: none;
     border-right: none;
@@ -304,7 +293,7 @@
     margin-top: 20px;
 }
 
-.price_flex > p {
+.price_flex>p {
     font-family: 'Mulish';
     font-style: normal;
     font-weight: 600;
@@ -314,12 +303,12 @@
     color: #000000;
 }
 
-.price_flex > p > span {
+.price_flex>p>span {
     padding-left: 50px;
     padding-right: 15px;
 }
 
-.price_flex > input {
+.price_flex>input {
     border-bottom: 1px solid black;
     border-top: none;
     border-right: none;
@@ -343,7 +332,7 @@
     margin-top: 20px;
 }
 
-.cinema_flex > p {
+.cinema_flex>p {
     font-family: 'Mulish';
     font-style: normal;
     font-weight: 600;
@@ -353,7 +342,7 @@
     color: #000000;
 }
 
-.cinema_flex > p > span {
+.cinema_flex>p>span {
     padding-left: 36px;
     padding-right: 15px;
 }
@@ -366,7 +355,7 @@
     flex-wrap: wrap;
 }
 
-.image_cinema > button {
+.image_cinema>button {
     border: none;
     background-color: #DEDEDE;
     border-radius: 10px;
@@ -380,7 +369,7 @@
     margin-top: 20px;
 }
 
-.time_flex > p {
+.time_flex>p {
     font-family: 'Mulish';
     font-style: normal;
     font-weight: 600;
@@ -390,7 +379,7 @@
     color: #000000;
 }
 
-.time_flex > p > span {
+.time_flex>p>span {
     padding-left: 55px;
     padding-right: 15px;
 }
@@ -407,7 +396,7 @@
     gap: 20px;
 }
 
-.time_button > button {
+.time_button>button {
     border: none;
     background-color: transparent;
     padding-bottom: 10px;
@@ -504,33 +493,36 @@
         padding-bottom: 20px;
     }
 
-    .location_flex > select {
+    .location_flex>select {
         width: 60%;
     }
 
-    .date_flex > input {
+    .date_flex>input {
         width: 60%;
     }
 
-    .price_flex > input {
+    .price_flex>input {
         width: 60%;
-        
+
     }
 
-    .cinema_flex > p {
+    .cinema_flex>p {
         width: 100%;
     }
 
     .image_cinema {
         gap: 20px;
     }
+
     .time_button {
         gap: 0px;
     }
-    .time_flex > p > span {
+
+    .time_flex>p>span {
         padding-left: 20px;
         padding-right: 0px;
     }
+
     .save {
         background-color: #5F2EEA;
         border: none;
@@ -545,7 +537,7 @@
         padding: 5px 20px 5px 20px;
         border-radius: 20px;
     }
-    
+
     .cancel {
         background-color: #f03636;
         border: none;

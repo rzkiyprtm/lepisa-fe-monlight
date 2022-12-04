@@ -21,7 +21,8 @@ function Movie() {
    // console.log(id);
    const [body, setBody] = useState([]);
    const [schedule, setSchedule] = useState([]);
-
+   const [showmore, setShowmore] = useState(6);
+   const [showview, setShowview] = useState("d-flex");
    const role = Cookies.get("role");
 
    let month = [
@@ -59,7 +60,7 @@ function Movie() {
          )
          .then((res) => {
             setSchedule(res.data.data);
-            console.log(res.data.data);
+            // console.log(res.data.data);
             // setTimes(res.data.data[0].time);
          })
          .catch((err) => console.log(err));
@@ -482,27 +483,35 @@ function Movie() {
                         Ticket Currently Unavailable
                      </h1>
                   ) : (
-                     schedule.map((e, index) => (
-                        <Showtimes
-                           key={index}
-                           image={e.image}
-                           price={costing(e.price)}
-                           address={e.address_name}
-                           name={e.name}
-                           time={e.time}
-                        />
-                     ))
+                     schedule.map(
+                        (e, index) =>
+                           index < showmore && (
+                              <Showtimes
+                                 key={index}
+                                 image={e.image}
+                                 price={costing(e.price)}
+                                 address={e.address_name}
+                                 name={e.name}
+                                 time={e.time}
+                              />
+                           )
+                     )
                   )}
                </section>
             </section>
             {/* pagination */}
-            <section className={styles.pagination}>
-               <div className={`${styles.btn_pagination} ${styles.selected}`}>
-                  1
-               </div>
-               <div className={`${styles.btn_pagination} `}>2</div>
-               <div className={`${styles.btn_pagination} `}>3</div>
-               <div className={`${styles.btn_pagination} `}>4</div>
+            <section className={`${styles.showmore} ${showview}`}>
+               <div className={styles.lines}></div>
+               <p
+                  className={styles.viewmore}
+                  onClick={() => {
+                     setShowmore(9999);
+                     setShowview("d-none");
+                  }}
+               >
+                  view more
+               </p>
+               <div className={styles.lines}></div>
             </section>
          </main>
          <Footer />

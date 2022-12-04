@@ -72,7 +72,7 @@ function Index() {
             // console.log(`https://lepisa-fe.vercel.app/ticket/${id}`);
             setTicket(res.data.data[0]);
             setSeat(res.data.data);
-            console.log(res.data);
+            // console.log(res.data);
          })
          .catch((err) => {
             console.log(err);
