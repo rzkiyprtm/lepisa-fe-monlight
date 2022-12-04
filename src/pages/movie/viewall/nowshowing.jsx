@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 export default function upcoming() {
+  const [linkActive, setLinkActive] = useState("januari");
   const [showing, setShowing] = useState([]);
   const [upcoming, setUpcoming] = useState([]);
   const [month, setMonth] = useState(1);
