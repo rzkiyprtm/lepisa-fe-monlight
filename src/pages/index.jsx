@@ -14,6 +14,7 @@ import Loader from "../Components/Loader/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { router, useRouter } from "next/router";
 function Index() {
    const [showing, setShowing] = useState([]);
    const [upcoming, setUpcoming] = useState([]);
@@ -23,15 +24,25 @@ function Index() {
    const [image3, setImage3] = useState("");
    const [linkActive, setLinkActive] = useState("januari");
    const [subscribe, setSubscribe] = useState("");
+   const router = useRouter();
+
+   const nowShowing = () => {
+      router.push("/movie/viewall/nowshowing")
+   }
+   const upComing = () => {
+      router.push("/movie/viewall/upcoming")
+   }
 
    const showmovie = {
       // dots: true,
       infinite: true,
       autoplay: true,
       autoplaySpeed: 4000,
-      speed: 1000,
-      slidesToShow: showing.length >= 5 ? 5 : showing.length,
-      slidesToScroll: 1,
+      speed: 1250,
+      slidesToShow: showing.length > 5 ? 5 : showing.length,
+      slidesToScroll: showing.length > 5 ? 5 : showing.length,
+      initialSlide: 0,
+      pauseOnHover: true,
       responsive: [
          {
             breakpoint: 1200,
@@ -55,6 +66,7 @@ function Index() {
                slidesToShow: 2,
                slidesToScroll: 2,
                initialSlide: 2,
+               infinite: true,
             },
          },
          {
@@ -62,6 +74,7 @@ function Index() {
             settings: {
                slidesToShow: 2,
                slidesToScroll: 2,
+               infinite: true,
             },
          },
       ],
@@ -71,9 +84,11 @@ function Index() {
       infinite: true,
       autoplay: true,
       autoplaySpeed: 4000,
-      speed: 1000,
+      speed: 1250,
       slidesToShow: upcoming.length > 5 ? 5 : upcoming.length,
-      slidesToScroll: 1,
+      slidesToScroll: showing.length > 5 ? 5 : showing.length,
+      initialSlide: 0,
+      pauseOnHover: true,
       responsive: [
          {
             breakpoint: 1200,
@@ -86,8 +101,8 @@ function Index() {
          {
             breakpoint: 1024,
             settings: {
-               slidesToShow: 3,
-               slidesToScroll: 3,
+               slidesToShow: showing.length > 3 ? 3 : showing.length,
+               slidesToScroll: showing.length > 3 ? 3 : showing.length,
                infinite: true,
             },
          },
@@ -113,6 +128,7 @@ function Index() {
       infinite: true,
       // autoplay: true,
       // autoplaySpeed: 4000,
+
       speed: 1000,
       slidesToShow: 7,
       slidesToScroll: 7,
@@ -270,7 +286,7 @@ function Index() {
                      <h2 className={styles.show__title}>Now Showing</h2>
                      <div className={styles.line}></div>
                   </div>
-                  <p className={styles.view_all}>view all</p>
+                  <p className={styles.view_all} onClick={nowShowing}>view all</p>
                </section>
                <section className={styles.card__bar}>
                   <Slider {...showmovie}>
@@ -297,7 +313,7 @@ function Index() {
                   <div>
                      <h2 className={styles.up__title}>Upcoming Movies</h2>
                   </div>
-                  <p className={styles.view_all}>view all</p>
+                  <p className={styles.view_all} onClick={upComing}>view all</p>
                </section>
                <section className={styles.month__bar}>
                   <Slider {...Month}>
