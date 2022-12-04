@@ -22,6 +22,10 @@
   margin-top: 30px;
 }
 
+.images {
+  cursor: pointer;
+}
+
 .border_movie {
   padding: 30px 30px 30px 30px;
   background: #ffffff;
