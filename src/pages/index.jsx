@@ -29,9 +29,11 @@ function Index() {
       infinite: true,
       autoplay: true,
       autoplaySpeed: 4000,
-      speed: 1000,
-      slidesToShow: showing.length >= 5 ? 5 : showing.length,
-      slidesToScroll: 1,
+      speed: 1250,
+      slidesToShow: showing.length > 5 ? 5 : showing.length,
+      slidesToScroll: showing.length > 5 ? 5 : showing.length,
+      initialSlide: 0,
+      pauseOnHover: true,
       responsive: [
          {
             breakpoint: 1200,
@@ -55,6 +57,7 @@ function Index() {
                slidesToShow: 2,
                slidesToScroll: 2,
                initialSlide: 2,
+               infinite: true,
             },
          },
          {
@@ -62,6 +65,7 @@ function Index() {
             settings: {
                slidesToShow: 2,
                slidesToScroll: 2,
+               infinite: true,
             },
          },
       ],
@@ -71,9 +75,11 @@ function Index() {
       infinite: true,
       autoplay: true,
       autoplaySpeed: 4000,
-      speed: 1000,
+      speed: 1250,
       slidesToShow: upcoming.length > 5 ? 5 : upcoming.length,
-      slidesToScroll: 1,
+      slidesToScroll: showing.length > 5 ? 5 : showing.length,
+      initialSlide: 0,
+      pauseOnHover: true,
       responsive: [
          {
             breakpoint: 1200,
@@ -86,8 +92,8 @@ function Index() {
          {
             breakpoint: 1024,
             settings: {
-               slidesToShow: 3,
-               slidesToScroll: 3,
+               slidesToShow: showing.length > 3 ? 3 : showing.length,
+               slidesToScroll: showing.length > 3 ? 3 : showing.length,
                infinite: true,
             },
          },
@@ -113,6 +119,7 @@ function Index() {
       infinite: true,
       // autoplay: true,
       // autoplaySpeed: 4000,
+
       speed: 1000,
       slidesToShow: 7,
       slidesToScroll: 7,
