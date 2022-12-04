@@ -6,6 +6,7 @@ import Footer from "../../Components/Footer/Footer";
 import styles from "../../styles/Order.module.css";
 
 import icon_cinema from "../../assets/movie/ebv.id.png";
+import withAuth from "../../Components/privateElement/withAuth";
 function Index() {
 
    const [button, setButton] = useState([])
@@ -292,4 +293,4 @@ function Index() {
    );
 }
 
-export default Index;
+export default withAuth(Index);

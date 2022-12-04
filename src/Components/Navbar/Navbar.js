@@ -30,11 +30,14 @@ function Header() {
   const userInfo = getCookies("token");
   const isLogin = userInfo.token;
   
-  const login = () => {
-    router.push("/login")
+  const dashboard = () => {
+    router.push("/")
   }
   const signup = () => {
     router.push("/register")
+  }
+  const login = () => {
+    router.push("/login")
   }
   const profile = () => {
     router.push("/profile")
@@ -47,7 +50,7 @@ function Header() {
       <div className={styles["left-bar"]}>
         <div className={styles.logo}>
           <div>
-            <Image src={logo} alt='logo' width={100} height={30} />
+            <Image src={logo} alt='logo' width={100} height={30} onClick={dashboard} />
           </div>
           <ol className={text}>
             <li> Movies </li>
@@ -68,7 +71,8 @@ function Header() {
     <option value="5">Malang</option>
   </select>
 </div>
-          <form>
+        <div className={styles["main-nav-container"]}>
+          <form className={styles["navbar-box"]}>
           <div className={styles.searchBox} >
             <input
               className={styles.searchTxt}
@@ -82,7 +86,7 @@ function Header() {
           {isLogin ? (
             <div className={styles.profile} onClick={profile}>
               <Image
-                src={image}
+                src={(image === null) ? `${process.env.CLOUDINARY_LINK}` : image}
                 alt='profile'
                 width={40}
                 height={40}
@@ -102,6 +106,7 @@ function Header() {
             </div>
           </div>
           )}
+        </div>
         </section>
      
   

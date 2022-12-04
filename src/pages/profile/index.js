@@ -19,6 +19,8 @@ import authActions from '../../redux/actions/auth'
 import Cookies from 'js-cookie';
 import axios from "axios";
 
+import withAuth from '../../Components/privateElement/withAuth';
+
 function Profile() {
   const router = useRouter();
   const dispatch = useDispatch()
@@ -320,4 +322,4 @@ function Profile() {
   )
 }
 
-export default Profile
+export default withAuth(Profile)

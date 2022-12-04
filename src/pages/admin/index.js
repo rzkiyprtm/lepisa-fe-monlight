@@ -8,6 +8,9 @@ import movie from "../../assets/admin/movie_image.png";
 import Cardlocation from "../../Components/Card_location/Card_location";
 import Image from "next/image";
 import Spline from "../../Components/Chart/Spline";
+
+import withAuth from "../../Components/privateElement/withAuth";
+
 function Admin() {
    // button show time ongoing to implementasi style
    const [showInput, setShowInput] = useState(false);
@@ -222,4 +225,4 @@ function Admin() {
    );
 }
 
-export default Admin;
+export default withAuth(Admin);

@@ -9,6 +9,8 @@ import icon_ticket from "../../assets/movie/icon_ticket.png";
 // import QRCode from "react-qr-code";
 import QRCode from "qrcode.react";
 import { useReactToPrint } from "react-to-print";
+import withAuth from "../../Components/privateElement/withAuth";
+
 function Index() {
    const [qrCodeText, setQRCodeText] = useState("www.google.com");
    const [showPrint, setShowPrint] = useState("d-block");
@@ -151,4 +153,4 @@ function Index() {
    );
 }
 
-export default Index;
+export default withAuth(Index);
