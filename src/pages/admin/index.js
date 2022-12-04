@@ -8,6 +8,8 @@ import movie from "../../assets/admin/movie_image.png";
 import Cardlocation from "../../Components/Card_location/Card_location";
 import Image from "next/image";
 
+import withAuth from "../../Components/privateElement/withAuth";
+
 function Admin() {
    // button show time ongoing to implementasi style
 
@@ -198,4 +200,4 @@ function Admin() {
    );
 }
 
-export default Admin;
+export default withAuth(Admin);

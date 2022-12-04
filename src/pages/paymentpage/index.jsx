@@ -15,6 +15,7 @@ import bca from "../../assets/payment_image/bca.png"
 import bri from "../../assets/payment_image/bri.png"
 import ovo from "../../assets/payment_image/ovo.png"
 import warn from "../../assets/payment_image/warn.png"
+import withAuth from '../../Components/privateElement/withAuth'
 
 function paymentPage() {
   return (
@@ -169,4 +170,4 @@ function paymentPage() {
   )
 }
 
-export default paymentPage
+export default withAuth(paymentPage)

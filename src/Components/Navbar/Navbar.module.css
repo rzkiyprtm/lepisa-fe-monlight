@@ -251,11 +251,51 @@ section .right-bar .input .btn-sign:active {
  background:white;
 }
 
+.custom-select-two {
+    display: none;
+}
+
+.main-nav-container{
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    display: flex;
+}
+
 /* responsive */
 @media screen and (max-width: 768px) {
     .custom-select select {
         display: none;
     }
+
+    section .right-bar .input {
+        padding-right: 2rem;
+    }
+
+    section .right-bar .input .btn-sign {
+        font-size: 1rem;
+    }
+
+    .main-nav-container {
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .profile {
+        text-align: right;
+        align-items: flex-end;
+        padding-right: 2rem;
+    }
+
+    .navbar-box {
+        /* display: flex; */
+        /* gap: 10px; */
+        /* flex-direction: column;
+        justify-content: center; */
+    }
+
     .navbar {
         position: absolute;
         align-items: center;
@@ -303,10 +343,12 @@ section .right-bar .input .btn-sign:active {
     }
 
     .navbar section {
+        padding-top: 1rem;
         display: flex;
         position: absolute;
-        top: 6rem;
-        right: 2rem;
+        top: 6.5rem;
+        right: 3rem;
+        justify-content: center;
         background-color: white;
         height: 4vh;
         align-items: center;
@@ -318,6 +360,7 @@ section .right-bar .input .btn-sign:active {
     .navbar section.slide-bar {
         transform: translateY(0);
         opacity: 1;
+        gap: 10px;
     }
 
     .navbar section .searching {
