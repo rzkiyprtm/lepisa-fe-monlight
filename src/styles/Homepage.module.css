@@ -52,6 +52,7 @@
     height: 353px;
     border-radius: 10px;
     margin: 0 24px;
+    box-shadow: 8px 16px 30px rgba(0, 0, 0, 0.3);
 }
 
 .left_img {
@@ -59,6 +60,7 @@
     height: 353px;
     border-radius: 10px;
     margin-top: 60px;
+    box-shadow: 8px 16px 30px rgba(0, 0, 0, 0.3);
 }
 
 .right_img {
@@ -66,6 +68,7 @@
     height: 353px;
     border-radius: 10px;
     margin-bottom: 60px;
+    box-shadow: 8px 16px 30px rgba(0, 0, 0, 0.3);
 }
 
 .img__bar {
