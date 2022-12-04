@@ -1,4 +1,8 @@
 /* navbar */
+.tickit-logo {
+    cursor: pointer;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;

@@ -75,14 +75,14 @@
   transition: all 0.5s;
 }
 
-.card__bar:hover>.hide {
+.card__bar>.hide {
   display: block;
   height: 500px;
   transition: all 0.5s;
 }
 
-.card__bar:hover {
-  height: 500px;
+.card__bar {
+  height: 530px;
   transition: all 0.5s;
 }
 
@@ -112,19 +112,19 @@
       height: 100%;
       padding: 20px 10px;
   }
-  .card__bar>.hide {
-    display: block;
-    height: 500px;
-    transition: all 0.5s;
-  }
-  
-  .card__bar {
-    height: 500px;
-    transition: all 0.5s;
-  }
-  
-  .card_container:hover {
-    transform: scale(1.050);
-  }
+  .card__bar:hover>.hide {
+  display: block;
+  height: 500px;
+  transition: all 0.5s;
+}
+
+.card__bar:hover {
+  height: 530px;
+  transition: all 0.5s;
+}
+
+.card_container:hover {
+  transform: scale(1.050);
+}
   
 }
