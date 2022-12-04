@@ -86,7 +86,7 @@ function Header() {
           {isLogin ? (
             <div className={styles.profile} onClick={profile}>
               <Image
-                src={image}
+                src={(image === null) ? `${process.env.CLOUDINARY_LINK}` : image}
                 alt='profile'
                 width={40}
                 height={40}
