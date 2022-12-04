@@ -13,6 +13,7 @@ function Header() {
   const [state, setState] = useState("");
   const router = useRouter()
   const text = state.text;
+  const [linkActive, setLinkActive] = useState("");
 
 
   // selector untuk ngubah foto profile
@@ -42,6 +43,12 @@ function Header() {
   const profile = () => {
     router.push("/profile")
   }
+  const upcoming = () => {
+    router.push("/movie/viewall/upcoming")
+  }
+  const nowshowing = () => {
+    router.push("/movie/viewall/nowshowing")
+  }
   
 
   return (
@@ -49,12 +56,24 @@ function Header() {
     <nav className={styles.navbar}>
       <div className={styles["left-bar"]}>
         <div className={styles.logo}>
-          <div>
+          <div className={styles["tickit-logo"]}>
             <Image src={logo} alt='logo' width={100} height={30} onClick={dashboard} />
           </div>
           <ol className={text}>
-            <li> Movies </li>
-            <li> Cinemas </li>
+            <li onClick={() => {
+                              setLinkActive("");
+                              nowshowing();
+                           }}
+                           style={{
+                              color: linkActive === "comingsoon" ? "#5F2EEA" : "",
+                           }}> Coming Soon </li>
+            <li onClick={() => {
+                              setLinkActive("");
+                              upcoming();
+                           }}
+                           style={{
+                              color: linkActive === "upcoming" ? "#5F2EEA" : "",
+                           }}> Now Showing </li>
             <li> Buy Ticket </li>
           </ol>
         </div>

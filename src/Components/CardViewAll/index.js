@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import card_image from "../../assets/homepage/img_cardhome.png";
 import styles from "./CardView.module.css";
+
 import { useRouter } from "next/router";
 function Index(props) {
    // const [variant, setVariant] = useState("coming");
