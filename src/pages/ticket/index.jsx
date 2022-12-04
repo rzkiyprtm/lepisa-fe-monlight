@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 // components
 import Image from "next/image";
 import Navbar from "../../Components/Navbar/Navbar";
@@ -8,10 +8,12 @@ import styles from "../../styles/Ticket.module.css";
 import icon_ticket from "../../assets/movie/icon_ticket.png";
 // import QRCode from "react-qr-code";
 import QRCode from "qrcode.react";
+import { useReactToPrint } from "react-to-print";
 import withAuth from "../../Components/privateElement/withAuth";
 
 function Index() {
    const [qrCodeText, setQRCodeText] = useState("www.google.com");
+   const [showPrint, setShowPrint] = useState("d-block");
    // download QR code
    const downloadQRCode = () => {
       let data = document.getElementById("qrCodeEl");
@@ -27,7 +29,10 @@ function Index() {
       aEl.click();
       document.body.removeChild(aEl);
    };
-
+   const componentRef = useRef();
+   const handlePrint = useReactToPrint({
+      content: () => componentRef.current,
+   });
    return (
       <>
          <Navbar />
@@ -35,7 +40,7 @@ function Index() {
             <section className={styles.ticket__content}>
                <h1 className={styles.title}>Proof of Payment</h1>
 
-               <section className={styles.ticket}>
+               <section className={styles.ticket} ref={componentRef}>
                   <section className={`${styles.ticket__bar} row`}>
                      <section
                         className={`${styles.ticket__left} col-12 col-sm-12 col-md-7 col-lg-8`}
@@ -129,11 +134,14 @@ function Index() {
                </section>
 
                <div className={styles.btn_downprint}>
-                  <div className={styles.download} onClick={downloadQRCode}>
+                  <div
+                     className={`${styles.download} `}
+                     onClick={downloadQRCode}
+                  >
                      <i className="fa-solid fa-download"></i>
                      <p className="ps-5">Download</p>
                   </div>
-                  <div className={styles.print}>
+                  <div className={`${styles.print} `} onClick={handlePrint}>
                      <i className="fa-solid fa-print"></i>
                      <p className="ps-5">Print</p>
                   </div>
