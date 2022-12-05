@@ -8,6 +8,14 @@
   background-color: #E5E5E5;
 }
 
+.payment-list-two button:hover{
+  border: 1px solid #5F2EEA;
+}
+
+.payment-list-one button:hover{
+  border: 1px solid #5F2EEA;
+}
+
 .left-content-container {
   width: 60%;
 }
