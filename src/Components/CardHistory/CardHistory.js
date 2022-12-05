@@ -3,25 +3,9 @@ import React, { useEffect, useState } from "react";
 
 import image_cinema from "../../assets/admin/cineone21.png"
 import css from "./CardHistory.module.css"
-let days = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
-
 
 
 function CardHistory(props) {
-
-  const [show, setShow] = useState(false);
-
-
-function CardHistory(props) {
-
   return (
     <>
       <div className={css.content_background}>
