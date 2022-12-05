@@ -47,6 +47,7 @@ useEffect(() => {
   "Sunday",
 ];
 
+
 let month = [
   "January",
   "February",
@@ -89,9 +90,14 @@ let month = [
                     id={e.id}
                     days={days[e.day - 5]}
                     day={e.day}
+
                     month={month[e.month - 1]}
                     year={e.year}
                     status={e.status_ticket}
+
+                    month={e.month}
+                    year={e.year}
+
                      />
                   ))
                ) : (
