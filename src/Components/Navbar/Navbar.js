@@ -5,24 +5,15 @@ import logo from "../../assets/navbar_image/tickit.png";
 import avatar from "../../assets/navbar_image/gue.jpg";
 import Image from "next/image";
 import Router, { useRouter } from "next/router";
-import { getCookies, deleteCookie } from "cookies-next";
-import { useSelector, useDispatch } from "react-redux";
-import { toast } from 'react-toastify'
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import authActions from '../../redux/actions/auth'
-import Cookies from 'js-cookie';
+import { getCookies } from "cookies-next";
+import { useSelector } from "react-redux";
 
 
 function Header() {
-  const dispatch = useDispatch()
   const [state, setState] = useState("");
   const router = useRouter()
   const text = state.text;
   const [linkActive, setLinkActive] = useState("");
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const [show, setShow] = useState(false);
 
 
   // selector untuk ngubah foto profile
@@ -39,10 +30,7 @@ function Header() {
   
   const userInfo = getCookies("token");
   const isLogin = userInfo.token;
-
-  const userRole = getCookies("role")
-  const isUser = userRole.role
- 
+  
   const dashboard = () => {
     router.push("/")
   }
@@ -60,24 +48,6 @@ function Header() {
   }
   const nowshowing = () => {
     router.push("/movie/viewall/nowshowing")
-  }
-  const createmovie = () => {
-    router.push("/admin")
-  }
-
-  // logout
-  const logoutHandler = (e) => {
-    e.preventDefault();
-    const token = Cookies.get("token")
-    deleteCookie("token");
-    deleteCookie("id");
-    deleteCookie("role");
-    dispatch(authActions.logoutThunk(token, () => {
-      toast.success("Logout Success !", {
-        position: toast.POSITION.TOP_CENTER,
-      });
-      router.push("/login")
-    }));
   }
   
 
@@ -104,11 +74,7 @@ function Header() {
                            style={{
                               color: linkActive === "upcoming" ? "#5F2EEA" : "",
                            }}> Now Showing </li>
-                           {isUser === "admin" ? (
-                            <li onClick={createmovie}>Create Movie</li>
-                           ) : (
             <li> Buy Ticket </li>
-                           )}
           </ol>
         </div>
       </div>
@@ -137,10 +103,6 @@ function Header() {
           </div>
           </form>
           {isLogin ? (
-            <section>
-            {isUser === "admin" ? (
-              <button className={styles["btn-logout"]} onClick={handleShow}>Logout</button>
-            ) : (
             <div className={styles.profile} onClick={profile}>
               <Image
                 src={(image === null) ? `${process.env.CLOUDINARY_LINK}` : image}
@@ -151,8 +113,6 @@ function Header() {
                 style={{ borderRadius: "50%", cursor: "pointer" }}
               />
             </div>
-            )}
-            </section>
           ) : (
           <div className={styles["right-bar"]}>
             <div className={styles.input}>
@@ -179,26 +139,8 @@ function Header() {
         <span></span>
       </div>
     </nav>
-
-{/* modal logout */}
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>LEPISA MOVIES</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you sure to logout?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="success" onClick={logoutHandler}>
-            Yes
-          </Button>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-
     </main>
   );
-  
 }
 
 export default Header;
