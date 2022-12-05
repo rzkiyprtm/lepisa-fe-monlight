@@ -370,6 +370,41 @@
     /* padding-top: 10px; */
 }
 
+.chair_selected {
+    margin-top: 6px;
+    margin-left: 3px;
+    margin-right: 3px;
+    width: 26px;
+    height: 26px;
+    border: none;
+    background: #5F2EEA;
+    border-radius: 4px;
+}
+.chair_selected1 {
+    margin-top: 6px;
+    margin-left: 3px;
+    margin-right: 3px;
+    width: 26px;
+    height: 26px;
+    border: none;
+    background: #5F2EEA;
+    border-radius: 4px;
+}
+
+.chair_sold {
+    margin-top: 6px;
+    margin-left: 3px;
+    margin-right: 3px;
+    width: 26px;
+    height: 26px;
+    border: none;
+    background: #6E7191;
+    border-radius: 4px;
+}
+
+
+
+
 /* Chair styling */
 /* chair sit 1 */
 .chair1 {

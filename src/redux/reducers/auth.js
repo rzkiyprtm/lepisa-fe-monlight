@@ -15,11 +15,24 @@ const initialState = {
     status: null,
     point: null,
   },
+  payment: {
+    schedule_id: null,
+    tittle: null,
+    price: 0,
+    time: null,
+    date: null,
+    seat: null,
+    total_payment: null,
+    payment_method: null,
+    cinema_image: null,
+    cinema_name: null,
+    total_ticket: 0
+  }
 };
 
 const authReducer = (prevState = initialState, { type, payload }) => {
   const { Pending, Rejected, Fulfilled } = ActionType;
-  const { authLogout, authReset, profile } = ACTION_STRING;
+  const { authLogout, authReset, profile, booking } = ACTION_STRING;
   switch (type) {
 
     // profile
@@ -53,10 +66,29 @@ const authReducer = (prevState = initialState, { type, payload }) => {
           phone_number: payload.data.data.phone_number,
           image: payload.data.data.image,
           status: payload.data.data.status,
-          point: payload.data.data.point
+          point: payload.data.data.point,
         },
       };
 
+
+      // booking
+      case booking.concat("_", Fulfilled):
+        return {
+          ...prevState,
+          payment: {
+            schedule_id: payload.body.schedule_id,
+            tittle: payload.body.tittle,
+            price: payload.body.price,
+            time: payload.body.time,
+            date: payload.body.date,
+            seat: payload.body.seat,
+            total_payment: payload.body.total_payment,
+            payment_method: payload.body.payment_method,
+            cinema_image: payload.body.cinema_image,
+            cinema_name: payload.body.cinema_name,
+            total_ticket: payload.body.total_ticket,
+          }
+        };
 
 
     case authLogout.concat("_", Pending):
