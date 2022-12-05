@@ -141,7 +141,7 @@ function Movie() {
          .catch((err) => console.log(err));
    }, [add]);
 
-   
+
    // tampilan movie detail dengan role admin ada inputan nya
    if (role === "admin")
       return (
@@ -356,9 +356,9 @@ function Movie() {
                            Ticket Currently Unavailable
                         </h1>
                      ) : (
-                        schedule.map((e, index) => (
+                        schedule.map((e) => (
                            <Showtimes
-                              key={index}
+                              key={e.id}
                               id={e.id}
                               tittle={e.tittle}
                               date={e.date}
@@ -481,10 +481,10 @@ function Movie() {
                         (e, index) =>
                            index < showmore && (
                               <Showtimes
-                                 key={index}
+                                 key={e.id}
                                  id={e.id}
                                  tittle={e.tittle}
-                                 date={e.date}
+                                 date={`${e.year}-${e.month}-${e.day}`}
                                  image={e.image}
                                  price={e.price}
                                  address={e.address_name}
