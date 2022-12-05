@@ -23,6 +23,8 @@ import { useEffect } from 'react'
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Cookies from 'js-cookie'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Payment() {
 
@@ -32,7 +34,12 @@ function Payment() {
     const profile = useSelector((state) => state.auth.profile)
 
     const [show, setShow] = useState(false);
+    const [status, setStatus] = useState("pending")
     const [va, setVa] = useState("")
+    const [bank, setBank] = useState()
+    const [pay_id, setPay_id] = useState("")
+    const [click, setClick] = useState()
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     
@@ -46,33 +53,63 @@ function Payment() {
       );
    };
 
-  //  useEffect(() => {
-      
-  //  }, [])
 
-  const payment = () => {
-    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/booking/create-booking`,{
-      seat_item: booking.seat,
-      schedule_id: booking.schedule_id,
-      total_ticket: booking.total_ticket,
-      time: booking.time,
-      total_payment: booking.total_payment,
-      full_name: `${profile.firstname} ${profile.lastname}`,
-      email: profile.email,
-      phone_number: profile.email,
-      payment_method_id: 1
+    
+    const payment = () => {
+      if(!bank) return toast.error("Please choose payment method")
+      axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/booking/create-booking`, {
+        seat_item: booking.seat,
+        schedule_id: booking.schedule_id,
+        total_ticket: booking.total_ticket,
+        time: booking.time,
+        total_payment: booking.total_payment,
+        full_name: `${profile.firstname} ${profile.lastname}`,
+        email: profile.email,
+        phone_number: profile.email,
+        booking_date: booking.date,
+        payment_method_id: bank
     }, {
       headers: {
         "x-access-token" : Cookies.get("token")
       },
     })
     .then((res) => {
-      // router.push(`https://simulator.sandbox.midtrans.com/bca/va/index`),
-      setVa(res.data.result.midtrans.va_numbers.va_number)
-      setShow(true)
+      console.log(res.data)
+      toast.success("Create success. Wait code virtual account")
+      setVa(res.data.data.midtrans.va_numbers[0].va_number)
+      setStatus(res.data.data.midtrans.transaction_status)
+      setBank(res.data.data.midtrans.va_numbers[0].bank)
+      setPay_id(res.data.data.result.payment_id)
+      handleShow()
+      
+    })
+    .catch((err)=> console.log(err))
+  }
+
+  const midtrans = () => {
+    if(bank) return window.open(`https://simulator.sandbox.midtrans.com/${bank}/va/index`)
+  }
+
+
+
+  const confirmStatus = () => {
+    console.log(pay_id)
+    axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/booking/status/${pay_id}`)
+    .then((res) => {
+      console.log(res.data)
+      if(res.data.data.status === "pending") return toast.error("Please do payment first")
+      toast.success("Payment Success")
+      setTimeout(() => {
+        router.push(`/ticket/${pay_id}`)
+      }, 2000);
     })
     .catch((err) => console.log(err))
   }
+
+
+
+  
+  
 
   return (
     <>
@@ -119,26 +156,28 @@ function Payment() {
 
             <div className={styles["payment-list-one"]}>
 
-            <div className={styles["button-box"]}>
-              <div className={styles["google-pay"]}>
-                <Image alt='gpay' src={gpay}/>
+              <div className={styles["button-box_bca"]}>
+                <button value="1" onClick={(e)=> {
+                  setBank(e.target.value),
+                  console.log(e.target.value) }} 
+                  className={styles["google-pay"]}>
+                </button>
               </div>
-            </div>
-            <div className={styles["button-box"]}>
-              <div className={styles["visa"]}>
-                <Image alt='gpay' src={visa}/>
+              <div className={styles["button-box"]}>
+                <div className={styles["visa"]}>
+                  <Image alt='gpay' src={visa}/>
+                </div>
               </div>
-            </div>
-            <div className={styles["button-box"]}>
-              <div className={styles["gopay"]}>
-                <Image alt='gpay' src={gopay}/>
+              <div className={styles["button-box"]}>
+                <div className={styles["gopay"]}>
+                  <Image alt='gpay' src={gopay}/>
+                </div>
               </div>
-            </div>
-            <div className={styles["button-box"]}>
-              <div className={styles["paypal"]}>
-                <Image alt='gpay' src={paypal}/>
+              <div className={styles["button-box"]}>
+                <div className={styles["paypal"]}>
+                  <Image alt='gpay' src={paypal}/>
+                </div>
               </div>
-            </div>
             
             </div>
 
@@ -151,13 +190,15 @@ function Payment() {
             </div>
             <div className={styles["button-box"]}>
               <div className={styles["bca"]}>
-                <Image alt='gpay' src={bca}/>
+                <Image alt='gpay' src={gpay}/>
               </div>
             </div>
-            <div className={styles["button-box"]}>
-              <div className={styles["bri"]}>
-                <Image alt='gpay' src={bri}/>
-              </div>
+            <div className={styles["button-box_bri"]}>
+              <button value="2" onClick={(e)=> {
+                  setBank(e.target.value),
+                  console.log(e.target.value) }} className={styles["bri"]}>
+                {/* <Image alt='gpay' src={bri}/> */}
+              </button>
             </div>
             <div className={styles["button-box"]}>
               <div className={styles["ovo"]}>
@@ -186,7 +227,7 @@ function Payment() {
         <button>Previous step</button>
         </div>
         <div className={styles["btn-pay"]}>
-          <button onClick={payment}>Pay your order</button>
+          <button onClick={payment} className="w-100">Pay your order</button>
         </div>
 
         </div>
@@ -224,18 +265,43 @@ function Payment() {
       <Footer/>
 
       {/* modal logout */}
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} backdrop="static" onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>LEPISA MOVIES</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure to logout?</Modal.Body>
+        <Modal.Body>
+          <b>Please copy Virtual Account</b>
+          <br />
+          <p>Virtual Account : {va}</p>
+          <p>Bank : {bank}</p>
+          <p>Status : {status}</p>
+          </Modal.Body>
         <Modal.Footer>
-          <Button variant="success">
+          <Button variant="primary" onClick={confirmStatus}>
+            Confirm
+          </Button>
+          <Button variant="success" onClick={midtrans}>
             To Payment Mitrans
           </Button>
         </Modal.Footer>
       </Modal>
-      <Footer />
+
+      <ToastContainer
+            position="top-center"
+            autoClose={3000}
+            hideProgressBar={false}
+            closeOnClick={true}
+            pauseOnHover={true}
+            draggable={true}
+            theme="light"
+         />
+
+      {/* <Modal
+        open={open}
+        setOpen={setOpen}
+        title={bank}
+        body={va}
+      /> */}
     </>
   )
 }

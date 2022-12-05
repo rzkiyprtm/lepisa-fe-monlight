@@ -65,9 +65,11 @@ function Index() {
       if (!router.isReady) return;
       // console.log(router.query);
       // codes using router.query
+      
       axios
          .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/booking/ticket/${id}`)
          .then((res) => {
+            console.log(res.data)
             setQRCodeText(`https://lepisa-fe.vercel.app/ticket/${id}`);
             // console.log(`https://lepisa-fe.vercel.app/ticket/${id}`);
             setTicket(res.data.data[0]);

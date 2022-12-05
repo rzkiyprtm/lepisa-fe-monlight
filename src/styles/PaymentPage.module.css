@@ -16,6 +16,40 @@
   width: 40%;
 }
 
+.button-box {
+  width: 100%;
+}
+
+.button-box_bca > button  {
+  background-image: url("../assets/payment_image/bca.png");
+  background-position: center;
+  background-size: content;
+  object-fit: fill;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 60px;
+  border: 1px solid #dedede;
+  border-radius: 20px;
+  padding: 0px 80px 0px 80px ;
+}
+
+.button-box_bri > button   {
+  background-image: url("../assets/payment_image/bri.png");
+  background-position: center;
+  background-size: content;
+  object-fit: fill;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 60px;
+  border: 1px solid #dedede;
+  border-radius: 20px;
+  padding: 0px 80px 0px 80px ;
+}
+.button-box > button > img {
+ 
+}
+
+
 .payment-detail {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   background-color: white;
@@ -83,7 +117,7 @@
 }
 
 .payment-list-one .button-box:hover, .payment-list-two .button-box:hover  {
-  background-color: #bababa;
+  /* background-color: #bababa; */
   -webkit-transition: background-color 0.7s ease-out;
 }
 
@@ -231,6 +265,9 @@
     padding: 130px 10px 50px 10px !important;
   }
 
+  .button-box_bri > button {
+    width: 100%;
+  }
   .left-content-container {
     width: 100%;
   }

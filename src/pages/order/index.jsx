@@ -58,17 +58,16 @@ function Index() {
       const arr = seat
       const index = arr.indexOf(e.target.value);
       if (index > -1) {
-         // setSelected(!selected)
         arr.splice(index, 1); 
       } else {
-        arr.push(e.target.value);
-      //   setSelected(!selected)
+        arr.push([e.target.value]);
       }
       setSeat(arr)
       setTotalPayment(arr.length*booking.price)
     };
+   console.log(typeof(seat))
    console.log(seat)
-   console.log(totalPayment)
+   // console.log(totalPayment)
 
    
    const costing = (price) => {
@@ -98,7 +97,6 @@ function Index() {
       }
       ))
    }
-
 
 
 
@@ -146,9 +144,15 @@ function Index() {
                                              <Seat 
                                              key={e.id}
                                              id={e.id}
-                                             seat={e.seat}
+                                             seat={e.seat.slice(1,3)}
                                              handleArr={checkSeat}
-                                             styling={(selected) ? styles.chair1 :styles.chair_selected}
+                                             // Untuk styling disini (INGET KITA NGERJAIN RAME-RAME GK KETEMU (05-12-2022))
+                                             // styling={(selected) ? styles.chair1 : styles.chair_selected1}
+                                             // selected={selected}
+                                             // chair={styles.chair1}
+                                             // select={styles.chair_selected1}
+                                             // id_selected={e.id}
+                                             // id_chair={e.id}
                                              />
                                           ))}
                                        </div>
@@ -158,7 +162,7 @@ function Index() {
                                              <Seat 
                                              key={e.id}
                                              id={e.id}
-                                             seat={e.seat}
+                                             seat={e.seat.slice(1,3)}
                                              handleArr={checkSeat}
                                              />
                                           ))}
@@ -173,7 +177,7 @@ function Index() {
                                              <Seat 
                                              key={e.id}
                                              id={e.id}
-                                             seat={e.seat}
+                                             seat={e.seat.slice(1,3)}
                                              handleArr={checkSeat}
                                              />
                                           ))}
@@ -185,7 +189,7 @@ function Index() {
                                              <Seat 
                                              key={e.id}
                                              id={e.id}
-                                             seat={e.seat}
+                                             seat={e.seat.slice(1,3)}
                                              handleArr={checkSeat}
                                              />
                                           ))}
@@ -201,7 +205,7 @@ function Index() {
                                              <Seat 
                                              key={e.id}
                                              id={e.id}
-                                             seat={e.seat}
+                                             seat={e.seat.slice(1,3)}
                                              handleArr={checkSeat}
                                              />
                                           ))}
@@ -213,7 +217,7 @@ function Index() {
                                              <Seat 
                                              key={e.id}
                                              id={e.id}
-                                             seat={e.seat}
+                                             seat={e.seat.slice(1,3)}
                                              handleArr={checkSeat}
                                              />
                                           ))}
@@ -228,7 +232,7 @@ function Index() {
                                              <Seat 
                                              key={e.id}
                                              id={e.id}
-                                             seat={e.seat}
+                                             seat={e.seat.slice(1,3)}
                                              handleArr={checkSeat}
                                              />
                                           ))}
@@ -240,7 +244,7 @@ function Index() {
                                              <Seat 
                                              key={e.id}
                                              id={e.id}
-                                             seat={e.seat}
+                                             seat={e.seat.slice(1,3)}
                                              handleArr={checkSeat}
                                              />
                                           ))}
@@ -256,7 +260,7 @@ function Index() {
                                              <Seat 
                                              key={e.id}
                                              id={e.id}
-                                             seat={e.seat}
+                                             seat={e.seat.slice(1,3)}
                                              handleArr={checkSeat}
                                              />
                                           ))}
@@ -268,7 +272,7 @@ function Index() {
                                              <Seat 
                                              key={e.id}
                                              id={e.id}
-                                             seat={e.seat}
+                                             seat={e.seat.slice(1,3)}
                                              handleArr={checkSeat}
                                              />
                                           ))}
@@ -283,7 +287,7 @@ function Index() {
                                              <Seat 
                                              key={e.id}
                                              id={e.id}
-                                             seat={e.seat}
+                                             seat={e.seat.slice(1,3)}
                                              handleArr={checkSeat}
                                              />
                                           ))}
@@ -295,7 +299,7 @@ function Index() {
                                              <Seat 
                                              key={e.id}
                                              id={e.id}
-                                             seat={e.seat}
+                                             seat={e.seat.slice(1,3)}
                                              handleArr={checkSeat}
                                              />
                                           ))}
@@ -311,7 +315,7 @@ function Index() {
                                              <Seat 
                                              key={e.id}
                                              id={e.id}
-                                             seat={e.seat}
+                                             seat={e.seat.slice(1,3)}
                                              handleArr={checkSeat}
                                              />
                                           ))}
@@ -323,7 +327,7 @@ function Index() {
                                              <Seat 
                                              key={e.id}
                                              id={e.id}
-                                             seat={e.seat}
+                                             seat={e.seat.slice(1,3)}
                                              handleArr={checkSeat}
                                              />
                                           ))}

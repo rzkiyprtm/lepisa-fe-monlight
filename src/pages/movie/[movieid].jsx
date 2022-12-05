@@ -56,7 +56,7 @@ function Movie() {
       if (!router.isReady) return;
       axios
          .get(
-            `${process.env.NEXT_PUBLIC_BACKEND_URL}/movie/schedule/${movieid}`
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/movie/schedule/${movieid}?date=&location=`
          )
          .then((res) => {
             setSchedule(res.data.data);
@@ -70,15 +70,13 @@ function Movie() {
    const [date, setDate] = useState("");
    const [price, setPrice] = useState("");
    const [time, setTime] = useState([]);
-   const [cinemax, setCinemax] = useState("");
-
+   const [showDate, setShowDate] = useState("");
+   const [location, setLocation] = useState("");
    // get value add schedule
    const valueDate = (e) => {
       setDate(e.target.value), console.log(e.target.value);
    };
-   const valueCinema = (e) => {
-      setCinemax(e.target.value), console.log(e.target.value);
-   };
+
    const valuePrice = (e) => {
       setPrice(e.target.value), console.log(e.target.value);
    };
@@ -93,7 +91,7 @@ function Movie() {
       axios
          .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/movie/add/schedule`, {
             movie: id,
-            location: cinemax,
+            location: locationID,
             date: date,
             price: price,
             time: time,
@@ -103,7 +101,7 @@ function Movie() {
             console.log(res.data);
             setAdd(res.data.msg);
             setDate("");
-            setCinemax("");
+            setiLocationID("");
             setPrice("");
             setTime("");
          })
@@ -114,7 +112,7 @@ function Movie() {
 
    const handleCancel = () => {
       setDate("");
-      setCinemax("");
+      setLocation("");
       setPrice("");
       setTime("");
    };
@@ -141,7 +139,85 @@ function Movie() {
          .catch((err) => console.log(err));
    }, [add]);
 
+   const handleDates = (e) => {
+      setShowDate(e.target.value);
+   };
+   const handleLocationInput = (e) => {
+      console.log(e.target.value);
+      setLocation(e.target.value);
+   };
 
+   // handle location
+   const [cgv, setCgv] = useState("");
+   const [xxi, setXxi] = useState("");
+   const [cinepolis, setCinepolis] = useState("");
+   const [locationID, setiLocationID] = useState("");
+   const [linkActive, setLinkActive] = useState("");
+
+   const handleCGV = () => {
+      setiLocationID(cgv);
+      console.log(cgv);
+      setLinkActive("CGV Cinemas");
+   };
+   const handleXXI = () => {
+      setiLocationID(xxi);
+      console.log(xxi);
+      setLinkActive("Cinema XXI");
+   };
+   const handleCinepolis = () => {
+      setiLocationID(cinepolis);
+      console.log(cinepolis);
+      setLinkActive("Cinepolis");
+   };
+   const handleJakarta = () => {
+      setCgv(1), setXxi(2), setCinepolis(3);
+   };
+   const handleBandung = () => {
+      setCgv(4), setXxi(5), setCinepolis(6);
+   };
+   const handleSemarang = () => {
+      setCgv(7), setXxi(8), setCinepolis(9);
+   };
+   const handlePalembang = () => {
+      setCgv(10), setXxi(11), setCinepolis(12);
+   };
+   const handleBanjar = () => {
+      setCgv(13), setXxi(14), setCinepolis(15);
+   };
+
+   const handleLocation = (e) => {
+      if (e.target.value === "Jakarta") {
+         handleJakarta();
+      }
+      if (e.target.value === "Bandung") {
+         handleBandung();
+      }
+      if (e.target.value === "Semarang") {
+         handleSemarang();
+      }
+      if (e.target.value === "Palembang") {
+         handlePalembang();
+      }
+      if (e.target.value === "Banjarbaru") {
+         handleBanjar();
+      }
+   };
+
+   useEffect(() => {
+      if (!router.isReady) return;
+      console.log(location);
+
+      axios
+         .get(
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/movie/schedule/${movieid}?date=${showDate}&location=${location}`
+         )
+         .then((res) => {
+            setSchedule(res.data.data);
+            // console.log(res.data.data);
+            // setTimes(res.data.data[0].time);
+         })
+         .catch((err) => console.log(err));
+   }, [showDate, location]);
    // tampilan movie detail dengan role admin ada inputan nya
    if (role === "admin")
       return (
@@ -229,19 +305,83 @@ function Movie() {
                                  onChange={valueDate}
                               />
                            </div>
-
+                           <div className={styles.location}>
+                              <select
+                                 onChange={handleLocation}
+                                 className={styles.location_input}
+                              >
+                                 <option value="" selected>
+                                    Location
+                                 </option>
+                                 <option onClick={handleJakarta}>
+                                    Jakarta
+                                 </option>
+                                 <option onClick={handleBandung}>
+                                    Bandung
+                                 </option>
+                                 <option onClick={handleSemarang}>
+                                    Semarang
+                                 </option>
+                                 <option onClick={handlePalembang}>
+                                    Palembang
+                                 </option>
+                                 <option onClick={handleBanjar}>
+                                    Banjarbaru
+                                 </option>
+                              </select>
+                           </div>
                            <div className={styles.cinema_flex}>
                               <p>
                                  Cinema <span>:</span>{" "}
                               </p>
+
                               <div className={styles.image_cinema}>
-                                 <button value="1" onClick={valueCinema}>
+                                 <button
+                                    value={cgv}
+                                    onClick={handleCGV}
+                                    style={{
+                                       "background-color":
+                                          linkActive === "CGV Cinemas"
+                                             ? "#5F2EEA"
+                                             : "",
+                                       color:
+                                          linkActive === "CGV Cinemas"
+                                             ? "#fff"
+                                             : "#000",
+                                    }}
+                                 >
                                     CGV Cinemas
                                  </button>
-                                 <button value="2" onClick={valueCinema}>
+                                 <button
+                                    value={xxi}
+                                    onClick={handleXXI}
+                                    style={{
+                                       "background-color":
+                                          linkActive === "Cinema XXI"
+                                             ? "#5F2EEA"
+                                             : "",
+                                       color:
+                                          linkActive === "Cinema XXI"
+                                             ? "#fff"
+                                             : "#000",
+                                    }}
+                                 >
                                     Cinema XXI
                                  </button>
-                                 <button value="3" onClick={valueCinema}>
+                                 <button
+                                    value={cinepolis}
+                                    onClick={handleCinepolis}
+                                    style={{
+                                       "background-color":
+                                          linkActive === "Cinepolis"
+                                             ? "#5F2EEA"
+                                             : "",
+                                       color:
+                                          linkActive === "Cinepolis"
+                                             ? "#fff"
+                                             : "#000",
+                                    }}
+                                 >
                                     Cinepolis
                                  </button>
                               </div>
@@ -334,15 +474,26 @@ function Movie() {
                   <h2 className={styles.showtime}>Showtimes and Tickets</h2>
                   <section className={`${styles.show_bar} row`}>
                      <section className="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end">
-                        <input type="date" className={styles.dates} />
+                        <input
+                           type="date"
+                           className={styles.dates}
+                           onChange={handleDates}
+                        />
                      </section>
 
                      <section className="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-start">
-                        <select className={styles.select_location}>
-                           <option selected>Location</option>
-                           <option value="1">Puwekerto</option>
-                           <option value="2">Jakarta</option>
-                           <option value="3">Bandung</option>
+                        <select
+                           className={styles.select_location}
+                           onChange={handleLocationInput}
+                        >
+                           <option selected value="">
+                              Location
+                           </option>
+                           <option value="1">Jakarta</option>
+                           <option value="2">Bandung</option>
+                           <option value="3">Semarang</option>
+                           <option value="8">Palembang</option>
+                           <option value="9">Banjarbaru</option>
                         </select>
                      </section>
                   </section>
@@ -350,7 +501,7 @@ function Movie() {
 
                {/* card showtimes */}
                <section className={styles.card_showtimes}>
-                  <section className="row d-flex justify-content-center align-items-center gap-3">
+                  <section className="d-flex flex-wrap gap-3">
                      {schedule.length <= 0 ? (
                         <h1 className="text-center">
                            Ticket Currently Unavailable
@@ -455,15 +606,26 @@ function Movie() {
                <h2 className={styles.showtime}>Showtimes and Tickets</h2>
                <section className={`${styles.show_bar} row`}>
                   <section className="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end">
-                     <input type="date" className={styles.dates} />
+                     <input
+                        type="date"
+                        className={styles.dates}
+                        onChange={handleDates}
+                     />
                   </section>
 
                   <section className="col-12 col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-start">
-                     <select className={styles.select_location}>
-                        <option selected>Location</option>
-                        <option value="1">Puwekerto</option>
-                        <option value="2">Jakarta</option>
-                        <option value="3">Bandung</option>
+                     <select
+                        className={styles.select_location}
+                        onChange={handleLocationInput}
+                     >
+                        <option selected value="">
+                           Location
+                        </option>
+                        <option value="1">Jakarta</option>
+                        <option value="2">Bandung</option>
+                        <option value="3">Semarang</option>
+                        <option value="8">Palembang</option>
+                        <option value="9">Banjarbaru</option>
                      </select>
                   </section>
                </section>
@@ -471,7 +633,7 @@ function Movie() {
 
             {/* card showtimes */}
             <section className={styles.card_showtimes}>
-               <section className="row d-flex justify-content-center align-items-center gap-3">
+               <section className=" d-flex flex-wrap justify-content-center justify-content-lg-start justify-content-sm-center align-items-center  gap-3 mx-auto">
                   {schedule.length <= 0 ? (
                      <h1 className="text-center">
                         Ticket Currently Unavailable
