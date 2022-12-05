@@ -283,6 +283,11 @@
   .background {
     padding: 150px 10px 50px 10px ;
   }
+   .main_container {
+    gap: 0;
+    width: 100%;
+    margin: auto;
+  }
 }
 
 @media only screen and (max-width: 428px) {
