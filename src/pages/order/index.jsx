@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import authActions from "../../redux/actions/auth";
 import { useRouter } from "next/router";
+import Seat from "../../Components/seat/Seat";
 
 
 function Index() {
@@ -18,53 +19,55 @@ function Index() {
    const dispatch = useDispatch()
    const router = useRouter();
 
-   const booking = useSelector((state) => state.auth.payment);
-   const getYear = (booking.date).slice(0,4)
-   const getMonth = (booking.date).slice(5,7)
-   const getDay = (booking.date).slice(8,10)
+   const booking = useSelector((state) => state.auth.payment)
 
    const [seat, setSeat] = useState([])
+   const [seat_id, setSeat_id] = useState([])
+   const [nameseat, setNameseat] = useState([])
    const [sold, setSold] = useState([])
-   const [selected1, setSelected1] = useState(true)
-   const [selected2, setSelected2] = useState(true)
-
+   const [limit, setLimit] = useState(7);
+   const [selected, setSelected] = useState(true)
+   const [totalPayment, setTotalPayment] = useState(0)
+   
    useEffect(() => {
       axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/booking/seat?schedule=${booking.schedule_id}&time=${booking.time}`)
       .then((res) => setSold(res.data))
       .catch((err) => console.log(err))
    }, [])
 
-
-
-   // let chair = [
-   //    "A1","A2","A3",
-   //    "A4",
-   //    "A5",
-   //    "A6",
-   //    "A7",
-   //    "A8",
-   //    "A9",
-   //    "A10",
-   //    "A11",
-   //    "A12",
-   //    "A13",
-   //    "A14",
-   // ];
+   useEffect(() => {
+      axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/booking/allseat`)
+      .then((res) => {
+         setSeat_id(res.data.data)
+      })
+   }, [])
 
 
 
 
 
-   const valueSeat = (e) => {
-      setSeat([...seat, [e.target.value]]), 
-      setSelected1(!selected1)
-   };
-   const valueSeat1 = (e) => {
-      setSeat([...seat, [e.target.value]]), 
-      setSelected2(!selected2)
-      
-   };
+
+
+
+   // const valueSeat = (e) => {
+   //    setSeat([...seat, [e.target.value]]), 
+   //    setSelected(!selected)
+   // };
+
+   const checkSeat = (e) => {
+      const arr = seat
+      const index = arr.indexOf(e.target.value);
+      if (index > -1) {
+        arr.splice(index, 1); 
+      } else {
+        arr.push([e.target.value]);
+      }
+      setSeat(arr)
+      setTotalPayment(arr.length*booking.price)
+    };
+   console.log(typeof(seat))
    console.log(seat)
+   // console.log(totalPayment)
 
    
    const costing = (price) => {
@@ -98,13 +101,12 @@ function Index() {
 
 
 
-
    return (
       <>
          <Navbar />
          <main className={styles.bg}>
             <section className="row">
-               <section className="col-md-8">
+               <section className="col-md-8 col-sm-12">
                   <section className={styles.order__bar}>
                      <h2 className={styles.movie_select}>Movie Selected</h2>
                      <section className={styles.change_}>
@@ -133,154 +135,215 @@ function Index() {
                                  <p className="mt-2">G</p>
                               </div>
                               <div className="d-flex flex-row justify-content-center gap-5">
-                                 <div className="d-flex flex-row align-items-center justify-content-center">
-                                    <div className={`d-flex flex-column align-items-center justify-content-center ${styles.chair}`}>
-                                       <button value="1" onClick={valueSeat} className={(selected1) ? `${styles.chair1}` : `${styles.chair_selected}`}></button>
-                                       <button value="15" onClick={valueSeat1} className={(selected2) ? `${styles.chair2}` : `${styles.chair_selected1}`}></button>
-                                       <button value="29" onClick={valueSeat} className={styles.chair3}></button>
-                                       <button value="43" onClick={valueSeat} className={styles.chair4}></button>
-                                       <button value="57" onClick={valueSeat} className={styles.chair5}></button>
-                                       <button value="71" onClick={valueSeat} className={styles.chair6}></button>
-                                       <button value="85" onClick={valueSeat} className={styles.chair6}></button>
-                                       <p className="mt-3">1</p>
+                                 <div className="d-flex flex-column align-items-center">
+
+                                    <div className={`d-flex gap-5 flex-row align-items-center justify-content-center ${styles.chair}`}>
+                                       <div className="">
+                                          {seat_id.map((e,index) => index < 7 && 
+                                          (
+                                             <Seat 
+                                             key={e.id}
+                                             id={e.id}
+                                             seat={e.seat.slice(1,3)}
+                                             handleArr={checkSeat}
+                                             // Untuk styling disini (INGET KITA NGERJAIN RAME-RAME GK KETEMU (05-12-2022))
+                                             // styling={(selected) ? styles.chair1 : styles.chair_selected1}
+                                             // selected={selected}
+                                             // chair={styles.chair1}
+                                             // select={styles.chair_selected1}
+                                             // id_selected={e.id}
+                                             // id_chair={e.id}
+                                             />
+                                          ))}
+                                       </div>
+                                       <div className="">
+                                          {seat_id.map((e,index) => index >= 7 && index < 14 && 
+                                          (
+                                             <Seat 
+                                             key={e.id}
+                                             id={e.id}
+                                             seat={e.seat.slice(1,3)}
+                                             handleArr={checkSeat}
+                                             />
+                                          ))}
+                                       </div>
                                     </div>
-                                    <div className="d-flex flex-column align-items-center justify-content-center">
-                                       <button value="2" onClick={valueSeat} className={styles.chair7}></button>
-                                       <button value="16" onClick={valueSeat} className={styles.chair8}></button>
-                                       <button value="30" onClick={valueSeat} className={styles.chair9}></button>
-                                       <button value="44" onClick={valueSeat} className={styles.chair9}></button>
-                                       <button value="58" onClick={valueSeat} className={styles.chair10}></button>
-                                       <button value="72" onClick={valueSeat} className={styles.chair11}></button>
-                                       <button value="86" onClick={valueSeat} className={styles.chair12}></button>
-                                       <p className="mt-3">2</p>
+
+                                    {/* kursi B */}
+                                    <div className={`d-flex gap-5 flex-row align-items-center justify-content-center ${styles.chair}`}>
+                                       <div className="">
+                                          {seat_id.map((e,index) => index >= 14 && index < 21 && 
+                                          (
+                                             <Seat 
+                                             key={e.id}
+                                             id={e.id}
+                                             seat={e.seat.slice(1,3)}
+                                             handleArr={checkSeat}
+                                             />
+                                          ))}
+                                       </div>
+
+                                       <div className="">
+                                          {seat_id.map((e,index) => index >= 21 && index < 28 && 
+                                          (
+                                             <Seat 
+                                             key={e.id}
+                                             id={e.id}
+                                             seat={e.seat.slice(1,3)}
+                                             handleArr={checkSeat}
+                                             />
+                                          ))}
+                                       </div>
                                     </div>
-                                    <div className="d-flex flex-column align-items-center justify-content-center">
-                                       <button value="3" onClick={valueSeat} className={styles.chair13}></button>
-                                       <button value="17" onClick={valueSeat} className={styles.chair14}></button>
-                                       <button value="31" onClick={valueSeat} className={styles.chair14}></button>
-                                       <button value="45" onClick={valueSeat} className={styles.chair14}></button>
-                                       <button value="59" onClick={valueSeat} className={styles.chair15}></button>
-                                       <button value="73" onClick={valueSeat} className={styles.chair16}></button>
-                                       <button value="87" onClick={valueSeat} className={styles.chair17}></button>
-                                       <p className="mt-3">3</p>
+
+
+                                    {/* kursi C */}
+                                    <div className={`d-flex gap-5 flex-row align-items-center justify-content-center ${styles.chair}`}>
+                                       <div className="">
+                                          {seat_id.map((e,index) => index >= 28 && index < 35 && 
+                                          (
+                                             <Seat 
+                                             key={e.id}
+                                             id={e.id}
+                                             seat={e.seat.slice(1,3)}
+                                             handleArr={checkSeat}
+                                             />
+                                          ))}
+                                       </div>
+
+                                       <div className="">
+                                          {seat_id.map((e,index) => index >= 35 && index < 42 && 
+                                          (
+                                             <Seat 
+                                             key={e.id}
+                                             id={e.id}
+                                             seat={e.seat.slice(1,3)}
+                                             handleArr={checkSeat}
+                                             />
+                                          ))}
+                                       </div>
                                     </div>
-                                    <div className="d-flex flex-column align-items-center justify-content-center">
-                                       <button value="4" onClick={valueSeat} className={styles.chair19}></button>
-                                       <button value="18" onClick={valueSeat} className={styles.chair20}></button>
-                                       <button value="32" onClick={valueSeat} className={styles.chair20}></button>
-                                       <button value="46" onClick={valueSeat} className={styles.chair21}></button>
-                                       <button value="60" onClick={valueSeat} className={styles.chair22}></button>
-                                       <button value="74" onClick={valueSeat} className={styles.chair23}></button>
-                                       <button value="88" onClick={valueSeat} className={styles.chair24}></button>
-                                       <p className="mt-3">4</p>
+
+                                    {/* kursi D */}
+                                    <div className={`d-flex gap-5 flex-row align-items-center justify-content-center ${styles.chair}`}>
+                                       <div className="">
+                                          {seat_id.map((e,index) => index >= 42 && index < 49 && 
+                                          (
+                                             <Seat 
+                                             key={e.id}
+                                             id={e.id}
+                                             seat={e.seat.slice(1,3)}
+                                             handleArr={checkSeat}
+                                             />
+                                          ))}
+                                       </div>
+
+                                       <div className="">
+                                          {seat_id.map((e,index) => index >= 49 && index < 56 && 
+                                          (
+                                             <Seat 
+                                             key={e.id}
+                                             id={e.id}
+                                             seat={e.seat.slice(1,3)}
+                                             handleArr={checkSeat}
+                                             />
+                                          ))}
+                                       </div>
                                     </div>
-                                    <div className="d-flex flex-column align-items-center justify-content-center">
-                                       <button value="5" onClick={valueSeat} className={styles.chair25}></button>
-                                       <button value="19" onClick={valueSeat} className={styles.chair26}></button>
-                                       <button value="33" onClick={valueSeat} className={styles.chair27}></button>
-                                       <button value="47" onClick={valueSeat} className={styles.chair28}></button>
-                                       <button value="61" onClick={valueSeat} className={styles.chair28}></button>
-                                       <button value="75" onClick={valueSeat} className={styles.chair29}></button>
-                                       <button value="89" onClick={valueSeat} className={styles.chair30}></button>
-                                       <p className="mt-3">5</p>
+
+
+                                    {/* kursi F */}
+                                    <div className={`d-flex gap-5 flex-row align-items-center justify-content-center ${styles.chair}`}>
+                                       <div className="">
+                                          {seat_id.map((e,index) => index >= 56 && index < 63 && 
+                                          (
+                                             <Seat 
+                                             key={e.id}
+                                             id={e.id}
+                                             seat={e.seat.slice(1,3)}
+                                             handleArr={checkSeat}
+                                             />
+                                          ))}
+                                       </div>
+
+                                       <div className="">
+                                          {seat_id.map((e,index) => index >= 63 && index < 70 && 
+                                          (
+                                             <Seat 
+                                             key={e.id}
+                                             id={e.id}
+                                             seat={e.seat.slice(1,3)}
+                                             handleArr={checkSeat}
+                                             />
+                                          ))}
+                                       </div>
                                     </div>
-                                    <div className="d-flex flex-column align-items-center justify-content-center">
-                                       <button value="6" onClick={valueSeat} className={styles.chair31}></button>
-                                       <button value="20" onClick={valueSeat} className={styles.chair32}></button>
-                                       <button value="34" onClick={valueSeat} className={styles.chair32}></button>
-                                       <button value="48" onClick={valueSeat} className={styles.chair33}></button>
-                                       <button value="62" onClick={valueSeat} className={styles.chair34}></button>
-                                       <button value="76" onClick={valueSeat} className={styles.chair35}></button>
-                                       <button value="90" onClick={valueSeat} className={styles.chair36}></button>
-                                       <p className="mt-3">6</p>
+
+                                    {/* kursi F */}
+                                    <div className={`d-flex gap-5 flex-row align-items-center justify-content-center ${styles.chair}`}>
+                                       <div className="">
+                                          {seat_id.map((e,index) => index >= 70 && index < 77 && 
+                                          (
+                                             <Seat 
+                                             key={e.id}
+                                             id={e.id}
+                                             seat={e.seat.slice(1,3)}
+                                             handleArr={checkSeat}
+                                             />
+                                          ))}
+                                       </div>
+
+                                       <div className="">
+                                          {seat_id.map((e,index) => index >= 77 && index < 84 && 
+                                          (
+                                             <Seat 
+                                             key={e.id}
+                                             id={e.id}
+                                             seat={e.seat.slice(1,3)}
+                                             handleArr={checkSeat}
+                                             />
+                                          ))}
+                                       </div>
                                     </div>
-                                    <div className="d-flex flex-column align-items-center justify-content-center">
-                                       <button value="7" onClick={valueSeat} className={styles.chair37}></button>
-                                       <button value="21" onClick={valueSeat} className={styles.chair38}></button>
-                                       <button value="35" onClick={valueSeat} className={styles.chair39}></button>
-                                       <button value="49" onClick={valueSeat} className={styles.chair39}></button>
-                                       <button value="63" onClick={valueSeat} className={styles.chair40}></button>
-                                       <button value="77" onClick={valueSeat} className={styles.chair41}></button>
-                                       <button value="91" onClick={valueSeat} className={styles.chair42}></button>
-                                       <p className="mt-3">7</p>
+
+
+                                    {/* kursi G */}
+                                    <div className={`d-flex gap-5 flex-row align-items-center justify-content-center ${styles.chair}`}>
+                                       <div className="">
+                                          {seat_id.map((e,index) => index >= 84 && index < 91 && 
+                                          (
+                                             <Seat 
+                                             key={e.id}
+                                             id={e.id}
+                                             seat={e.seat.slice(1,3)}
+                                             handleArr={checkSeat}
+                                             />
+                                          ))}
+                                       </div>
+
+                                       <div className="">
+                                          {seat_id.map((e,index) => index >= 91 && index < 98 && 
+                                          (
+                                             <Seat 
+                                             key={e.id}
+                                             id={e.id}
+                                             seat={e.seat.slice(1,3)}
+                                             handleArr={checkSeat}
+                                             />
+                                          ))}
+                                       </div>
                                     </div>
+
+
+                                    
+                                    
+
+
                                  </div>
                                  
                                  
 
 
-                                 <div className="d-flex flex-row align-items-center justify-content-center">
-                                    <div className={`d-flex flex-column align-items-center justify-content-center ${styles.chair}`}>
-                                       <button value="8" onClick={valueSeat} className={(sold[0]) ? styles.chair2 : styles.chair_sold}></button>
-                                       <button value="22" onClick={valueSeat} className={styles.chair2}></button>
-                                       <button value="36" onClick={valueSeat} className={styles.chair3}></button>
-                                       <button value="50" onClick={valueSeat} className={styles.chair3}></button>
-                                       <button value="64" onClick={valueSeat} className={styles.chair4}></button>
-                                       <button value="78" onClick={valueSeat} className={styles.chair5}></button>
-                                       <button value="92" onClick={valueSeat} className={styles.chair6}></button>
-                                       <p className="mt-3">8</p>
-                                    </div>
-                                    <div className="d-flex flex-column align-items-center justify-content-center">
-                                       <button value="9" onClick={valueSeat} className={styles.chair7}></button>
-                                       <button value="23" onClick={valueSeat} className={styles.chair8}></button>
-                                       <button value="37" onClick={valueSeat} className={styles.chair9}></button>
-                                       <button value="51" onClick={valueSeat} className={styles.chair9}></button>
-                                       <button value="65" onClick={valueSeat} className={styles.chair10}></button>
-                                       <button value="79" onClick={valueSeat} className={styles.chair11}></button>
-                                       <button value="93" onClick={valueSeat} className={styles.chair12}></button>
-                                       <p className="mt-3">9</p>
-                                    </div>
-                                    <div className="d-flex flex-column align-items-center justify-content-center">
-                                       <button value="10" onClick={valueSeat} className={styles.chair13}></button>
-                                       <button value="24" onClick={valueSeat} className={styles.chair14}></button>
-                                       <button value="38" onClick={valueSeat} className={styles.chair15}></button>
-                                       <button value="52" onClick={valueSeat} className={styles.chair15}></button>
-                                       <button value="66" onClick={valueSeat} className={styles.chair16}></button>
-                                       <button value="80" onClick={valueSeat} className={styles.chair17}></button>
-                                       <button value="94" onClick={valueSeat} className={styles.chair18}></button>
-                                       <p className="mt-3">10</p>
-                                    </div>
-                                    <div className="d-flex flex-column align-items-center justify-content-center">
-                                       <button value="11" onClick={valueSeat} className={styles.chair19}></button>
-                                       <button value="25" onClick={valueSeat} className={styles.chair20}></button>
-                                       <button value="39" onClick={valueSeat} className={styles.chair21}></button>
-                                       <button value="53" onClick={valueSeat} className={styles.chair21}></button>
-                                       <button value="67" onClick={valueSeat} className={styles.chair22}></button>
-                                       <button value="81" onClick={valueSeat} className={styles.chair23}></button>
-                                       <button value="95" onClick={valueSeat} className={styles.chair24}></button>
-                                       <p className="mt-3">11</p>
-                                    </div>
-                                    <div className="d-flex flex-column align-items-center justify-content-center">
-                                       <button value="12" onClick={valueSeat} className={styles.chair25}></button>
-                                       <button value="26" onClick={valueSeat} className={styles.chair26}></button>
-                                       <button value="40" onClick={valueSeat} className={styles.chair27}></button>
-                                       <button value="54" onClick={valueSeat} className={styles.chair27}></button>
-                                       <button value="68" onClick={valueSeat} className={styles.chair28}></button>
-                                       <button value="82" onClick={valueSeat} className={styles.chair29}></button>
-                                       <button value="96" onClick={valueSeat} className={styles.chair30}></button>
-                                       <p className="mt-3">12</p>
-                                    </div>
-                                    <div className="d-flex flex-column align-items-center justify-content-center">
-                                       <button value="13" onClick={valueSeat} className={styles.chair31}></button>
-                                       <button value="27" onClick={valueSeat} className={styles.chair32}></button>
-                                       <button value="41" onClick={valueSeat} className={styles.chair33}></button>
-                                       <button value="55" onClick={valueSeat} className={styles.chair33}></button>
-                                       <button value="69" onClick={valueSeat} className={styles.chair34}></button>
-                                       <button value="83" onClick={valueSeat} className={styles.chair36}></button>
-                                       <button value="97" onClick={valueSeat} className={styles.chair36}></button>
-                                       <p className="mt-3">13</p>
-                                    </div>
-                                    <div className="d-flex flex-column align-items-center justify-content-center">
-                                       <button value="14" onClick={valueSeat} className={styles.chair37}></button>
-                                       <button value="28" onClick={valueSeat} className={styles.chair38}></button>
-                                       <button value="42" onClick={valueSeat} className={styles.chair39}></button>
-                                       <button value="56" onClick={valueSeat} className={styles.chair39}></button>
-                                       <button value="70" onClick={valueSeat} className={styles.chair40}></button>
-                                       <button value="84" onClick={valueSeat} className={styles.chair41}></button>
-                                       <button value="98" onClick={valueSeat} className={styles.chair42}></button>
-                                       <p className="mt-3">14</p>
-                                    </div>
-                                 </div>
 
 
                               </div>
@@ -345,7 +408,7 @@ function Index() {
                         <section className={styles.content__desc}>
                            <p className={styles.label_order}>
                               {/* Tuesday, 07 July 2020 */}
-                              {`${getDay} - ${getMonth} - ${getYear}`}
+                              {booking.date}
                            </p>
                            <p className={styles.label_order_right}>{booking.time}</p>
                         </section>
@@ -364,7 +427,7 @@ function Index() {
                      </section>
                      <section className={styles.content_bottom}>
                         <p className={styles.label_payment}>Seat choosed</p>
-                        <p className={styles.total_payment}>{costing((seat.length)*booking.price)}</p>
+                        <p className={styles.total_payment}>{costing(totalPayment)}</p>
                      </section>
                   </section>
                </section>

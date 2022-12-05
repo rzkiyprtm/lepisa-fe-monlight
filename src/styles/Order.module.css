@@ -247,6 +247,19 @@
     color: #4E4B66;
 }
 
+.selected2 {
+    padding-left: 10px;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.75px;
+    color: #4E4B66;
+}
+
 .box_sold {
     background-color: #6B6B6B;
     padding: 10px;
