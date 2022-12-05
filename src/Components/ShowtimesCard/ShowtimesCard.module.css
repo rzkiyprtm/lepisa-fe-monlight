@@ -51,6 +51,11 @@
     padding: 16px 0;
 }
 
+.times > button {
+    background-color: transparent;
+    border: none;
+}
+
 .time {
     padding-bottom: 16px;
     font-family: 'Mulish';

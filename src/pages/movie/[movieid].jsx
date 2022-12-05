@@ -140,6 +140,8 @@ function Movie() {
          })
          .catch((err) => console.log(err));
    }, [add]);
+
+   
    // tampilan movie detail dengan role admin ada inputan nya
    if (role === "admin")
       return (
@@ -251,30 +253,30 @@ function Movie() {
                               </p>
                               <div className={styles.time}>
                                  <div className={styles.time_button}>
-                                    <button value="10.00" onClick={valueTime}>
+                                    <button value="'10:00'" onClick={valueTime}>
                                        10:00
                                     </button>
-                                    <button value="11.00" onClick={valueTime}>
+                                    <button value="'11:00'" onClick={valueTime}>
                                        11:00
                                     </button>
-                                    <button value="12.00" onClick={valueTime}>
+                                    <button value="'12:00'" onClick={valueTime}>
                                        12:00
                                     </button>
-                                    <button value="13.00" onClick={valueTime}>
+                                    <button value="'13:00'" onClick={valueTime}>
                                        13:00
                                     </button>
                                  </div>
                                  <div className={styles.time_button}>
-                                    <button value="14.00" onClick={valueTime}>
+                                    <button value="'14:00'" onClick={valueTime}>
                                        14:00
                                     </button>
-                                    <button value="15.00" onClick={valueTime}>
+                                    <button value="'15:00'" onClick={valueTime}>
                                        15:00
                                     </button>
-                                    <button value="16.00" onClick={valueTime}>
+                                    <button value="'16:00'" onClick={valueTime}>
                                        16:00
                                     </button>
-                                    <button value="17.00" onClick={valueTime}>
+                                    <button value="'17:00'" onClick={valueTime}>
                                        17:00
                                     </button>
                                  </div>
@@ -357,8 +359,11 @@ function Movie() {
                         schedule.map((e, index) => (
                            <Showtimes
                               key={index}
+                              id={e.id}
+                              tittle={e.tittle}
+                              date={e.date}
                               image={e.image}
-                              price={costing(e.price)}
+                              price={e.price}
                               address={e.address_name}
                               name={e.name}
                               time={e.time}
@@ -366,17 +371,6 @@ function Movie() {
                         ))
                      )}
                   </section>
-               </section>
-               {/* pagination */}
-               <section className={styles.pagination}>
-                  <div
-                     className={`${styles.btn_pagination} ${styles.selected}`}
-                  >
-                     1
-                  </div>
-                  <div className={`${styles.btn_pagination} `}>2</div>
-                  <div className={`${styles.btn_pagination} `}>3</div>
-                  <div className={`${styles.btn_pagination} `}>4</div>
                </section>
             </main>
             <Footer />
@@ -488,8 +482,11 @@ function Movie() {
                            index < showmore && (
                               <Showtimes
                                  key={index}
+                                 id={e.id}
+                                 tittle={e.tittle}
+                                 date={e.date}
                                  image={e.image}
-                                 price={costing(e.price)}
+                                 price={e.price}
                                  address={e.address_name}
                                  name={e.name}
                                  time={e.time}

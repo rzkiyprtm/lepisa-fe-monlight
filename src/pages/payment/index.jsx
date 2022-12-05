@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from "../../Components/Navbar/Navbar"
 import Footer from "../../Components/Footer/Footer"
 import Image from 'next/image'
@@ -16,8 +16,64 @@ import bri from "../../assets/payment_image/bri.png"
 import ovo from "../../assets/payment_image/ovo.png"
 import warn from "../../assets/payment_image/warn.png"
 import withAuth from '../../Components/privateElement/withAuth'
+import { useSelector } from 'react-redux'
+import axios from 'axios'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Cookies from 'js-cookie'
 
-function paymentPage() {
+function Payment() {
+
+    const router = useRouter()
+
+    const booking = useSelector((state) => state.auth.payment)
+    const profile = useSelector((state) => state.auth.profile)
+
+    const [show, setShow] = useState(false);
+    const [va, setVa] = useState("")
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    
+
+    const costing = (price) => {
+      return (
+         "IDR " +
+         parseFloat(price)
+            .toFixed()
+            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+      );
+   };
+
+  //  useEffect(() => {
+      
+  //  }, [])
+
+  const payment = () => {
+    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/booking/create-booking`,{
+      seat_item: booking.seat,
+      schedule_id: booking.schedule_id,
+      total_ticket: booking.total_ticket,
+      time: booking.time,
+      total_payment: booking.total_payment,
+      full_name: `${profile.firstname} ${profile.lastname}`,
+      email: profile.email,
+      phone_number: profile.email,
+      payment_method_id: 1
+    }, {
+      headers: {
+        "x-access-token" : Cookies.get("token")
+      },
+    })
+    .then((res) => {
+      // router.push(`https://simulator.sandbox.midtrans.com/bca/va/index`),
+      setVa(res.data.result.midtrans.va_numbers.va_number)
+      setShow(true)
+    })
+    .catch((err) => console.log(err))
+  }
+
   return (
     <>
       <Navbar/>
@@ -30,27 +86,27 @@ function paymentPage() {
             <div className={styles["container-payment"]}>
             <div className="date-time">
               <label htmlFor="datetime">Date & Time</label>
-              <input type="text" placeholder='Tuesday, 07 July 2020 at 02:00pm' />
+              <input type="text" value={(booking.date).slice(0,10)} />
             </div>
             <hr className={styles['list-hr']} />
             <div className={styles["movie-title"]}>
               <label htmlFor="movietitle">Movie Title</label>
-              <input type="text" placeholder='Spider-Man: Putra Parker' />
+              <input type="text" value={booking.tittle} />
             </div>
             <hr className={styles['list-hr']} />
             <div className={styles["cinema-name"]}>
               <label htmlFor="cinemaname">Cinema Name</label>
-              <input type="text" placeholder='CineOne Pratamax' />
+              <input type="text" value={booking.cinema_name} />
             </div>
             <hr className={styles['list-hr']} />
             <div className={styles["number-ticket"]}>
               <label htmlFor="numofticket">Number of Tickets</label>
-              <input type="text" placeholder='3 pieces' />
+              <input type="text" value={`${booking.total_ticket} pieces`} />
             </div>
             <hr className={styles['list-hr']} />
             <div className={styles["payment"]}>
-              <label htmlFor="totalpayment">TotalPayment</label>
-              <input type="text" placeholder='$30' />
+              <label htmlFor="totalpayment">Total Payment</label>
+              <input type="text" value={costing(booking.total_payment)} />
             </div>
             </div>
 
@@ -130,7 +186,7 @@ function paymentPage() {
         <button>Previous step</button>
         </div>
         <div className={styles["btn-pay"]}>
-          <button>Pay your order</button>
+          <button onClick={payment}>Pay your order</button>
         </div>
 
         </div>
@@ -143,15 +199,15 @@ function paymentPage() {
               <div className={styles["personal-info-container"]}>
               <div className={styles["name"]}>
                 <label htmlFor="name">Full Name</label>
-                <input type="text" placeholder='Putra Parker' />
+                <input type="text" value={`${profile.firstname} ${profile.lastname}`} />
               </div>
               <div className="email">
                 <label htmlFor="email">Email</label>
-                <input type="text" placeholder='pratamabusiness@gmail.com' />
+                <input type="text" value={profile.email} />
               </div>
               <div className="phone">
                 <label htmlFor="phone">Phone Number</label>
-                <input type="text" placeholder='08888800088' />
+                <input type="text" value={profile.phone_number} />
               </div>
               <div className={styles["warn-notification"]}>
               <div className={styles["warn-box"]}>
@@ -166,8 +222,22 @@ function paymentPage() {
 
       </div>
       <Footer/>
+
+      {/* modal logout */}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>LEPISA MOVIES</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure to logout?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="success">
+            To Payment Mitrans
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Footer />
     </>
   )
 }
 
-export default withAuth(paymentPage)
+export default withAuth(Payment)

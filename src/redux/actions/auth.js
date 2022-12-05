@@ -4,6 +4,8 @@ import { getUserId, logout } from "../../utils/axios"
 
 const { Pending, Rejected, Fulfilled } = ActionType;
 
+
+// Logout
 const logoutPending = () => () => ({
   type: ACTION_STRING.authLogout.concat("_", Pending),
 });
@@ -16,6 +18,25 @@ const logoutFulfilled = (data) => ({
   payload: { data },
 });
 
+
+
+const logoutThunk = (token, router) => {
+  return async (dispatch) => {
+    try {
+      dispatch(logoutPending());
+      const result = await logout(token);
+      dispatch(logoutFulfilled(result.data));
+      if (typeof router === "function") router();
+    } catch (error) {
+      dispatch(logoutRejected(error))
+    }
+  }
+}
+
+
+
+
+// Reset
 const resetPending = () => () => ({
   type: ACTION_STRING.authReset.concat("_", Pending),
 });
@@ -27,6 +48,22 @@ const resetFulfilled = (data) => ({
   type: ACTION_STRING.authReset.concat("_", Fulfilled),
   payload: { data },
 });
+
+
+const resetThunk = (body, navigate) => {
+  return async (dispatch) => {
+    try {
+      dispatch(resetPending());
+      const result = await reset(body);
+      dispatch(resetFulfilled(result.data));
+      console.log(result);
+    } catch (error) {
+      dispatch(resetRejected(error))
+    }
+  }
+}
+
+
 
 
 // Get id user
@@ -58,36 +95,33 @@ const userThunk = (token, router) => {
 };
 
 
-const logoutThunk = (token, router) => {
-  return async (dispatch) => {
-    try {
-      dispatch(logoutPending());
-      const result = await logout(token);
-      dispatch(logoutFulfilled(result.data));
-      if (typeof router === "function") router();
-    } catch (error) {
-      dispatch(logoutRejected(error))
-    }
-  }
-}
+// Booking
+const bookingFulfilled = (body) => ({
+  type: ACTION_STRING.booking.concat("_", Fulfilled),
+  payload: { body },
+});
 
-const resetThunk = (body, navigate) => {
-  return async (dispatch) => {
+
+const bookingThunk = (body, router) => {
+  return async (dispacth) => {
     try {
-      dispatch(resetPending());
-      const result = await reset(body);
-      dispatch(resetFulfilled(result.data));
-      console.log(result);
-    } catch (error) {
-      dispatch(resetRejected(error))
+      dispacth(bookingFulfilled(body));
+      if (typeof router === "function") router();
+    } catch {
+      (error) => {
+        console.log(error);
+      };
     }
-  }
-}
+  };
+};
+
+
 
 const authActions = {
   userThunk,
   logoutThunk,
   resetThunk,
+  bookingThunk,
 };
 
 export default authActions;

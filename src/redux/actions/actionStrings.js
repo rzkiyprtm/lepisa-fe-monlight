@@ -10,4 +10,5 @@ export const ACTION_STRING = {
   dataProfile: "GET_PROFILE",
   editProfile: "EDIT_PROFILE",
   updateProfile: "UPDATE_PROFILE",
+  booking: "BOOKING",
 }
