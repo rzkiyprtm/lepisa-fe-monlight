@@ -3,23 +3,32 @@ import React from "react";
 
 import image_cinema from "../../assets/admin/cineone21.png"
 import css from "./CardHistory.module.css"
+let days = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
 
-function CardHistory() {
+function CardHistory(props) {
   return (
     <>
       <div className={css.content_background}>
         <div className={css.title_name}>
           <div className={css.title_bioskop}>
             <p className={css.time_bioskop}>
-              Tuesday, 07 July 2020 - 04:30pm
+              {`${props.days},${props.day},${props.month},${props.year}`}
             </p>
             <p className={css.name_film}>
-              Spider-Man: Homecoming
+            {props.tittle}
             </p>
           </div>
           <div className={css.image}>
             <Image
-              src={image_cinema}
+              src={props.image}
               alt='Partner'
               width={100}
               height={30}
