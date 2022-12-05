@@ -4,6 +4,7 @@ import React from "react";
 import image_cinema from "../../assets/admin/cineone21.png"
 import css from "./CardHistory.module.css"
 
+
 function CardHistory(props) {
   return (
     <>
