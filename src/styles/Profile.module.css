@@ -7,7 +7,9 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 50px;
+  /* gap: 50px; */
+  width: 100%;
+  margin: auto;
 }
 
 
@@ -206,10 +208,11 @@
   letter-spacing: 0.75px;
   color: #F7F7FC;
   background: rgb(253, 53, 53);
-  border-radius: 16px;
+  border-radius: 10px;
   padding: 10px 10px 10px 10px;
   width: 15%;
   border: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 
@@ -233,7 +236,7 @@
   line-height: 32px;
   letter-spacing: 0.75px;
   color: white;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -256,7 +259,7 @@
   line-height: 32px;
   letter-spacing: 0.75px;
   color: white;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -272,7 +275,7 @@
   line-height: 32px;
   letter-spacing: 0.75px;
   color: white;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -288,6 +291,24 @@
 @media only screen and (max-width: 428px) {
   .background {
     padding: 150px 10px 50px 10px ;
+  }
+
+  .detail_save {
+    border: none;
+    background-color: #5F2EEA;
+    padding: 2px 20px 2px 20px;
+    border: none;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 11px;
+    height: 37px;
+    width: 120px;
+    line-height: 20px;
+    letter-spacing: 0.75px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
   }
 
   .bar_profile_right {
@@ -328,6 +349,7 @@
 .logout {
   width: 100%;
   margin-top: 20px;
+ 
 }
 
 .submit_button {
