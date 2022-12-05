@@ -2,7 +2,15 @@
 .background_left {
   background-color: white;
   padding: 20px 30px 20px 30px;
-  border-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.background_left_top {
+  background-color: white;
+  padding: 20px 30px 20px 30px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .info {
@@ -10,7 +18,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .info > p {

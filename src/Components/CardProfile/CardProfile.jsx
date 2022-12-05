@@ -12,6 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import authActions from "../../redux/actions/auth"
 
+
 function CardProfile() {
 
   const dispatch = useDispatch()
@@ -20,10 +21,13 @@ function CardProfile() {
   const [image, setImage] = useState("");
   const [display, setDisplay] = useState(profile.image);
   const [btnsave, setBtnsave] = useState(false);
+  const [showprofile, setShowprofile] = useState(true)
 
     const handleSaveShow = () => {
       setBtnsave(true);
     };
+
+    const handleShow = () => {setShowprofile(!showprofile)}
     
     // handleCancel => untuk cancel profile
     const handleCancel = () => {
@@ -77,11 +81,16 @@ function CardProfile() {
                 theme="light"
             />
       <div className='col-lg-4 col-md-12 col-sm-12 '>
-        <div className={css.background_left}>
+        <div className={css.background_left_top}>
           <div className={css.info}>
             <p className=''>INFO</p>
-            <i className='fa-solid fa-ellipsis'></i>
+            <i className='fa-solid fa-ellipsis' onClick={handleShow}></i>
           </div>
+        </div>
+
+        {showprofile && (
+
+        <div className={css.background_left}>
           <div className={css.image_user}>
             <Image
               src={(display === null) ? `${process.env.CLOUDINARY_LINK}` : display}
@@ -89,15 +98,17 @@ function CardProfile() {
               width={150}
               height={150}
               className='rounded-circle'
-            />
+              />
+          
             <label htmlFor='image' className={btnsave ? "d-none" : `${css.profile_edit}`} onClick={handleSaveShow}>Edit image</label>
-            <input
-              type='file'
-              name=''
-              id='image'
-              onChange={inputImage}
-              className='d-none'
-            />
+          
+              <input
+                type='file'
+                name=''
+                id='image'
+                onChange={inputImage}
+                className='d-none'
+              />
             <div className={btnsave ? `${css.profile_button}` : "d-none"}>
               <button className={css.btn_save_profile} onClick={() => (Editimage(), setBtnsave(false))}>Save Profile</button>
               <button className={css.btn_cancel_profile} onClick={handleCancel}>Cancel</button>
@@ -109,6 +120,7 @@ function CardProfile() {
             {(profile.point === null) ? "Beginner" : (profile.point <= 1000) ? "Beginner" : (profile.point <= 10000) ? "Expert" : "Master" }
             </p>
           </div>
+      
           <div className={css.rule}></div>
           <div className={css.title_loyal}>
             <p>Loyalty Points</p>
@@ -138,6 +150,7 @@ function CardProfile() {
             ></div>
           </div>
         </div>
+        )}
       </div>
     </>
   );

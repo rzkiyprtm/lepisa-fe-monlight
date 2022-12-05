@@ -96,7 +96,10 @@ function Profile() {
   // Value target
   const valueFirstname = (e) => {setFirst(e.target.value)}
   const valueLastname = (e) => {setLast(e.target.value)}
-  const valuePhone = (e) => {setPhone(e.target.value)}
+  const valuePhone = (e) => {
+    if (e.target.value.length === 0) setPhone("");
+    if (/[0-9]{1,12}/g.test(e.target.value[e.target.value.length - 1])) setPhone(e.target.value);
+  };
   const valueOldpass = (e) => {setOldpass(e.target.value)}
   const valueNewpass = (e) => {setNewpass(e.target.value)}
   const valueConfirmpass = (e) => {setConfirmpass(e.target.value)}
@@ -236,6 +239,10 @@ function Profile() {
                     <input 
                       type="tel"
                       id=""
+                      value={phone}
+                      fields={6}
+                      maxLength={12}
+                      pattern="[0-9]{12}"
                       name="phone_number"
                       placeholder={profile.phone_number}
                       disabled={edit}
