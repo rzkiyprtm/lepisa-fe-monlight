@@ -257,6 +257,23 @@
     margin-top: 20px;
 }
 
+.location {
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.location_input {
+    padding-left: 10px;
+    width: 50%;
+    height: 35px;
+    border-radius: 8px;
+    border: 1px solid #000;
+    background-color: #DEDEDE;
+}
+
 .date_flex>p {
     font-family: 'Mulish';
     font-style: normal;

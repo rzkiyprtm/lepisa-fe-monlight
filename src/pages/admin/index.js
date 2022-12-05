@@ -13,8 +13,20 @@ import hiflix from "../../assets/admin/hiflix.png";
 import cinemaone from "../../assets/admin/cineone21.png";
 import withAuth from "../../Components/privateElement/withAuth";
 import { useRef } from "react";
+import Cookies from "js-cookie";
+import axios from "axios";
+import { useRouter } from "next/router";
+
+// toast
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+// modal
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 function Admin() {
+   const router = useRouter();
    // button show time ongoing to implementasi style
    const [showInput, setShowInput] = useState(false);
    const cgvImage =
@@ -27,11 +39,32 @@ function Admin() {
       setShowInput(!false);
       // console.log("click");
    };
-
+   // modal
+   const [show, setShow] = useState(false);
+   const handleClose = () => setShow(false);
+   const handleShow = () => setShow(true);
+   const [linkActive, setLinkActive] = useState("");
    const [cgv, setCgv] = useState("");
    const [xxi, setXxi] = useState("");
    const [cinepolis, setCinepolis] = useState("");
+   const handleCGV = () => {
+      setiLocationID(cgv);
+      setLinkActive("CGV");
+   };
+   const handleXXI = () => {
+      setiLocationID(xxi);
+      setLinkActive("XXI");
+   };
+   const handleCinepolis = () => {
+      setiLocationID(cinepolis);
+      setLinkActive("Cinepolis");
+   };
 
+   const costing = (price) => {
+      return parseFloat(price)
+         .toFixed()
+         .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+   };
    const handleJakarta = () => {
       setCgv(1), setXxi(2), setCinepolis(3);
    };
@@ -53,16 +86,18 @@ function Admin() {
    const [btnsave, setBtnsave] = useState(false);
    const [movieName, setMovieName] = useState("");
    const [category, setCategory] = useState("");
-   const [age, setAge] = useState("");
-   const [dates, setDates] = useState("");
    const [hour, setHour] = useState("");
    const [minute, setMinute] = useState("");
+   const [age, setAge] = useState("");
    const [director, setDirector] = useState("");
+   const [dates, setDates] = useState("");
    const [cast, setCast] = useState("");
    const [synopsis, setSynopsis] = useState("");
    const [location, setLocation] = useState("");
    const [showtimes, setShowtimes] = useState("");
    const [time, setTime] = useState("");
+   const [price, setPrice] = useState("");
+   const [locationID, setiLocationID] = useState("");
    const handleSaveShow = () => {
       setBtnsave(true);
    };
@@ -75,48 +110,41 @@ function Admin() {
    };
    const handleMoviename = (e) => {
       setMovieName(e.target.value);
-      console.log(movieName);
+      // console.log(movieName);
    };
    const handleCategory = (e) => {
       setCategory(e.target.value);
-      console.log(e.target.value);
    };
    const handleAge = (e) => {
       setAge(e.target.value);
-      console.log(e.target.value);
    };
    const handleDates = (e) => {
       setDates(e.target.value);
-      console.log(e.target.value);
    };
    const handleHour = (e) => {
       setHour(e.target.value);
-      console.log(e.target.value);
    };
    const handleMinute = (e) => {
       setMinute(e.target.value);
-      console.log(e.target.value);
    };
    const handleDirector = (e) => {
       setDirector(e.target.value);
-      console.log(e.target.value);
    };
    const handleCast = (e) => {
       setCast(e.target.value);
-      console.log(e.target.value);
    };
    const handleSynopsis = (e) => {
       setSynopsis(e.target.value);
-      console.log(e.target.value);
    };
    const showTimes = (e) => {
       setShowtimes(e.target.value);
-      console.log(e.target.value);
    };
    const valueTime = (e) => {
       setTime([...time, [e.target.value]]);
    };
-   console.log(time);
+   const handlePrice = (e) => {
+      setPrice(e.target.value);
+   };
    const handleLocation = (e) => {
       if (e.target.value === "Jakarta") {
          handleJakarta();
@@ -134,10 +162,35 @@ function Admin() {
          handleBanjar();
       }
    };
-   // console.log(cgv);
-   // console.log(xxi);
-   // console.log(cinepolis);
-   // console.log(location);
+   console.log(time);
+   const handleCreate = () => {
+      // const getToken = Cookies.get("token");
+      const formData = new FormData();
+      if (image) formData.append("image", image);
+      if (movieName) formData.append("tittle", movieName);
+      if (category) formData.append("category", category);
+      if (hour) formData.append("duration_hour", hour);
+      if (minute) formData.append("duration_minute", minute);
+      if (age) formData.append("category_age", age);
+      if (director) formData.append("director", director);
+      if (dates) formData.append("release_date", dates);
+      if (cast) formData.append("synopsis", cast);
+      if (synopsis) formData.append("cast", synopsis);
+      if (locationID) formData.append("location", locationID);
+      if (showtimes) formData.append("date", showtimes);
+      if (price) formData.append("price", price);
+      if (time) formData.append("time", time);
+
+      axios
+         .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/movie/add`, formData)
+         .then(
+            (res) => toast.success(res.data.msg),
+            setTimeout(() => {
+               router.push(`/movie/viewall/nowshowing`);
+            }, 5000)
+         )
+         .catch((err) => console.log(err));
+   };
    return (
       <>
          <Navbar />
@@ -265,9 +318,14 @@ function Admin() {
                               onChange={handleSynopsis}
                            ></textarea>
                         </div>
-                        <button className="btn btn-success d-flex justify-content-center align-items-center text-center">
-                           Save
-                        </button>
+                        <section className={css.save_bar}>
+                           <button
+                              className={css.btn_save}
+                              onClick={handleShow}
+                           >
+                              Save
+                           </button>
+                        </section>
                      </div>
                   </div>
 
@@ -311,8 +369,16 @@ function Admin() {
                                     <button
                                        className={css.btn_location}
                                        value={cgv}
-                                       onClick={(e) => {
-                                          console.log(e.target.value);
+                                       onClick={handleCGV}
+                                       style={{
+                                          "background-color":
+                                             linkActive === "CGV"
+                                                ? "#52eb55"
+                                                : "",
+                                          color:
+                                             linkActive === "CGV"
+                                                ? "#000"
+                                                : "#fff",
                                        }}
                                     >
                                        CGV
@@ -320,20 +386,36 @@ function Admin() {
                                     <button
                                        className={css.btn_location}
                                        value={xxi}
-                                       onClick={(e) => {
-                                          console.log(e.target.value);
+                                       onClick={handleXXI}
+                                       style={{
+                                          "background-color":
+                                             linkActive === "XXI"
+                                                ? "#52eb55"
+                                                : "",
+                                          color:
+                                             linkActive === "XXI"
+                                                ? "#000"
+                                                : "#fff",
                                        }}
                                     >
-                                       xxi
+                                       XXI
                                     </button>
                                     <button
                                        className={css.btn_location}
                                        value={cinepolis}
-                                       onClick={(e) => {
-                                          console.log(e.target.value);
+                                       onClick={handleCinepolis}
+                                       style={{
+                                          "background-color":
+                                             linkActive === "Cinepolis"
+                                                ? "#52eb55"
+                                                : "",
+                                          color:
+                                             linkActive === "Cinepolis"
+                                                ? "#000"
+                                                : "#fff",
                                        }}
                                     >
-                                       cinepolis
+                                       Cinepolis
                                     </button>
                                  </div>
                               </div>
@@ -393,6 +475,19 @@ function Admin() {
                                        17:00
                                     </button>
                                  </div>
+                                 <section className="d-flex justify-content-start align-items-center w-100 mt-3">
+                                    <section className="w-100 position-relative">
+                                       <label htmlFor="price">Price :</label>
+                                       <input
+                                          id="price"
+                                          type="number"
+                                          className={css.input_price}
+                                          value={price}
+                                          onChange={handlePrice}
+                                       />
+                                       <p className={css.label_price}>IDR .</p>
+                                    </section>
+                                 </section>
                               </div>
                            </div>
                         </div>
@@ -429,8 +524,33 @@ function Admin() {
                </div>
             </div>
          </div>
+         <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+               <Modal.Title>LEPISA MOVIES</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+               please make sure this movie data is correct!
+            </Modal.Body>
+            <Modal.Footer>
+               <Button variant="success" onClick={handleCreate}>
+                  Yes
+               </Button>
+               <Button variant="secondary" onClick={handleClose}>
+                  Cancel
+               </Button>
+            </Modal.Footer>
+         </Modal>
 
          <Footer />
+         <ToastContainer
+            position="top-center"
+            autoClose={3000}
+            hideProgressBar={false}
+            closeOnClick={true}
+            pauseOnHover={true}
+            draggable={true}
+            theme="light"
+         />
       </>
    );
 }

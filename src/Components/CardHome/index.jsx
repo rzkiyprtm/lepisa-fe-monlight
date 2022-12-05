@@ -3,9 +3,11 @@ import Image from "next/image";
 import card_image from "../../assets/homepage/img_cardhome.png";
 import styles from "./CardHome.module.css";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 function Index(props) {
    // const [variant, setVariant] = useState("coming");
    const router = useRouter();
+   const role = Cookies.get("role");
 
    const toMoviedetail = () => router.push(`/movie/${props.id}`);
 
@@ -27,9 +29,14 @@ function Index(props) {
                <div className={styles.detail} onClick={toMoviedetail}>
                   Details
                </div>
-               <div className={`${styles.books} ${props.variant}`}>
-                  Book now
-               </div>
+               {role === "admin" ? null : (
+                  <div
+                     className={`${styles.books} ${props.variant}`}
+                     onClick={toMoviedetail}
+                  >
+                     Book now
+                  </div>
+               )}
             </section>
          </section>
       </>
