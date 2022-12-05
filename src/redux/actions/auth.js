@@ -96,7 +96,7 @@ const userThunk = (token, router) => {
 
 
 // Booking
-const bookingFulfilled = (data) => ({
+const bookingFulfilled = (body) => ({
   type: ACTION_STRING.booking.concat("_", Fulfilled),
   payload: { body },
 });

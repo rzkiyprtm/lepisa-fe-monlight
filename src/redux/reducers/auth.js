@@ -17,7 +17,7 @@ const initialState = {
   },
   payment: {
     schedule_id: null,
-    title: null,
+    tittle: null,
     price: 0,
     time: null,
     date: null,
@@ -66,7 +66,7 @@ const authReducer = (prevState = initialState, { type, payload }) => {
           phone_number: payload.data.data.phone_number,
           image: payload.data.data.image,
           status: payload.data.data.status,
-          point: payload.data.data.point
+          point: payload.data.data.point,
         },
       };
 
@@ -77,7 +77,7 @@ const authReducer = (prevState = initialState, { type, payload }) => {
           ...prevState,
           payment: {
             schedule_id: payload.body.schedule_id,
-            title: payload.body.title,
+            tittle: payload.body.tittle,
             price: payload.body.price,
             time: payload.body.time,
             date: payload.body.date,
