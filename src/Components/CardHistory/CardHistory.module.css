@@ -1,4 +1,10 @@
 /* card */
+.show-detail-content {
+  /* display: block; */
+  border: 1px solid black;
+  height: 300px;
+}
+
 .content_background {
   background: #FFFFFF;
   border-radius: 24px;
