@@ -35,7 +35,7 @@
     background: #FFFFFF;
     border-radius: 24px;
     height: 104px;
-    width: 820px;
+    width: 95%;
     border-radius: 24px;
     padding: 28px 48px;
 }
@@ -60,6 +60,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 16px;
+    cursor: pointer;
 }
 
 .choose_seat {
@@ -107,7 +108,7 @@
 .icon_cinema {
     height: 70px;
     width: 170px;
-
+    padding: 10px;
 }
 
 .title_cinema {
@@ -298,6 +299,7 @@
     width: 30%;
     padding-top: 5px;
     padding-bottom: 5px;
+    cursor: pointer;
 }
 
 .change_movie:hover {
@@ -330,15 +332,13 @@
     color: white;
 }
 
-
-
-
 /* Chair */
 .background_seat {
     background-color: #FFFFFF;
     border-radius: 20px;
     margin-right: 20px;
     padding: 100px 30px 100px 30px;
+    width: 95%;
 }
 
 .screen {
@@ -377,7 +377,7 @@
     margin-top: 20px;
 }
 
-.number_chair > p {
+.number_chair>p {
     padding-right: 10px;
     /* margin-top: 3px; */
     /* padding-top: 10px; */
@@ -393,6 +393,7 @@
     background: #5F2EEA;
     border-radius: 4px;
 }
+
 .chair_selected1 {
     margin-top: 6px;
     margin-left: 3px;
@@ -430,6 +431,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair2 {
     margin-top: 6px;
     margin-left: 3px;
@@ -440,6 +442,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair3 {
     margin-top: 6px;
     margin-left: 3px;
@@ -450,6 +453,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair4 {
     margin-top: 6px;
     margin-left: 3px;
@@ -460,6 +464,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair5 {
     margin-top: 6px;
     margin-left: 3px;
@@ -470,6 +475,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair6 {
     margin-top: 6px;
     margin-left: 3px;
@@ -480,6 +486,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair7 {
     margin-top: 6px;
     margin-left: 3px;
@@ -504,6 +511,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair9 {
     margin-top: 6px;
     margin-left: 3px;
@@ -514,6 +522,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair10 {
     margin-top: 6px;
     margin-left: 3px;
@@ -524,6 +533,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair11 {
     margin-top: 6px;
     margin-left: 3px;
@@ -534,6 +544,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair12 {
     margin-top: 6px;
     margin-left: 3px;
@@ -544,6 +555,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair13 {
     margin-top: 6px;
     margin-left: 3px;
@@ -554,6 +566,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair14 {
     margin-top: 6px;
     margin-left: 3px;
@@ -577,6 +590,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair16 {
     margin-top: 6px;
     margin-left: 3px;
@@ -587,6 +601,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair17 {
     margin-top: 6px;
     margin-left: 3px;
@@ -597,6 +612,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair18 {
     margin-top: 6px;
     margin-left: 3px;
@@ -607,6 +623,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair19 {
     margin-top: 6px;
     margin-left: 3px;
@@ -617,6 +634,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair20 {
     margin-top: 6px;
     margin-left: 3px;
@@ -627,6 +645,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair21 {
     margin-top: 6px;
     margin-left: 3px;
@@ -651,6 +670,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair23 {
     margin-top: 6px;
     margin-left: 3px;
@@ -661,6 +681,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair24 {
     margin-top: 6px;
     margin-left: 3px;
@@ -671,6 +692,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair25 {
     margin-top: 6px;
     margin-left: 3px;
@@ -681,6 +703,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair26 {
     margin-top: 6px;
     margin-left: 3px;
@@ -691,6 +714,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair27 {
     margin-top: 6px;
     margin-left: 3px;
@@ -701,6 +725,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair28 {
     margin-top: 6px;
     margin-left: 3px;
@@ -725,6 +750,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair30 {
     margin-top: 6px;
     margin-left: 3px;
@@ -735,6 +761,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair31 {
     margin-top: 6px;
     margin-left: 3px;
@@ -745,6 +772,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair32 {
     margin-top: 6px;
     margin-left: 3px;
@@ -755,6 +783,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair33 {
     margin-top: 6px;
     margin-left: 3px;
@@ -765,6 +794,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair34 {
     margin-top: 6px;
     margin-left: 3px;
@@ -775,6 +805,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair35 {
     margin-top: 6px;
     margin-left: 3px;
@@ -798,6 +829,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair37 {
     margin-top: 6px;
     margin-left: 3px;
@@ -808,6 +840,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair38 {
     margin-top: 6px;
     margin-left: 3px;
@@ -818,6 +851,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair39 {
     margin-top: 6px;
     margin-left: 3px;
@@ -828,6 +862,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair40 {
     margin-top: 6px;
     margin-left: 3px;
@@ -838,6 +873,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair41 {
     margin-top: 6px;
     margin-left: 3px;
@@ -848,6 +884,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair42 {
     margin-top: 6px;
     margin-left: 3px;
@@ -873,6 +910,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair44 {
     margin-top: 6px;
     margin-left: 3px;
@@ -883,6 +921,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair45 {
     margin-top: 6px;
     margin-left: 3px;
@@ -893,6 +932,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair46 {
     margin-top: 6px;
     margin-left: 3px;
@@ -903,6 +943,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair47 {
     margin-top: 6px;
     margin-left: 3px;
@@ -913,6 +954,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair48 {
     margin-top: 6px;
     margin-left: 3px;
@@ -923,6 +965,7 @@
     background: #D6D8E7;
     border-radius: 4px;
 }
+
 .chair49 {
     margin-top: 6px;
     margin-left: 3px;
@@ -932,4 +975,55 @@
     border: none;
     background: #D6D8E7;
     border-radius: 4px;
+}
+
+@media only screen and (max-width: 600px) {
+
+    /*Big smartphones [426px -> 600px]*/
+    .bg {
+        width: 100%;
+        padding: 0 25px;
+    }
+
+    .change_ {
+        width: 380px;
+        padding: 28px 20px;
+    }
+
+    .background_seat {
+        padding: 30px 30px 38px 30px;
+    }
+
+    .content_avail_box {
+        padding-left: 0;
+    }
+
+    .number_chair {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 835px) {
+
+    /*Big smartphones [426px -> 600px]*/
+    .bg {
+        width: 100%;
+        padding: 0 25px;
+    }
+
+    .change_ {
+        margin: 0 auto;
+        padding: 28px 20px;
+    }
+
+    .background_seat {
+        padding: 30px 30px 38px 30px;
+        margin: 0 auto;
+    }
+
+    .content_avail_box {
+        padding-left: 0;
+    }
 }
