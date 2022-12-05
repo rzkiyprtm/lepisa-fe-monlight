@@ -65,7 +65,7 @@ function Payment() {
         total_payment: booking.total_payment,
         full_name: `${profile.firstname} ${profile.lastname}`,
         email: profile.email,
-        phone_number: profile.email,
+        phone_number: profile.phone_number,
         booking_date: booking.date,
         payment_method_id: bank
     }, {
