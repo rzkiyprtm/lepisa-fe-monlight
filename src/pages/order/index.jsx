@@ -60,7 +60,7 @@ function Index() {
       if (index > -1) {
         arr.splice(index, 1); 
       } else {
-        arr.push([e.target.value]);
+        arr.push(e.target.value);
       }
       setSeat(arr)
       setTotalPayment(arr.length*booking.price)
@@ -80,6 +80,12 @@ function Index() {
    };
 
    const goPayment = () => {
+      const seats = seat.map((e)=> (
+        e = {
+         "seat_id": parseInt(e)
+        } 
+      ))
+      console.log(seats)
       return dispatch(authActions.bookingThunk({
             schedule_id: booking.schedule_id,
             tittle: booking.tittle,
@@ -90,7 +96,7 @@ function Index() {
             cinema_image: booking.cinema_image,
             cinema_name: booking.cinema_name,
             total_ticket: seat.length,
-            seat: seat,
+            seat: seats,
       },
       () => {
          router.push("/payment")
