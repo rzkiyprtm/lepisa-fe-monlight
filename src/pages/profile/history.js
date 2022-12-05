@@ -65,9 +65,17 @@ useEffect(() => {
               <p className={css.acc} onClick={toProfile}>Account Settings</p>
               <p className={css.history}>Order History</p>
             </div>
-            {data.length > 0 && data ? (
-                  data.map((e) => (
-                     <CardHistory
+
+               <section className={css.card__bar}>
+                  {data.length === 0 ? (
+                     <h1 className="d-flex justify-content-center align-items-center text-center">
+                        Here is no ticket history.
+                     </h1>
+                  ) : (
+                     < >
+                        {data.length > 0 && data ? (
+                           data.map((e) => (
+                            <CardHistory
                     key={e.id}
                     tittle={e.tittle}
                     image={e.image}
@@ -77,10 +85,14 @@ useEffect(() => {
                     month={e.month}
                     year={e.year}
                      />
-                  ))
-               ) : (
-                  <Loader />
-               )}
+                           ))
+                        ) : (
+                           <Loader />
+                        )}
+                     </>
+                  )}
+               </section>
+               
           </div>
         </div>
       </div>
