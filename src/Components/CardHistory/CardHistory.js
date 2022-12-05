@@ -1,26 +1,10 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import image_cinema from "../../assets/admin/cineone21.png"
 import css from "./CardHistory.module.css"
-let days = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
-
-
 
 function CardHistory(props) {
-
-  const [show, setShow] = useState(false);
-
-
-
   return (
     <>
       <div className={css.content_background}>
@@ -45,7 +29,7 @@ function CardHistory(props) {
         <div className=''>
           <hr />
         </div>
-        <d iv className={css.card_status}>
+        <div className={css.card_status}>
           <button
             className={css.ticket_active_green}
           >
@@ -54,23 +38,8 @@ function CardHistory(props) {
           <div className={css.show_detail}>
             <p>Show Details</p>
             <i className='fa-solid fa-chevron-down'></i>
-            {/* <div className={css["show-detail-content"]}>
-
-              <div className={css["show-detail"]}>
-                <div className={css.box_title}>
-                  <p>{props.title}</p>
-                </div>
-
-                <div className={css.box_detail}>
-                  <div className="data">
-                    <p>Date</p>
-                  </div>
-                </div>
-
-              </div>
-            </div> */}
           </div>
-        </d>
+        </div>
       </div>
     </>
   );

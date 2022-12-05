@@ -73,18 +73,15 @@
 }
 
 .btn-logout {
-    border: none;
     margin: auto;
-    height: 40px;
+    height: 50px;
     width: 100px;
     margin-left: 13px;
     border-radius: 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .btn-logout:hover {
-    background-color: #5F2EEA;
-    color: #fff;
+    background-color: #FFBA33;
 }
 
 /* custom select styling */
