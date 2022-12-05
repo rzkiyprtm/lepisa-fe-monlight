@@ -47,6 +47,21 @@ useEffect(() => {
   "Sunday",
 ];
 
+let month = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 
   return (
     <>
@@ -74,8 +89,9 @@ useEffect(() => {
                     id={e.id}
                     days={days[e.day - 5]}
                     day={e.day}
-                    month={e.month}
+                    month={month[e.month - 1]}
                     year={e.year}
+                    status={e.status_ticket}
                      />
                   ))
                ) : (
