@@ -20,7 +20,6 @@ function CardHistory(props) {
   const [show, setShow] = useState(false);
 
 
-function CardHistory(props) {
 
   return (
     <>
