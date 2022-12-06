@@ -28,7 +28,7 @@ function Index(props) {
                <div className={styles.detail} onClick={toMoviedetail}>
                   Details
                </div>
-               <div className={`${styles.books} ${props.variant}`}>
+               <div className={`${styles.books} ${props.variant}`} onClick={toMoviedetail}>
                   Book now
                </div>
             </section>

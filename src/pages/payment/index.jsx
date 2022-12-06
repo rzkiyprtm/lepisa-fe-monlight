@@ -40,6 +40,8 @@ function Payment() {
     const [pay_id, setPay_id] = useState("")
     const [click, setClick] = useState()
 
+    const handleOrder = () => router.push("/order")
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     
@@ -224,7 +226,7 @@ function Payment() {
         <div className={styles["btn-box"]}>
 
         <div className={styles["btn-prev"]}>
-        <button>Previous step</button>
+        <button onClick={handleOrder}>Previous step</button>
         </div>
         <div className={styles["btn-pay"]}>
           <button onClick={payment} className="w-100">Pay your order</button>
