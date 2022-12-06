@@ -3,16 +3,19 @@ import React from "react";
 
 import image_cinema from "../../assets/admin/cineone21.png"
 import css from "./CardHistory.module.css"
+import {useRouter} from "next/router";
 
 
 function CardHistory(props) {
+  const router = useRouter()
+  const detailHandler = () => router.push(`/ticket/${props.payment_id}`)
   return (
     <>
       <div className={css.content_background}>
         <div className={css.title_name}>
           <div className={css.title_bioskop}>
             <p className={css.time_bioskop}>
-              {`${props.days},${props.day},${props.month},${props.year}`}
+              {`${props.day},${props.month},${props.year}`}
             </p>
             <p className={css.name_film}>
             {props.tittle}
@@ -37,7 +40,7 @@ function CardHistory(props) {
             Ticket in active
           </button>
           <div className={css.show_detail}>
-            <p>Show Details</p>
+            <p onClick={detailHandler} >Show Details</p>
             <i className='fa-solid fa-chevron-down'></i>
           </div>
         </div>

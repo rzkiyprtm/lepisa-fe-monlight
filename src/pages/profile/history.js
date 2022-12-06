@@ -25,7 +25,7 @@ useEffect(() => {
     axios
       .get(url, { headers: { "x-access-token": token } })
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
         setData(res.data.data);
         console.log("data : ", res.data.data);
       })
@@ -80,10 +80,10 @@ useEffect(() => {
                     tittle={e.tittle}
                     image={e.image}
                     id={e.id}
-                    days={days[e.day - 5]}
                     day={e.day}
                     month={e.month}
                     year={e.year}
+                    payment_id={e.payment_id}
                      />
                            ))
                         ) : (
