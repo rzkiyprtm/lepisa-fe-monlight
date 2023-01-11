@@ -64,7 +64,7 @@
 </div>
 
 ## Related Project
-* [`Tickits Movie Website`](https://github.com/rzkiyprtm/monlight-wallet)
+* [`Monlight Wallet Website`](https://github.com/rzkiyprtm/monlight-wallet)
 
 ## Contributors
 
