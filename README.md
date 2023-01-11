@@ -63,6 +63,9 @@
     <img width="250" src="./src/assets/readme/88.jpeg">
 </div>
 
+## Related Project
+* [`Tickits Movie Website`](https://github.com/rzkiyprtm/monlight-wallet)
+
 ## Contributors
 
 <center>
