@@ -64,7 +64,7 @@
 </div>
 
 ## Related Project
-* [`Monlight Wallet Website`](https://github.com/rzkiyprtm/monlight-wallet)
+* [`Tickits Movie Backend`](https://github.com/Diankrs30/lepisa-fix-be-collab)
 
 ## Contributors
 
